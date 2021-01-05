@@ -51,7 +51,7 @@ class Ui_MainWindow(object):
 "}")
         self.widget.setObjectName("widget")
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.widget)
-        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(10, 340, 301, 598))
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(10, 230, 310, 656))
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_2.setContentsMargins(10, 0, 10, 0)
@@ -60,19 +60,37 @@ class Ui_MainWindow(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.label = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        self.connectionTypeComboBox = QtWidgets.QComboBox(self.verticalLayoutWidget_2)
+        self.connectionTypeComboBox.setEnabled(True)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
-        self.label.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.connectionTypeComboBox.sizePolicy().hasHeightForWidth())
+        self.connectionTypeComboBox.setSizePolicy(sizePolicy)
+        self.connectionTypeComboBox.setMinimumSize(QtCore.QSize(180, 49))
         font = QtGui.QFont()
         font.setPointSize(16)
-        self.label.setFont(font)
-        self.label.setStyleSheet("color: #f3f6f5;")
-        self.label.setLineWidth(0)
-        self.label.setObjectName("label")
-        self.horizontalLayout.addWidget(self.label, 0, QtCore.Qt.AlignVCenter)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setWeight(50)
+        font.setKerning(True)
+        self.connectionTypeComboBox.setFont(font)
+        self.connectionTypeComboBox.setStyleSheet("QComboBox{background-color: transparent;  color: #f3f6f5; padding-left: 0px;}\n"
+"\n"
+"QComboBox:disabled,\n"
+"QComboBox[disabled]{\n"
+"  color: light gray;\n"
+"}")
+        self.connectionTypeComboBox.setMaxVisibleItems(2)
+        self.connectionTypeComboBox.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToContents)
+        self.connectionTypeComboBox.setMinimumContentsLength(1)
+        self.connectionTypeComboBox.setIconSize(QtCore.QSize(39, 53))
+        self.connectionTypeComboBox.setFrame(False)
+        self.connectionTypeComboBox.setObjectName("connectionTypeComboBox")
+        self.connectionTypeComboBox.addItem("")
+        self.connectionTypeComboBox.addItem("")
+        self.horizontalLayout.addWidget(self.connectionTypeComboBox, 0, QtCore.Qt.AlignLeft)
         self.refreshButton = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
         self.refreshButton.setEnabled(True)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -102,8 +120,21 @@ class Ui_MainWindow(object):
         self.refreshButton.setObjectName("refreshButton")
         self.horizontalLayout.addWidget(self.refreshButton)
         self.verticalLayout.addLayout(self.horizontalLayout)
-        self.portComboBox = QtWidgets.QComboBox(self.verticalLayoutWidget_2)
+        self.stackedWidget = QtWidgets.QStackedWidget(self.verticalLayoutWidget_2)
+        self.stackedWidget.setEnabled(True)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.stackedWidget.sizePolicy().hasHeightForWidth())
+        self.stackedWidget.setSizePolicy(sizePolicy)
+        self.stackedWidget.setMinimumSize(QtCore.QSize(0, 35))
+        self.stackedWidget.setLineWidth(0)
+        self.stackedWidget.setObjectName("stackedWidget")
+        self.page = QtWidgets.QWidget()
+        self.page.setObjectName("page")
+        self.portComboBox = QtWidgets.QComboBox(self.page)
         self.portComboBox.setEnabled(True)
+        self.portComboBox.setGeometry(QtCore.QRect(0, 0, 288, 35))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -127,11 +158,98 @@ class Ui_MainWindow(object):
         self.portComboBox.setIconSize(QtCore.QSize(39, 26))
         self.portComboBox.setFrame(False)
         self.portComboBox.setObjectName("portComboBox")
-        self.portComboBox.addItem("")
-        self.portComboBox.addItem("")
-        self.verticalLayout.addWidget(self.portComboBox)
+        self.stackedWidget.addWidget(self.page)
+        self.page_2 = QtWidgets.QWidget()
+        self.page_2.setObjectName("page_2")
+        self.dataFileField = QtWidgets.QLineEdit(self.page_2)
+        self.dataFileField.setEnabled(True)
+        self.dataFileField.setGeometry(QtCore.QRect(0, 0, 288, 30))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.dataFileField.sizePolicy().hasHeightForWidth())
+        self.dataFileField.setSizePolicy(sizePolicy)
+        self.dataFileField.setMinimumSize(QtCore.QSize(0, 30))
+        self.dataFileField.setFocusPolicy(QtCore.Qt.StrongFocus)
+        self.dataFileField.setStyleSheet("QLineEdit{background-color: #022B3B; border-radius:15px; padding: 0px 6px;color:#F3F6F5;  border: 0; outline: none;}\n"
+"\n"
+"QLineEdit:disabled[text=\"\"],\n"
+"QLineEdit[disabled][text=\"\"]{\n"
+"  color: #555555;\n"
+"}")
+        self.dataFileField.setText("")
+        self.dataFileField.setObjectName("dataFileField")
+        self.stackedWidget.addWidget(self.page_2)
+        self.verticalLayout.addWidget(self.stackedWidget)
         spacerItem = QtWidgets.QSpacerItem(20, 45, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         self.verticalLayout.addItem(spacerItem)
+        self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
+        self.label_8 = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_8.sizePolicy().hasHeightForWidth())
+        self.label_8.setSizePolicy(sizePolicy)
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.label_8.setFont(font)
+        self.label_8.setStyleSheet("color: #f3f6f5;")
+        self.label_8.setLineWidth(0)
+        self.label_8.setObjectName("label_8")
+        self.horizontalLayout_10.addWidget(self.label_8, 0, QtCore.Qt.AlignVCenter)
+        self.searchButton = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
+        self.searchButton.setEnabled(True)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.searchButton.sizePolicy().hasHeightForWidth())
+        self.searchButton.setSizePolicy(sizePolicy)
+        self.searchButton.setMinimumSize(QtCore.QSize(100, 30))
+        self.searchButton.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.searchButton.setFont(font)
+        self.searchButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.searchButton.setStyleSheet("QPushButton{\n"
+"    background-color: #025D79;\n"
+"     border-radius: 15px;\n"
+"  color: #f3f6f5;}\n"
+"\n"
+"QPushButton::hover{\n"
+"    background-color: #027CA1;\n"
+" }\n"
+"\n"
+"QPushButton:disabled,\n"
+"QPushButton[disabled]{\n"
+"  color: light gray;\n"
+"}")
+        self.searchButton.setObjectName("searchButton")
+        self.horizontalLayout_10.addWidget(self.searchButton)
+        self.verticalLayout.addLayout(self.horizontalLayout_10)
+        self.outputField = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
+        self.outputField.setEnabled(True)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.outputField.sizePolicy().hasHeightForWidth())
+        self.outputField.setSizePolicy(sizePolicy)
+        self.outputField.setMinimumSize(QtCore.QSize(0, 30))
+        self.outputField.setFocusPolicy(QtCore.Qt.StrongFocus)
+        self.outputField.setStyleSheet("QLineEdit{background-color: #022B3B; border-radius:15px; padding: 0px 6px;}\n"
+"\n"
+"QLineEdit{ color:#F3F6F5; }\n"
+"\n"
+"QLineEdit:disabled[text=\"\"],\n"
+"QLineEdit[disabled][text=\"\"]{\n"
+"  color: #555555;\n"
+"}")
+        self.outputField.setText("")
+        self.outputField.setFrame(True)
+        self.outputField.setObjectName("outputField")
+        self.verticalLayout.addWidget(self.outputField)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 48, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        self.verticalLayout.addItem(spacerItem1)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.label_2 = QtWidgets.QLabel(self.verticalLayoutWidget_2)
@@ -196,14 +314,21 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.emailField.sizePolicy().hasHeightForWidth())
         self.emailField.setSizePolicy(sizePolicy)
         self.emailField.setMinimumSize(QtCore.QSize(0, 30))
-        self.emailField.setStyleSheet("QLineEdit{background-color: #022B3B; border-radius:15px}\n"
+        self.emailField.setStyleSheet("QLineEdit{background-color: #022B3B; border-radius:15px; padding: 0px 6px;}\n"
 "\n"
-"QLineEdit::enabled{color: #f3f6f5;}")
+"QLineEdit{ color:#F3F6F5; }\n"
+"QLineEdit[text=\"\"]{ color:#888888; }\n"
+"\n"
+"QLineEdit:disabled[text=\"\"],\n"
+"QLineEdit[disabled][text=\"\"]{\n"
+"  color: #555555;\n"
+"}")
+        self.emailField.setText("")
         self.emailField.setObjectName("emailField")
         self.horizontalLayout_3.addWidget(self.emailField)
         self.verticalLayout.addLayout(self.horizontalLayout_3)
-        spacerItem1 = QtWidgets.QSpacerItem(20, 48, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
-        self.verticalLayout.addItem(spacerItem1)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 48, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        self.verticalLayout.addItem(spacerItem2)
         self.connectButton = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -227,8 +352,8 @@ class Ui_MainWindow(object):
 " }")
         self.connectButton.setObjectName("connectButton")
         self.verticalLayout.addWidget(self.connectButton)
-        spacerItem2 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
-        self.verticalLayout.addItem(spacerItem2)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        self.verticalLayout.addItem(spacerItem3)
         self.progressBar = QtWidgets.QProgressBar(self.verticalLayoutWidget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -269,16 +394,17 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.resultsLabel)
         self.verticalLayout_2.addLayout(self.verticalLayout)
         self.logo = QtWidgets.QLabel(self.widget)
-        self.logo.setGeometry(QtCore.QRect(10, 10, 311, 151))
+        self.logo.setGeometry(QtCore.QRect(20, 30, 241, 91))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.logo.sizePolicy().hasHeightForWidth())
         self.logo.setSizePolicy(sizePolicy)
-        self.logo.setMinimumSize(QtCore.QSize(7, 127))
+        self.logo.setMinimumSize(QtCore.QSize(0, 0))
         self.logo.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.logo.setText("")
-        self.logo.setPixmap(QtGui.QPixmap(":/newPrefix/logo-2.png"))
+        self.logo.setPixmap(QtGui.QPixmap(":/newPrefix/unnamed.png"))
+        self.logo.setScaledContents(True)
         self.logo.setObjectName("logo")
         self.horizontalLayout_4.addWidget(self.widget)
         self.widget_2 = QtWidgets.QWidget(self.horizontalLayoutWidget_4)
@@ -313,7 +439,7 @@ class Ui_MainWindow(object):
         #Second axis setup
         self.graphWidget.showAxis('right')
         self.graphWidget.setLabel('right', 'Frequency', units="<font>Hz</font>",
-                   color='#FF8811', **{'font-size':'14pt'})
+                                  color='#FF8811', **{'font-size':'14pt'})
         # self.graphWidget.getAxis('right').setPen(pg.mkPen(color='#F3F6F5', width=3))
 
         self.twinGraph = pg.ViewBox()
@@ -323,7 +449,6 @@ class Ui_MainWindow(object):
 
         self.twinLine = pg.PlotCurveItem(pen = pg.mkPen(color='#FF8811',width=3))
         self.twinGraph.addItem(self.twinLine)
-
         self.gridLayout.addWidget(self.graphWidget, 0, 0, 1, 1)
         self.horizontalLayout_4.addWidget(self.widget_2)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -333,6 +458,7 @@ class Ui_MainWindow(object):
         self.actionQuit.setObjectName("actionQuit")
 
         self.retranslateUi(MainWindow)
+        self.stackedWidget.setCurrentIndex(0)
         self.checkBox.toggled['bool'].connect(self.emailField.setEnabled)
         self.connectButton.clicked.connect(self.connectButton.toggle)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -340,10 +466,13 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "QCM Contamination Detector"))
-        self.label.setText(_translate("MainWindow", "Connection Port"))
+        self.connectionTypeComboBox.setItemText(0, _translate("MainWindow", "Connection Port"))
+        self.connectionTypeComboBox.setItemText(1, _translate("MainWindow", "Simulation File"))
         self.refreshButton.setText(_translate("MainWindow", "Refresh"))
-        self.portComboBox.setItemText(0, _translate("MainWindow", "item 1"))
-        self.portComboBox.setItemText(1, _translate("MainWindow", "item 2"))
+        self.dataFileField.setPlaceholderText(_translate("MainWindow", "Simulation Data File"))
+        self.label_8.setText(_translate("MainWindow", "Output Directory"))
+        self.searchButton.setText(_translate("MainWindow", "Search"))
+        self.outputField.setPlaceholderText(_translate("MainWindow", "Output Directory"))
         self.label_2.setText(_translate("MainWindow", "Email Notification"))
         self.emailTestButton.setText(_translate("MainWindow", "Test Email"))
         self.checkBox.setText(_translate("MainWindow", "Enabled"))
@@ -351,9 +480,10 @@ class Ui_MainWindow(object):
         self.connectButton.setText(_translate("MainWindow", "Connect"))
         self.actionquit.setText(_translate("MainWindow", "Save Data"))
         self.actionQuit.setText(_translate("MainWindow", "Quit"))
-from pyqtgraph import PlotWidget
+
 import pyqtgraph as pg
-from interface import ui_rc
+from pyqtgraph import PlotWidget
+import ui_rc
 
 
 if __name__ == "__main__":

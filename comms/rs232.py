@@ -38,6 +38,9 @@ class Status(enum.Enum):
 class RS232:
 
     def __init__(self):
+        self.is_simulated = False
+        self.simulation_data = None
+        self.current_index = 0
         self.ser = None
         self.gate_time = None
         self.scale_factor = None
@@ -49,25 +52,41 @@ class RS232:
 
         self.request_timedout = False
 
-    def establish_connection(self, port_name, gate_time, scale_factor):
-        self.ser = serial.Serial(
-            baudrate=9600,
-            parity=serial.PARITY_NONE,
-            bytesize=serial.EIGHTBITS,
-            stopbits=1,
-            port = port_name
-        )
-        self.gate_time = gate_time
-        self.scale_factor = scale_factor
-        try:
-            self.ser.isOpen()
-            self.set_metadata(gate_time=self.gate_time, scale_factor=self.scale_factor)
-            signal.signal(signal.SIGALRM, self.timeout_handler)
-            print('Connection established! port: {}'.format(port_name))
-            return 0
-        except Exception:
-            raise(Exception)
-            return 1
+    def establish_connection(self, port_name, gate_time, scale_factor, is_simulated, simulation_data_path):
+        if is_simulated:
+            try:
+                self.simulation_data = pd.read_csv(simulation_data_path,parse_dates=["Time"], index_col="Time")
+                self.is_simulated = is_simulated
+                self.current_index = 0
+                self.results = np.array([])
+                self.readings = pd.Series([])
+                return (0)
+            except Exception:
+                return (1)
+        else:
+            self.simulation_data = None
+            self.is_simulated = is_simulated
+            self.current_index = 0
+            self.results = np.array([])
+            self.readings = pd.Series([])
+
+            self.ser = serial.Serial(
+                baudrate=9600,
+                parity=serial.PARITY_NONE,
+                bytesize=serial.EIGHTBITS,
+                stopbits=1,
+                port = port_name
+            )
+            self.gate_time = gate_time
+            self.scale_factor = scale_factor
+            try:
+                self.ser.isOpen()
+                self.set_metadata(gate_time=self.gate_time, scale_factor=self.scale_factor)
+                signal.signal(signal.SIGALRM, self.timeout_handler)
+                print('Connection established! port: {}'.format(port_name))
+                return 0
+            except Exception:
+                return 1
 
     def set_metadata(self, gate_time, scale_factor):
         assert(gate_time in gateTimes and scale_factor in scaleFactors)
@@ -93,36 +112,53 @@ class RS232:
 
     def read_data(self):
         #Input: none #Output: packet with [time, resistance, frequency]
-        query_status = Status.QueryF
-        dt = np.dtype([('Time', np.unicode, 32), ('Frequency', np.float64), ('Resistance', np.float64)])
-        frequency = None
-        resistance = None
-        self.request_timedout = False
+        if not self.is_simulated:
+            query_status = Status.QueryF
+            dt = np.dtype([('Time', np.unicode, 32), ('Frequency', np.float64), ('Resistance', np.float64)])
+            frequency = None
+            resistance = None
+            self.request_timedout = False
 
-        signal.alarm(5)
-        while(query_status != Status.Finished and not self.request_timedout):
-            try:
-                if(query_status == Status.QueryF):
-                    self.ser.write('F\r'.encode())
-                    query_status = Status.WaitF
-                elif(query_status==Status.WaitF):
-                    if(self.ser.inWaiting()>0):
-                        frequency = float(self.ser.readline())
-                        self.ser.write('R\r'.encode())
-                        query_status = Status.WaitR
-                elif(query_status==Status.WaitR):
-                    if(self.ser.inWaiting()>0):
-                        resistance = float(self.ser.readline())
-                        query_status = Status.Finished
-            except:
+            signal.alarm(5)
+            while(query_status != Status.Finished and not self.request_timedout):
+                try:
+                    if(query_status == Status.QueryF):
+                        self.ser.write('F\r'.encode())
+                        query_status = Status.WaitF
+                    elif(query_status==Status.WaitF):
+                        if(self.ser.inWaiting()>0):
+                            frequency = float(self.ser.readline())
+                            self.ser.write('R\r'.encode())
+                            query_status = Status.WaitR
+                    elif(query_status==Status.WaitR):
+                        if(self.ser.inWaiting()>0):
+                            resistance = float(self.ser.readline())
+                            query_status = Status.Finished
+                except Exception:
+                    return None
+
+            if self.request_timedout:
                 return None
-
-        if self.request_timedout:
-            return None
+            else:
+                signal.alarm(0)
+                d = datetime.datetime.now()
+                time = "{d.day}/{d.month}/{d.year} {d.hour}:{d.minute}:{d.second}.{d.microsecond}".format(d=d)
+                data_packet = np.array((time, frequency, resistance), dtype= dt)
+                new_pd = pd.Series(data_packet)
+                d = datetime_to_float(d)
+                if len(self.results) == 0:
+                    self.results = np.array([d, frequency, resistance])
+                else:
+                    self.results = np.vstack((self.results, [d, frequency, resistance]))
+                self.readings = self.readings.append(new_pd)
+                return(data_packet)
         else:
-            signal.alarm(0)
-            d = datetime.datetime.now()
+            dt = np.dtype([('Time', np.unicode, 32), ('Frequency', np.float64), ('Resistance', np.float64)])
+            d = self.simulation_data.index[self.current_index]
             time = "{d.day}/{d.month}/{d.year} {d.hour}:{d.minute}:{d.second}.{d.microsecond}".format(d=d)
+            current_row = self.simulation_data.values[self.current_index]
+            frequency = current_row[0]
+            resistance = current_row[1]
             data_packet = np.array((time, frequency, resistance), dtype= dt)
             new_pd = pd.Series(data_packet)
             d = datetime_to_float(d)
@@ -131,8 +167,8 @@ class RS232:
             else:
                 self.results = np.vstack((self.results, [d, frequency, resistance]))
             self.readings = self.readings.append(new_pd)
+            self.current_index += 1
             return(data_packet)
-
 
     def append_to_csv(self):
         if self.output_file!= None:

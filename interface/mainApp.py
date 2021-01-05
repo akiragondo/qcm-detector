@@ -10,8 +10,11 @@ class MainApp(Ui_MainWindow):
     def __init__(self,window):
         #UI Setup
         self.setupUi(window)
+        self.window = window
+        self.state = 0
 
-        # Insert in window
+        self.stabilizationTime = 600 (segundos)
+
         # date_axis = pg.graphicsItems.DateAxisItem.DateAxisItem(orientation = 'bottom')
         # self.graphWidget = PlotWidget(self.gridLayoutWidget,
         #                               title="Resistance Measurement",
@@ -41,27 +44,53 @@ class MainApp(Ui_MainWindow):
         # self.twinLine = pg.PlotCurveItem(pen = pg.mkPen(color='#FF8811',width=3))
         # self.twinGraph.addItem(self.twinLine)
 
-        #Plotting setup
 
         #update viewbox
         self.updateViews()
         self.plotLine.getViewBox().sigResized.connect(self.updateViews)
 
         #Interactions - Connections
+        self.is_simulated = False
         self.refresh_ports_combo()
         self.refreshButton.clicked.connect(self.refresh_ports_combo)
         self.is_connected = False
         self.connectButton.clicked.connect(self.connectButtonHandler)
-
+        self.connectionTypeComboBox.currentTextChanged.connect(self.toggleSimulatorPort)
+        self.searchButton.clicked.connect(self.searchOutputDirectory)
 
         #QCM Setup
-        self.output_folder = '/Users/akira/soft/Qt Projects/rtqcm/data/'
         self.rs = RS232()
         self.index = 0
 
         self.timer = QtCore.QTimer()
         self.timer.setInterval(1000)
         self.timer.timeout.connect(self.updatePlot)
+
+
+    def searchOutputDirectory(self):
+        file = str(QtWidgets.QFileDialog.getExistingDirectory(self.window, "Select Data Output Directory"))
+        self.outputField.setText(file)
+
+    def toggleSimulatorPort(self):
+        if self.connectionTypeComboBox.currentText() == 'Simulation File':
+            self.is_simulated = True
+            self.timer.setInterval(1000/60)
+            self.refreshButton.setText('Search')
+            self.refreshButton.clicked.disconnect()
+            self.refreshButton.clicked.connect(self.searchSimulatorFile)
+            self.stackedWidget.setCurrentIndex(1)
+        else:
+            self.is_simulated = False
+            self.timer.setInterval(1000)
+            self.refreshButton.setText('Refresh')
+            self.refreshButton.clicked.disconnect()
+            self.refreshButton.clicked.connect(self.refresh_ports_combo)
+            self.stackedWidget.setCurrentIndex(0)
+
+
+    def searchSimulatorFile(self):
+        file = QtWidgets.QFileDialog.getOpenFileName(self.window, "Select Simulator File")
+        self.dataFileField.setText(str(file[0]))
 
 
     def updateViews(self):
@@ -77,9 +106,21 @@ class MainApp(Ui_MainWindow):
         if self.index % 2 == 0:
             self.plotLine.setData(self.rs.results[:,0], self.rs.results[:,2])
             self.twinLine.setData(self.rs.results[:,0], self.rs.results[:,1])
+            #Update X Range
+            if (self.rs.results[:,0][-1]- self.rs.results[:,0][0] > 1800):
+                self.plotLine.getViewBox().setXRange(self.rs.results[:,0][-1] - 1800, self.rs.results[:,0][-1], padding=5)
+            if self.index > 600 and self.state == 1:
+                sample = self.rs.results[:,1][-600:]
+                if sample.std() < 1:
+                    self.state = 2
+                    self.resultsLabel.setText('Ready')
+                    self.progressBar.setValue(100)
+
 
         if self.index %10 == 0:
             self.rs.append_to_csv()
+
+
 
     def toggle_connect(self):
         self.is_connected = not self.is_connected
@@ -100,6 +141,7 @@ class MainApp(Ui_MainWindow):
             self.rc = RS232()
 
             #Disconnect
+            self.state = 0
             self.progressBar.setValue(0)
             self.resultsLabel.setText('')
 
@@ -113,10 +155,20 @@ class MainApp(Ui_MainWindow):
             port = self.portComboBox.currentText()
             gate_time = 1000
             scale_factor = 200
-            self.rs.set_output_file(self.output_folder)
-            result = self.rs.establish_connection(port_name=port, gate_time=gate_time, scale_factor=scale_factor)
+            output_folder = self.outputField.text()
+            if output_folder[-1] != '/':
+                output_folder += '/'
+            self.rs.set_output_file(output_folder)
+            result = self.rs.establish_connection(
+                port_name=port,
+                gate_time=gate_time,
+                scale_factor=scale_factor,
+                is_simulated=self.is_simulated,
+                simulation_data_path=self.dataFileField.text()
+            )
             if result == 0:
                 self.toggle_connect()
+                self.state = 1
                 #Connected - Waiting Stabilization
                 #Stabilised - Training Model
                 #Ready
