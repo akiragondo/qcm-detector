@@ -1,0 +1,12 @@
+matplotlib==2.0.0
+numpy==1.19.4
+pandas==0.25.1
+pipenv==2018.11.26
+PyQt5==5.15.2
+PyQt5-sip==12.8.1
+pyserial==3.4
+requests==2.22.0
+scipy==1.1.0
+seaborn==0.9.0
+tqdm==4.24.0
+pyqtgraph
