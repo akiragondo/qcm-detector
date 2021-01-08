@@ -51,6 +51,7 @@ class RS232:
         self.wrote_header = False
 
         self.request_timedout = False
+        self.tzinfo = datetime.datetime.now().astimezone().tzinfo
 
     def establish_connection(self, port_name, gate_time, scale_factor, is_simulated, simulation_data_path):
         if is_simulated:
@@ -94,14 +95,14 @@ class RS232:
         sleep(1)
         self.ser.write('D{}\r'.format(scaleFactors[scale_factor]).encode())
 
-    def set_output_file(self, output_folder):
-        output_base_name = output_folder + datetime.datetime.now().strftime("%y-%m-%d_data")
+    def set_output_file(self, output_folder, file_name):
+        output_base_name = output_folder + datetime.datetime.now().strftime("%y-%m-%d_{}_data".format(file_name))
         if exists(output_base_name + '.csv'):
             output_base_name = output_folder + datetime.datetime.now().strftime("%y-%m-%d")
             i = 1
-            while exists("{}_{}-data.csv".format(output_base_name, i)):
+            while exists("{}_{}_{}-data.csv".format(output_base_name, file_name,i)):
                 i += 1
-            self.output_file = "{}_{}-data.csv".format(output_base_name, i)
+            self.output_file = "{}_{}_{}-data.csv".format(output_base_name, file_name,i)
         else:
             self.output_file = "{}.csv".format(output_base_name)
         self.wrote_header = False
@@ -145,7 +146,7 @@ class RS232:
                 time = "{d.day}/{d.month}/{d.year} {d.hour}:{d.minute}:{d.second}.{d.microsecond}".format(d=d)
                 data_packet = np.array((time, frequency, resistance), dtype= dt)
                 new_pd = pd.Series(data_packet)
-                d = datetime_to_float(d)
+                d = self.datetime_to_float(d)
                 if len(self.results) == 0:
                     self.results = np.array([d, frequency, resistance])
                 else:
@@ -161,7 +162,7 @@ class RS232:
             resistance = current_row[1]
             data_packet = np.array((time, frequency, resistance), dtype= dt)
             new_pd = pd.Series(data_packet)
-            d = datetime_to_float(d)
+            d = self.datetime_to_float(d)
             if len(self.results) == 0:
                 self.results = np.array([d, frequency, resistance])
             else:
@@ -195,11 +196,11 @@ class RS232:
                 return 0
         return 1
 
-def datetime_to_float(d):
-    epoch = datetime.datetime.utcfromtimestamp(0)
-    total_seconds =  (d - epoch).total_seconds()
-    # total_seconds will be in decimals (millisecond precision)
-    return total_seconds
+    def datetime_to_float(self, d):
+        epoch = datetime.datetime.utcfromtimestamp(0)
+        total_seconds =  (d - epoch - self.tzinfo.utcoffset(None)).total_seconds()
+        # total_seconds will be in decimals (millisecond precision)
+        return total_seconds
 
 def list_serial_ports():
     if sys.platform.startswith('win'):

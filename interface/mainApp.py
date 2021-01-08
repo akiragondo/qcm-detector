@@ -13,11 +13,37 @@ class MainApp(Ui_MainWindow):
         self.window = window
         self.state = 0
 
-        self.stabilizationTime = 600 (segundos)
+        #Time configurations
+        self.stabilizationTime = 600
+        self.visibleTime = 60*30
+        self.drawPeriod = 2
+        self.detectPeriod = 60
+        self.savePeriod = 30
+
+        #update viewbox
+        self.updateViews()
+        self.plotLine.getViewBox().sigResized.connect(self.updateViews)
+
+        #Interactions - Connections
+        self.is_simulated = False
+        self.refresh_ports_combo()
+        self.refreshButton.clicked.connect(self.refresh_ports_combo)
+        self.is_connected = False
+        self.connectButton.clicked.connect(self.connectButtonHandler)
+        self.connectionTypeComboBox.currentTextChanged.connect(self.toggleSimulatorPort)
+        self.searchButton.clicked.connect(self.searchOutputDirectory)
+
+        #QCM Setup
+        self.rs = RS232()
+        self.index = 0
+
+        self.timer = QtCore.QTimer()
+        self.timer.setInterval(1000)
+        self.timer.timeout.connect(self.updatePlot)
+
 
         # date_axis = pg.graphicsItems.DateAxisItem.DateAxisItem(orientation = 'bottom')
-        # self.graphWidget = PlotWidget(self.gridLayoutWidget,
-        #                               title="Resistance Measurement",
+        # self.graphWidget = PlotWidget(self.verticalLayoutWidget,
         #                               axisItems = {'bottom': date_axis}
         #                               )
         # self.graphWidget.setMouseEnabled(x=False, y=False)
@@ -45,28 +71,6 @@ class MainApp(Ui_MainWindow):
         # self.twinGraph.addItem(self.twinLine)
 
 
-        #update viewbox
-        self.updateViews()
-        self.plotLine.getViewBox().sigResized.connect(self.updateViews)
-
-        #Interactions - Connections
-        self.is_simulated = False
-        self.refresh_ports_combo()
-        self.refreshButton.clicked.connect(self.refresh_ports_combo)
-        self.is_connected = False
-        self.connectButton.clicked.connect(self.connectButtonHandler)
-        self.connectionTypeComboBox.currentTextChanged.connect(self.toggleSimulatorPort)
-        self.searchButton.clicked.connect(self.searchOutputDirectory)
-
-        #QCM Setup
-        self.rs = RS232()
-        self.index = 0
-
-        self.timer = QtCore.QTimer()
-        self.timer.setInterval(1000)
-        self.timer.timeout.connect(self.updatePlot)
-
-
     def searchOutputDirectory(self):
         file = str(QtWidgets.QFileDialog.getExistingDirectory(self.window, "Select Data Output Directory"))
         self.outputField.setText(file)
@@ -87,11 +91,13 @@ class MainApp(Ui_MainWindow):
             self.refreshButton.clicked.connect(self.refresh_ports_combo)
             self.stackedWidget.setCurrentIndex(0)
 
+    def add_vline(self, x):
+        new_line = pg.InfiniteLine(pos=x)
+        self.plotLine.getViewBox().addItem(new_line)
 
     def searchSimulatorFile(self):
         file = QtWidgets.QFileDialog.getOpenFileName(self.window, "Select Simulator File")
         self.dataFileField.setText(str(file[0]))
-
 
     def updateViews(self):
         self.twinGraph.setGeometry(self.plotLine.getViewBox().sceneBoundingRect())
@@ -103,23 +109,23 @@ class MainApp(Ui_MainWindow):
             print ('Time: {} - Res: {} - Freq - {}'.format(data['Time'], data['Resistance'], data['Frequency']))
             self.index += 1
 
-        if self.index % 2 == 0:
+        if self.index % self.drawPeriod == 0:
             self.plotLine.setData(self.rs.results[:,0], self.rs.results[:,2])
             self.twinLine.setData(self.rs.results[:,0], self.rs.results[:,1])
             #Update X Range
-            if (self.rs.results[:,0][-1]- self.rs.results[:,0][0] > 1800):
-                self.plotLine.getViewBox().setXRange(self.rs.results[:,0][-1] - 1800, self.rs.results[:,0][-1], padding=5)
-            if self.index > 600 and self.state == 1:
-                sample = self.rs.results[:,1][-600:]
+            if (self.rs.results[:,0][-1]- self.rs.results[:,0][0] > self.visibleTime):
+                self.plotLine.getViewBox().setXRange(self.rs.results[:,0][-1] - self.visibleTime, self.rs.results[:,0][-1], padding=5)
+            if self.index > self.stabilizationTime and self.state == 1:
+                sample = self.rs.results[:,1][-self.stabilizationTime:]
                 if sample.std() < 1:
                     self.state = 2
                     self.resultsLabel.setText('Ready')
                     self.progressBar.setValue(100)
+                    self.add_vline(self.rs.results[:,0][-1])
 
 
-        if self.index %10 == 0:
+        if self.index %self.savePeriod == 0:
             self.rs.append_to_csv()
-
 
 
     def toggle_connect(self):
@@ -150,6 +156,7 @@ class MainApp(Ui_MainWindow):
             self.emailField.setEnabled(self.checkBox.isChecked())
             self.emailTestButton.setEnabled(True)
             self.refreshButton.setEnabled(True)
+            self.fileName.setEnabled(True)
         else:
             #Connect
             port = self.portComboBox.currentText()
@@ -158,7 +165,7 @@ class MainApp(Ui_MainWindow):
             output_folder = self.outputField.text()
             if output_folder[-1] != '/':
                 output_folder += '/'
-            self.rs.set_output_file(output_folder)
+            self.rs.set_output_file(output_folder,self.fileName.text())
             result = self.rs.establish_connection(
                 port_name=port,
                 gate_time=gate_time,
@@ -182,6 +189,7 @@ class MainApp(Ui_MainWindow):
                 self.emailField.setEnabled(False)
                 self.emailTestButton.setEnabled(False)
                 self.refreshButton.setEnabled(False)
+                self.fileName.setEnabled(False)
                 self.timer.start()
 
 

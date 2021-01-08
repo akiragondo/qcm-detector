@@ -51,10 +51,10 @@ class Ui_MainWindow(object):
 "}")
         self.widget.setObjectName("widget")
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.widget)
-        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(10, 230, 310, 656))
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(0, 225, 333, 661))
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
-        self.verticalLayout_2.setContentsMargins(10, 0, 10, 0)
+        self.verticalLayout_2.setContentsMargins(20, 0, 20, 0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
@@ -181,7 +181,7 @@ class Ui_MainWindow(object):
         self.dataFileField.setObjectName("dataFileField")
         self.stackedWidget.addWidget(self.page_2)
         self.verticalLayout.addWidget(self.stackedWidget)
-        spacerItem = QtWidgets.QSpacerItem(20, 45, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         self.verticalLayout.addItem(spacerItem)
         self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
@@ -248,7 +248,28 @@ class Ui_MainWindow(object):
         self.outputField.setFrame(True)
         self.outputField.setObjectName("outputField")
         self.verticalLayout.addWidget(self.outputField)
-        spacerItem1 = QtWidgets.QSpacerItem(20, 48, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        self.fileName = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
+        self.fileName.setEnabled(True)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.fileName.sizePolicy().hasHeightForWidth())
+        self.fileName.setSizePolicy(sizePolicy)
+        self.fileName.setMinimumSize(QtCore.QSize(0, 30))
+        self.fileName.setFocusPolicy(QtCore.Qt.StrongFocus)
+        self.fileName.setStyleSheet("QLineEdit{background-color: #022B3B; border-radius:15px; padding: 0px 6px;}\n"
+"\n"
+"QLineEdit{ color:#F3F6F5; }\n"
+"\n"
+"QLineEdit:disabled[text=\"\"],\n"
+"QLineEdit[disabled][text=\"\"]{\n"
+"  color: #555555;\n"
+"}")
+        self.fileName.setText("")
+        self.fileName.setFrame(True)
+        self.fileName.setObjectName("fileName")
+        self.verticalLayout.addWidget(self.fileName)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         self.verticalLayout.addItem(spacerItem1)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
@@ -327,7 +348,7 @@ class Ui_MainWindow(object):
         self.emailField.setObjectName("emailField")
         self.horizontalLayout_3.addWidget(self.emailField)
         self.verticalLayout.addLayout(self.horizontalLayout_3)
-        spacerItem2 = QtWidgets.QSpacerItem(20, 48, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 60, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         self.verticalLayout.addItem(spacerItem2)
         self.connectButton = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
@@ -394,7 +415,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.resultsLabel)
         self.verticalLayout_2.addLayout(self.verticalLayout)
         self.logo = QtWidgets.QLabel(self.widget)
-        self.logo.setGeometry(QtCore.QRect(20, 30, 241, 91))
+        self.logo.setGeometry(QtCore.QRect(20, 30, 181, 71))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -415,15 +436,19 @@ class Ui_MainWindow(object):
         self.widget_2.setSizePolicy(sizePolicy)
         self.widget_2.setStyleSheet("QWidget{background-color:#022B3B; font-size:16px}")
         self.widget_2.setObjectName("widget_2")
-        self.gridLayoutWidget = QtWidgets.QWidget(self.widget_2)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(10, 10, 941, 731))
-        self.gridLayoutWidget.setObjectName("gridLayoutWidget")
-        self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout.setObjectName("gridLayout")
+        self.verticalLayoutWidget = QtWidgets.QWidget(self.widget_2)
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 10, 941, 731))
+        self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.graphWidget = PlotWidget(self.verticalLayoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.graphWidget.sizePolicy().hasHeightForWidth())
         date_axis = pg.graphicsItems.DateAxisItem.DateAxisItem(orientation = 'bottom')
-        self.graphWidget = PlotWidget(self.gridLayoutWidget,
-                                      title="Resistance Measurement",
+        self.graphWidget = PlotWidget(self.verticalLayoutWidget,
                                       axisItems = {'bottom': date_axis}
                                       )
         self.graphWidget.setMouseEnabled(x=False, y=False)
@@ -449,7 +474,43 @@ class Ui_MainWindow(object):
 
         self.twinLine = pg.PlotCurveItem(pen = pg.mkPen(color='#FF8811',width=3))
         self.twinGraph.addItem(self.twinLine)
-        self.gridLayout.addWidget(self.graphWidget, 0, 0, 1, 1)
+        self.verticalLayout_3.addWidget(self.graphWidget)
+        self.label = QtWidgets.QLabel(self.verticalLayoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy)
+        self.label.setMinimumSize(QtCore.QSize(0, 25))
+        font = QtGui.QFont()
+        font.setPointSize(-1)
+        self.label.setFont(font)
+        self.label.setStyleSheet("color: #F3F6F5;")
+        self.label.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
+        self.label.setObjectName("label")
+        self.verticalLayout_3.addWidget(self.label, 0, QtCore.Qt.AlignBottom)
+        self.line = QtWidgets.QFrame(self.verticalLayoutWidget)
+        self.line.setMinimumSize(QtCore.QSize(0, 10))
+        self.line.setStyleSheet("color: #F3F6F5;")
+        self.line.setFrameShadow(QtWidgets.QFrame.Plain)
+        self.line.setLineWidth(1)
+        self.line.setMidLineWidth(1)
+        self.line.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line.setObjectName("line")
+        self.verticalLayout_3.addWidget(self.line)
+        self.textBrowser = QtWidgets.QTextBrowser(self.verticalLayoutWidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.textBrowser.sizePolicy().hasHeightForWidth())
+        self.textBrowser.setSizePolicy(sizePolicy)
+        self.textBrowser.setMinimumSize(QtCore.QSize(0, 10))
+        self.textBrowser.setMaximumSize(QtCore.QSize(16777215, 70))
+        self.textBrowser.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.textBrowser.setFrameShadow(QtWidgets.QFrame.Plain)
+        self.textBrowser.setLineWidth(0)
+        self.textBrowser.setObjectName("textBrowser")
+        self.verticalLayout_3.addWidget(self.textBrowser)
         self.horizontalLayout_4.addWidget(self.widget_2)
         MainWindow.setCentralWidget(self.centralwidget)
         self.actionquit = QtWidgets.QAction(MainWindow)
@@ -473,18 +534,28 @@ class Ui_MainWindow(object):
         self.label_8.setText(_translate("MainWindow", "Output Directory"))
         self.searchButton.setText(_translate("MainWindow", "Search"))
         self.outputField.setPlaceholderText(_translate("MainWindow", "Output Directory"))
+        self.fileName.setPlaceholderText(_translate("MainWindow", "File Name"))
         self.label_2.setText(_translate("MainWindow", "Email Notification"))
         self.emailTestButton.setText(_translate("MainWindow", "Test Email"))
         self.checkBox.setText(_translate("MainWindow", "Enabled"))
         self.emailField.setPlaceholderText(_translate("MainWindow", "Email Address"))
         self.connectButton.setText(_translate("MainWindow", "Connect"))
+        self.label.setText(_translate("MainWindow", "Past Events"))
+        self.textBrowser.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'.AppleSystemUIFont\'; font-size:16px; font-weight:400; font-style:normal;\">\n"
+"<table border=\"0\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; border-collapse:collapse;\" cellspacing=\"2\" cellpadding=\"0\" bgcolor=\"#ffffff\">\n"
+"<tr>\n"
+"<td style=\" vertical-align:top; padding-left:10; padding-right:10; padding-top:8; padding-bottom:8;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\',\'sans-serif\'; font-size:14px; color:#3dadfa;\">• </span><span style=\" font-family:\'arial\',\'sans-serif\'; font-size:14px; color:#ebf4fa;\">12:23 07/01/2021 - Training Finished</span><span style=\" font-family:\'arial\',\'sans-serif\'; font-size:14px; color:#ceff09;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'arial\',\'sans-serif\'; font-size:14px; color:#fc0006;\">•</span><span style=\" font-family:\'arial\',\'sans-serif\'; font-size:14px; color:#f3f6f5;\"> 16:39 07/01/2021 - High Risk Contamination</span></p></td></tr></table>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>"))
         self.actionquit.setText(_translate("MainWindow", "Save Data"))
         self.actionQuit.setText(_translate("MainWindow", "Quit"))
-
 import pyqtgraph as pg
 from pyqtgraph import PlotWidget
 import ui_rc
-
 
 if __name__ == "__main__":
     import sys
