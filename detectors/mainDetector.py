@@ -4,8 +4,8 @@ from .detectorInterface import DetectorInterface
 
 class MainDetector(DetectorInterface):
     def __init__(self):
-        self.initialResistance = None
-        self.lastResistance = None
+        self.lastResistances = np.array([])
+
         self.detectionTime = None
         self.currentResistance = None
 
@@ -20,4 +20,5 @@ class MainDetector(DetectorInterface):
         if self.lastResistance is None:
             self.lastResistance = sample[0][2]
             self.currentResistance = sample[0][2]
+
 
