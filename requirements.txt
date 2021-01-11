@@ -12,3 +12,4 @@ tqdm==4.24.0
 pyqtgraph
 scikit-learn
 statsmodels
+boto3

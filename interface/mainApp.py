@@ -5,6 +5,7 @@ from PyQt5 import QtCore,QtWidgets
 from utils.utils import DateAxisItem
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
+from detectors.stability import isStable
 
 class MainApp(Ui_MainWindow):
     def __init__(self,window):
@@ -12,11 +13,13 @@ class MainApp(Ui_MainWindow):
         self.setupUi(window)
         self.window = window
         self.state = 0
+        self.print = False
+
 
         #Time configurations
-        self.stabilizationTime = 600
+        self.stabilizationTime = 300
         self.visibleTime = 60*30
-        self.drawPeriod = 2
+        self.drawPeriod = 5
         self.detectPeriod = 60
         self.savePeriod = 30
 
@@ -106,7 +109,8 @@ class MainApp(Ui_MainWindow):
     def updatePlot(self):
         data = self.rs.read_data()
         if data != None:
-            print ('Time: {} - Res: {} - Freq - {}'.format(data['Time'], data['Resistance'], data['Frequency']))
+            if self.print:
+                print ('Time: {} - Res: {} - Freq - {}'.format(data['Time'], data['Resistance'], data['Frequency']))
             self.index += 1
 
         if self.index % self.drawPeriod == 0:
@@ -114,14 +118,15 @@ class MainApp(Ui_MainWindow):
             self.twinLine.setData(self.rs.results[:,0], self.rs.results[:,1])
             #Update X Range
             if (self.rs.results[:,0][-1]- self.rs.results[:,0][0] > self.visibleTime):
-                self.plotLine.getViewBox().setXRange(self.rs.results[:,0][-1] - self.visibleTime, self.rs.results[:,0][-1], padding=5)
-            if self.index > self.stabilizationTime and self.state == 1:
-                sample = self.rs.results[:,1][-self.stabilizationTime:]
-                if sample.std() < 1:
-                    self.state = 2
-                    self.resultsLabel.setText('Ready')
-                    self.progressBar.setValue(100)
-                    self.add_vline(self.rs.results[:,0][-1])
+                self.plotLine.getViewBox().setXRange(self.rs.results[:,0][-1] - self.visibleTime, self.rs.results[:,0][-1])
+
+        if self.index >= self.stabilizationTime and self.state == 1 and self.index % self.stabilizationTime/2 == 0:
+            sample = self.rs.results[:,2][-self.stabilizationTime:]
+            if isStable(sample,self.stabilizationTime):
+                self.state = 2
+                self.resultsLabel.setText('Ready')
+                self.progressBar.setValue(100)
+                self.add_vline(self.rs.results[:,0][-1])
 
 
         if self.index %self.savePeriod == 0:
