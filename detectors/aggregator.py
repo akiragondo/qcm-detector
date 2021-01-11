@@ -20,3 +20,4 @@ class Aggregator(DetectorInterface):
         self.currentScore = 0
 
     def detectAnomaly(self, sample: np.ndarray) -> int:
+        pass
