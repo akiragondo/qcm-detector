@@ -6,7 +6,7 @@ import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 from detectors.stability import isStable
 from datetime import datetime
-
+from detectors.mainDetector import MainDetector
 
 
 
@@ -54,9 +54,14 @@ class MainApp(Ui_MainWindow):
         self.rs = RS232()
         self.index = 0
 
+        #Detector Setup
+        self.detector = MainDetector()
+
         self.timer = QtCore.QTimer()
         self.timer.setInterval(1000)
         self.timer.timeout.connect(self.updatePlot)
+
+
 
         # date_axis = pg.graphicsItems.DateAxisItem.DateAxisItem(orientation = 'bottom')
         # self.graphWidget = PlotWidget(self.verticalLayoutWidget,
@@ -152,6 +157,13 @@ class MainApp(Ui_MainWindow):
                 self.progressBar.setValue(100)
                 self.add_vline(self.rs.results[:, 0][-1])
 
+        if self.state > 1 and self.index % self.detectPeriod == 0:
+            detection = self.detector.detectAnomaly(sample=self.rs.results[:][-self.detectPeriod:])
+            if detection == 1:
+                self.addPastEvent(self.rs.results[:, 0][-1], 'Mild Anomaly Detected', self.colors['orange'])
+            if detection == 2:
+                self.addPastEvent(self.rs.results[:, 0][-1], 'Severe Anomaly Detected', self.colors['red'])
+
         if self.index % self.savePeriod == 0:
             self.rs.append_to_csv()
 
@@ -163,6 +175,8 @@ class MainApp(Ui_MainWindow):
             if (self.rs.results[:, 0][-1] - self.rs.results[:, 0][0] > self.visibleTime):
                 self.plotLine.getViewBox().setXRange(self.rs.results[:, 0][-1] - self.visibleTime,
                                                      self.rs.results[:, 0][-1])
+
+
 
     def toggle_connect(self):
         self.is_connected = not self.is_connected

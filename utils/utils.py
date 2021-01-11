@@ -164,4 +164,4 @@ class DateAxisItem(AxisItem):
         """Remove this axis from its attached PlotItem
         (not yet implemented)
         """
-        raise NotImplementedError()  # TODO
+        raise NotImplementedError()
