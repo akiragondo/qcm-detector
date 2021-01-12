@@ -117,7 +117,7 @@ class MainApp(Ui_MainWindow):
                 "timestamps" : timestamps,
                 "resistances" : resistances,
                 "frequencies" : frequencies
-            }
+            },
             "detection": {
                 "timestamp": detectionTimestamp,
                 "description" : detectionDescription,
