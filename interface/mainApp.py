@@ -6,9 +6,11 @@ import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 from detectors.stability import isStable
 from datetime import datetime
-
-
-
+from detectors.mainDetector import MainDetector
+from comms.email import EmailComm
+import pandas as pd
+import numpy as np
+import json
 
 class MainApp(Ui_MainWindow):
     def __init__(self, window):
@@ -49,14 +51,23 @@ class MainApp(Ui_MainWindow):
         self.connectButton.clicked.connect(self.connectButtonHandler)
         self.connectionTypeComboBox.currentTextChanged.connect(self.toggleSimulatorPort)
         self.searchButton.clicked.connect(self.searchOutputDirectory)
+        self.emailTestButton.connect(self.verifyEmail)
 
         # QCM Setup
         self.rs = RS232()
         self.index = 0
 
+        #Detector Setup
+        self.detector = MainDetector()
+
+        #Email Comm Setup
+        self.comm = EmailComm()
+
         self.timer = QtCore.QTimer()
         self.timer.setInterval(1000)
         self.timer.timeout.connect(self.updatePlot)
+
+
 
         # date_axis = pg.graphicsItems.DateAxisItem.DateAxisItem(orientation = 'bottom')
         # self.graphWidget = PlotWidget(self.verticalLayoutWidget,
@@ -86,6 +97,36 @@ class MainApp(Ui_MainWindow):
         # self.twinLine = pg.PlotCurveItem(pen = pg.mkPen(color='#FF8811',width=3))
         # self.twinGraph.addItem(self.twinLine)
         self.textBrowser.clear()
+
+    def verifyEmail(self):
+        self.comm.verifyEmail(self.emailField.text())
+
+    def sendDetectionEmail(self, plot_data : np.ndarray, detectionDescription : str, severity : str, detectionTimestamp : int):
+        """
+        :param plot_data: np array of time, frequency and resistance in samples of 10 seconds
+        :param detectionDescription: description of the detection made
+        :return: result of sending email
+        """
+        timestamps  = plot_data[:,0]
+        resistances  = plot_data[:,0]
+        frequencies  = plot_data[:,0]
+        body = {
+            "to" : self.emailField.text(),
+            "subject" : "{} Severity contamination detected",
+            "data" : {
+                "timestamps" : timestamps,
+                "resistances" : resistances,
+                "frequencies" : frequencies
+            },
+            "detection": {
+                "timestamp": detectionTimestamp,
+                "description" : detectionDescription,
+                "severity" : severity
+            }
+        }
+        jsonBody = json.dumps(body)
+        self.comm.sendEmail(jsonBody)
+
 
     def addPastEvent(self, time, description, color):
         """
@@ -152,6 +193,16 @@ class MainApp(Ui_MainWindow):
                 self.progressBar.setValue(100)
                 self.add_vline(self.rs.results[:, 0][-1])
 
+        if self.state > 1 and self.index % self.detectPeriod == 0:
+            detection = self.detector.detectAnomaly(sample=self.rs.results[:][-self.detectPeriod:])
+            if detection > 0:
+                if detection == 1:
+                    self.addPastEvent(self.rs.results[:, 0][-1], 'Mild Anomaly Detected', self.colors['orange'])
+
+                if detection == 2:
+                    self.addPastEvent(self.rs.results[:, 0][-1], 'Severe Anomaly Detected', self.colors['red'])
+
+
         if self.index % self.savePeriod == 0:
             self.rs.append_to_csv()
 
@@ -163,6 +214,8 @@ class MainApp(Ui_MainWindow):
             if (self.rs.results[:, 0][-1] - self.rs.results[:, 0][0] > self.visibleTime):
                 self.plotLine.getViewBox().setXRange(self.rs.results[:, 0][-1] - self.visibleTime,
                                                      self.rs.results[:, 0][-1])
+
+
 
     def toggle_connect(self):
         self.is_connected = not self.is_connected
