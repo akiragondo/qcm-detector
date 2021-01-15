@@ -51,7 +51,8 @@ class MainApp(Ui_MainWindow):
         self.connectButton.clicked.connect(self.connectButtonHandler)
         self.connectionTypeComboBox.currentTextChanged.connect(self.toggleSimulatorPort)
         self.searchButton.clicked.connect(self.searchOutputDirectory)
-        self.emailTestButton.connect(self.verifyEmail)
+        self.emailTestButton.clicked.connect(self.verifyEmail)
+
 
         # QCM Setup
         self.rs = RS232()
