@@ -45,6 +45,8 @@ class RS232:
         self.gate_time = None
         self.scale_factor = None
         self.readings = pd.Series([])
+        
+        #change results to pd Dataframe with proper index
         self.results = np.array([])
 
         self.output_file = None
