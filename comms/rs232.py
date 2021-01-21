@@ -40,12 +40,13 @@ class RS232:
     def __init__(self):
         self.is_simulated = False
         self.simulation_data = None
+        self.simulationLength = 0
         self.current_index = 0
         self.ser = None
         self.gate_time = None
         self.scale_factor = None
         self.readings = pd.Series([])
-        
+
         #change results to pd Dataframe with proper index
         self.results = np.array([])
 
@@ -59,6 +60,7 @@ class RS232:
         if is_simulated:
             try:
                 self.simulation_data = pd.read_csv(simulation_data_path,parse_dates=["Time"], index_col="Time")
+                self.simulationLength = len(self.simulation_data)
                 self.is_simulated = is_simulated
                 self.current_index = 0
                 self.results = np.array([])
@@ -149,29 +151,24 @@ class RS232:
                 data_packet = np.array((time, frequency, resistance), dtype= dt)
                 new_pd = pd.Series(data_packet)
                 d = self.datetime_to_float(d)
-                if len(self.results) == 0:
-                    self.results = np.array([d, frequency, resistance])
-                else:
-                    self.results = np.vstack((self.results, [d, frequency, resistance]))
                 self.readings = self.readings.append(new_pd)
-                return(data_packet)
+                return(np.array([d, frequency, resistance]))
         else:
             dt = np.dtype([('Time', np.unicode, 32), ('Frequency', np.float64), ('Resistance', np.float64)])
-            d = self.simulation_data.index[self.current_index]
-            time = "{d.day}/{d.month}/{d.year} {d.hour}:{d.minute}:{d.second}.{d.microsecond}".format(d=d)
-            current_row = self.simulation_data.values[self.current_index]
-            frequency = current_row[0]
-            resistance = current_row[1]
-            data_packet = np.array((time, frequency, resistance), dtype= dt)
-            new_pd = pd.Series(data_packet)
-            d = self.datetime_to_float(d)
-            if len(self.results) == 0:
-                self.results = np.array([d, frequency, resistance])
+            if self.current_index < self.simulationLength:
+                d = self.simulation_data.index[self.current_index]
+                time = "{d.day}/{d.month}/{d.year} {d.hour}:{d.minute}:{d.second}.{d.microsecond}".format(d=d)
+                current_row = self.simulation_data.values[self.current_index]
+                frequency = current_row[0]
+                resistance = current_row[1]
+                data_packet = np.array((time, frequency, resistance), dtype= dt)
+                new_pd = pd.Series(data_packet)
+                d = self.datetime_to_float(d)
+                self.readings = self.readings.append(new_pd)
+                self.current_index += 1
+                return(np.array([d, frequency, resistance]))
             else:
-                self.results = np.vstack((self.results, [d, frequency, resistance]))
-            self.readings = self.readings.append(new_pd)
-            self.current_index += 1
-            return(data_packet)
+                return(None)
 
     def append_to_csv(self):
         if self.output_file!= None:

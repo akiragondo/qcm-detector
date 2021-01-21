@@ -459,6 +459,7 @@ class Ui_MainWindow(object):
 
         #First axis setup
         self.plotLine = self.graphWidget.plot(pen = pg.mkPen(color='#027CA1', width=3))
+        self.movingAverageLine = self.graphWidget.plot(pen = pg.mkPen(color=(0.6,138,192,208), width=4))
         self.graphWidget.showAxis('left')
         self.graphWidget.setLabel('left', 'Resistance', units="<font>&Omega;</font>",
                                   color='#027CA1', **{'font-size':'14pt'})
@@ -475,7 +476,9 @@ class Ui_MainWindow(object):
         self.twinGraph.setXLink(self.graphWidget)
 
         self.twinLine = pg.PlotCurveItem(pen = pg.mkPen(color='#FF8811',width=3))
+        self.freqMovingAverageLine = pg.PlotCurveItem(pen = pg.mkPen(color=(0.3, 184, 0, 0), width=4))
         self.twinGraph.addItem(self.twinLine)
+        self.twinGraph.addItem(self.freqMovingAverageLine)
         self.verticalLayout_3.addWidget(self.graphWidget)
         self.verticalLayout_5 = QtWidgets.QVBoxLayout()
         self.verticalLayout_5.setContentsMargins(10, 0, 20, -1)
