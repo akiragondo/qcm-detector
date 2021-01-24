@@ -9,7 +9,7 @@ from detectors.stability import isStable
 from datetime import datetime
 from detectors.mainDetector import MainDetector
 from comms.email import EmailComm
-import pandas as pd
+import os
 import numpy as np
 import json
 
@@ -187,8 +187,16 @@ class MainApp(Ui_MainWindow):
             self.plotLine.getViewBox().removeItem(vline)
 
     def searchSimulatorFile(self):
-        file = QtWidgets.QFileDialog.getOpenFileName(self.window, "Select Simulator File")
-        self.dataFileField.setText(str(file[0]))
+        filename = str(QtWidgets.QFileDialog.getOpenFileName(self.window, "Select Simulator File")[0])
+        self.dataFileField.setText(filename)
+        filenameFolder = os.path.dirname(filename)
+        self.outputField.setText(filenameFolder)
+        separator = '_'
+        name = os.path.basename(filename).split(separator)[1:]
+        name = separator.join(name)
+        separator = '.'
+        name = os.path.basename(filename).split(separator)[0] + '_simulation'
+        self.fileName.setText(name)
 
     def updateViews(self):
         self.twinGraph.setGeometry(self.plotLine.getViewBox().sceneBoundingRect())
@@ -197,6 +205,7 @@ class MainApp(Ui_MainWindow):
     def updatePlot(self):
         data = self.rs.read_data()
         if data is not None:
+            self.timeoutCounter = 0
             if self.print:
                 print('Time: {} - Res: {} - Freq - {}'.format(data[0], data[2], data[1]))
             self.index += 1
@@ -204,6 +213,7 @@ class MainApp(Ui_MainWindow):
         else:
             self.timeoutCounter = self.timeoutCounter + 1
             if self.timeoutCounter >= self.timeoutThreshold:
+                self.addPastEvent(self.data.plotData[:,0][-1],'Connection with QCM timed out',self.colors['white'])
                 self.disconnect(timedout=True)
 
         if self.index >= self.stabilizationTime and self.state == 1 and self.index % self.stabilizationTime == 0:
@@ -215,26 +225,26 @@ class MainApp(Ui_MainWindow):
                 self.progressBar.setValue(66)
                 self.add_vline(self.data.plotData[:, 0][-1], color=self.colors['blue'])
 
-        if self.state == 2 and self.index % self.detectPeriod == 0:
-            detection = self.detector.detectAnomaly(data=self.data)
-            if detection != -1:
-                self.state = 3
-                self.addPastEvent(self.data.plotData[:,0][-1], 'Detection Ready', self.colors['blue'])
-                self.resultsLabel.setText('Ready')
-                self.add_vline(self.data.plotData[:,0][-1], color=self.colors['blue'])
-                self.progressBar.setValue(100)
-
-
-        if self.state == 3 and self.index % self.detectPeriod == 0:
-            detection = self.detector.detectAnomaly(data=self.data)
-            if detection > 0:
-                if detection == 1:
-                    self.addPastEvent(self.data.plotData[:, 0][-1], 'Mild Anomaly Detected', self.colors['orange'])
-                    self.add_vline(self.data.plotData[:,0][-1], color=self.colors['orange'])
-
-                if detection == 2:
-                    self.addPastEvent(self.data.plotData[:, 0][-1], 'Severe Anomaly Detected', self.colors['red'])
-                    self.add_vline(self.data.plotData[:,0][-1], color=self.colors['red'])
+        # if self.state == 2 and self.index % self.detectPeriod == 0:
+        #     detection = self.detector.detectAnomaly(data=self.data)
+        #     if detection != -1:
+        #         self.state = 3
+        #         self.addPastEvent(self.data.plotData[:,0][-1], 'Detection Ready', self.colors['blue'])
+        #         self.resultsLabel.setText('Ready')
+        #         self.add_vline(self.data.plotData[:,0][-1], color=self.colors['blue'])
+        #         self.progressBar.setValue(100)
+        #
+        #
+        # if self.state == 3 and self.index % self.detectPeriod == 0:
+        #     detection = self.detector.detectAnomaly(data=self.data)
+        #     if detection > 0:
+        #         if detection == 1:
+        #             self.addPastEvent(self.data.plotData[:, 0][-1], 'Mild Anomaly Detected', self.colors['orange'])
+        #             self.add_vline(self.data.plotData[:,0][-1], color=self.colors['orange'])
+        #
+        #         if detection == 2:
+        #             self.addPastEvent(self.data.plotData[:, 0][-1], 'Severe Anomaly Detected', self.colors['red'])
+        #             self.add_vline(self.data.plotData[:,0][-1], color=self.colors['red'])
 
 
         if self.index % self.savePeriod == 0:
@@ -265,11 +275,6 @@ class MainApp(Ui_MainWindow):
 
     def disconnect(self, timedout : bool):
         #Clear graphs and lines
-        self.plotLine.clear()
-        self.movingAverageLine.clear()
-        self.twinLine.clear()
-        self.freqMovingAverageLine.clear()
-        self.clear_vlines()
 
         self.state = 0
         self.progressBar.setValue(0)
@@ -309,6 +314,13 @@ class MainApp(Ui_MainWindow):
             simulation_data_path=self.dataFileField.text()
         )
         if result == 0:
+            self.plotLine.clear()
+            self.movingAverageLine.clear()
+            self.twinLine.clear()
+            self.freqMovingAverageLine.clear()
+            self.clear_vlines()
+            self.textBrowser.clear()
+
             self.toggle_connect()
             self.state = 1
             self.addPastEvent(self.currentTime(), 'Connection started', self.colors['blue'])
