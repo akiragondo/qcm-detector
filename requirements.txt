@@ -14,5 +14,4 @@ scikit-learn
 statsmodels
 widgetsnbextension
 ipykernel
-tqdm
 ipywidgets

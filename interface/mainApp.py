@@ -1,3 +1,11 @@
+import json
+import numpy as np
+import os
+from comms.email import EmailComm
+from detectors.mainDetector import MainDetector
+from datetime import datetime
+from detectors.stability import isStable
+from utils import constants
 from detectors.dataFeatures import DataFeatures
 from .mainWindow import Ui_MainWindow
 from comms.rs232 import list_serial_ports, RS232
@@ -5,13 +13,7 @@ import pyqtgraph as pg
 from PyQt5 import QtCore, QtWidgets
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
-from detectors.stability import isStable
-from datetime import datetime
-from detectors.mainDetector import MainDetector
-from comms.email import EmailComm
-import os
-import numpy as np
-import json
+
 
 class MainApp(Ui_MainWindow):
     def __init__(self, window):
@@ -27,10 +29,10 @@ class MainApp(Ui_MainWindow):
                 white -> system errors (timeouts)
         """
         self.colors = {
-            "red" : "#B80000",
-            "blue" : "#027CA1",
-            "white" : "#F3F6F5",
-            "orange" : "#FF8811"
+            "red": "#B80000",
+            "blue": "#027CA1",
+            "white": "#F3F6F5",
+            "orange": "#FF8811"
         }
 
         # Time configurations
@@ -50,37 +52,34 @@ class MainApp(Ui_MainWindow):
         self.refreshButton.clicked.connect(self.refresh_ports_combo)
         self.is_connected = False
         self.connectButton.clicked.connect(self.connectButtonHandler)
-        self.connectionTypeComboBox.currentTextChanged.connect(self.toggleSimulatorPort)
+        self.connectionTypeComboBox.currentTextChanged.connect(
+            self.toggleSimulatorPort)
         self.searchButton.clicked.connect(self.searchOutputDirectory)
         self.emailTestButton.clicked.connect(self.verifyEmail)
-
 
         # QCM Setup
         self.rs = RS232()
         self.index = 0
 
-        #Detector Setup
+        # Detector Setup
         self.data = DataFeatures()
         self.detector = MainDetector(self.detectPeriod/self.data.samplePeriod)
 
-        #Email Comm Setup
+        # Email Comm Setup
         self.comm = EmailComm()
 
         self.timer = QtCore.QTimer()
         self.timer.setInterval(1000)
-        self.timer.timeout.connect(self.updatePlot)
+        self.timer.timeout.connect(self.handleTimerController)
 
         self.textBrowser.clear()
 
-        #vlines clearing
+        # vlines clearing
         self.vlines = []
 
-        #Timeout condition
+        # Timeout condition
         self.timeoutCounter = 0
         self.timeoutThreshold = 15
-
-
-
 
         # date_axis = pg.graphicsItems.DateAxisItem.DateAxisItem(orientation = 'bottom')
         # self.graphWidget = PlotWidget(self.verticalLayoutWidget,
@@ -113,32 +112,31 @@ class MainApp(Ui_MainWindow):
     def verifyEmail(self):
         self.comm.verifyEmail(self.emailField.text())
 
-    def sendDetectionEmail(self, plot_data : np.ndarray, detectionDescription : str, severity : str, detectionTimestamp : int):
+    def sendDetectionEmail(self, plot_data: np.ndarray, detectionDescription: str, severity: str, detectionTimestamp: int):
         """
         :param plot_data: np array of time, frequency and resistance in samples of 10 seconds
         :param detectionDescription: description of the detection made
         :return: result of sending email
         """
-        timestamps  = plot_data[:,0]
-        resistances  = plot_data[:,0]
-        frequencies  = plot_data[:,0]
+        timestamps = plot_data[:, 0]
+        resistances = plot_data[:, 0]
+        frequencies = plot_data[:, 0]
         body = {
-            "to" : self.emailField.text(),
-            "subject" : "{} Severity contamination detected",
-            "data" : {
-                "timestamps" : timestamps,
-                "resistances" : resistances,
-                "frequencies" : frequencies
+            "to": self.emailField.text(),
+            "subject": "{} Severity contamination detected",
+            "data": {
+                "timestamps": timestamps,
+                "resistances": resistances,
+                "frequencies": frequencies
             },
             "detection": {
                 "timestamp": detectionTimestamp,
-                "description" : detectionDescription,
-                "severity" : severity
+                "description": detectionDescription,
+                "severity": severity
             }
         }
         jsonBody = json.dumps(body)
         self.comm.sendEmail(jsonBody)
-
 
     def addPastEvent(self, time, description, color):
         """
@@ -150,7 +148,7 @@ class MainApp(Ui_MainWindow):
                   "font-size:14px; color:{};\">•</span><span style=\"font-family:\'arial\',\'sans-serif\'; " \
                   "font-size:14px; color:#f3f6f5;\"> {} - {}</span></p></td></tr></table>\n".format(color,
                                                                                                     timeText,
-                                                      description)
+                                                                                                    description)
         content = content + self.textBrowser.toHtml()
         self.textBrowser.setText(content)
 
@@ -158,7 +156,8 @@ class MainApp(Ui_MainWindow):
         return(self.rs.datetime_to_float(datetime.now()))
 
     def searchOutputDirectory(self):
-        file = str(QtWidgets.QFileDialog.getExistingDirectory(self.window, "Select Data Output Directory"))
+        file = str(QtWidgets.QFileDialog.getExistingDirectory(
+            self.window, "Select Data Output Directory"))
         self.outputField.setText(file)
 
     def toggleSimulatorPort(self):
@@ -178,7 +177,7 @@ class MainApp(Ui_MainWindow):
             self.stackedWidget.setCurrentIndex(0)
 
     def add_vline(self, x, color):
-        new_line = pg.InfiniteLine(pos=x,pen=pg.mkPen(color=color, width=2))
+        new_line = pg.InfiniteLine(pos=x, pen=pg.mkPen(color=color, width=2))
         self.vlines.append(new_line)
         self.plotLine.getViewBox().addItem(new_line)
 
@@ -187,7 +186,8 @@ class MainApp(Ui_MainWindow):
             self.plotLine.getViewBox().removeItem(vline)
 
     def searchSimulatorFile(self):
-        filename = str(QtWidgets.QFileDialog.getOpenFileName(self.window, "Select Simulator File")[0])
+        filename = str(QtWidgets.QFileDialog.getOpenFileName(
+            self.window, "Select Simulator File")[0])
         self.dataFileField.setText(filename)
         filenameFolder = os.path.dirname(filename)
         self.outputField.setText(filenameFolder)
@@ -199,31 +199,65 @@ class MainApp(Ui_MainWindow):
         self.fileName.setText(name)
 
     def updateViews(self):
-        self.twinGraph.setGeometry(self.plotLine.getViewBox().sceneBoundingRect())
-        self.twinGraph.linkedViewChanged(self.plotLine.getViewBox(), self.twinGraph.XAxis)
+        self.twinGraph.setGeometry(
+            self.plotLine.getViewBox().sceneBoundingRect())
+        self.twinGraph.linkedViewChanged(
+            self.plotLine.getViewBox(), self.twinGraph.XAxis)
 
-    def updatePlot(self):
+    def handle_start_connection(self):
+        self.clear_graph_elements()
+        self.addPastEvent(
+            self.currentTime(),
+            'Connection started',
+            self.colors['blue']
+        )
+        self.progressBar.setValue(33)
+        self.resultsLabel.setText('Connected - Waiting Stabilization')
+        self.connectButton.setText('Cancel')
+
+    def handle_start_stabilization(self):
+        self.addPastEvent(
+            self.data.plotData[:, 0][-1], 'System stabilized', self.colors['blue'])
+        self.resultsLabel.setText('Stabilized - Gathering Samples')
+        self.progressBar.setValue(66)
+        self.add_vline(
+            self.data.plotData[:, 0][-1], color=self.colors['blue'])
+
+    def updateGraphs(self):
+        self.plotLine.setData(
+            self.data.plotData[:, 0], self.data.plotData[:, 2])
+        self.movingAverageLine.setData(self.getDfTimestamps(
+            self.data.dataSamples), self.data.dataSamples['Resistance'].rolling(30).mean().values)
+        self.twinLine.setData(
+            self.data.plotData[:, 0], self.data.plotData[:, 1])
+        self.freqMovingAverageLine.setData(self.getDfTimestamps(
+            self.data.dataSamples), self.data.dataSamples['Frequency'].rolling(30).mean().values)
+        # Update X Range
+        if (self.data.plotData[:, 0][-1] - self.data.plotData[:, 0][0] > self.visibleTime):
+            self.plotLine.getViewBox().setXRange(self.data.plotData[:, 0][-1] - self.visibleTime,
+                                                 self.data.plotData[:, 0][-1])
+
+    def handleTimerController(self):
         data = self.rs.read_data()
         if data is not None:
             self.timeoutCounter = 0
             if self.print:
-                print('Time: {} - Res: {} - Freq - {}'.format(data[0], data[2], data[1]))
+                print(
+                    'Time: {} - Res: {} - Freq - {}'.format(data[0], data[2], data[1]))
             self.index += 1
             self.data.increment_sample(results_array=data)
         else:
             self.timeoutCounter = self.timeoutCounter + 1
             if self.timeoutCounter >= self.timeoutThreshold:
-                self.addPastEvent(self.data.plotData[:,0][-1],'Connection with QCM timed out',self.colors['white'])
+                self.addPastEvent(
+                    self.data.plotData[:, 0][-1], 'Connection with QCM timed out', self.colors['white'])
                 self.disconnect(timedout=True)
 
         if self.index >= self.stabilizationTime and self.state == 1 and self.index % self.stabilizationTime == 0:
             sample = self.data.plotData[:, 2][-self.stabilizationTime:]
             if isStable(sample, self.stabilizationTime):
-                self.state = 2
-                self.addPastEvent(self.data.plotData[:,0][-1], 'System stabilized', self.colors['blue'])
-                self.resultsLabel.setText('Stabilized - Gathering Samples')
-                self.progressBar.setValue(66)
-                self.add_vline(self.data.plotData[:, 0][-1], color=self.colors['blue'])
+                self.state = constants.DETECTING
+                self.handle_start_stabilization()
 
         # if self.state == 2 and self.index % self.detectPeriod == 0:
         #     detection = self.detector.detectAnomaly(data=self.data)
@@ -246,20 +280,11 @@ class MainApp(Ui_MainWindow):
         #             self.addPastEvent(self.data.plotData[:, 0][-1], 'Severe Anomaly Detected', self.colors['red'])
         #             self.add_vline(self.data.plotData[:,0][-1], color=self.colors['red'])
 
-
         if self.index % self.savePeriod == 0:
             self.rs.append_to_csv()
 
-
         if self.index % self.drawPeriod == 0 and len(self.data.plotData) > 0:
-            self.plotLine.setData(self.data.plotData[:, 0], self.data.plotData[:, 2])
-            self.movingAverageLine.setData(self.getDfTimestamps(self.data.dataSamples), self.data.dataSamples['Resistance'].rolling(30).mean().values)
-            self.twinLine.setData(self.data.plotData[:, 0], self.data.plotData[:, 1])
-            self.freqMovingAverageLine.setData(self.getDfTimestamps(self.data.dataSamples),self.data.dataSamples['Frequency'].rolling(30).mean().values)
-            # Update X Range
-            if (self.data.plotData[:, 0][-1] - self.data.plotData[:, 0][0] > self.visibleTime):
-                self.plotLine.getViewBox().setXRange(self.data.plotData[:, 0][-1] - self.visibleTime,
-                                                     self.data.plotData[:, 0][-1])
+            self.updateGraphs()
 
     def getDfTimestamps(self, dataSamples):
         return dataSamples.index.values.astype('datetime64[s]').astype('int')
@@ -273,17 +298,72 @@ class MainApp(Ui_MainWindow):
         for port in ports_list:
             self.portComboBox.addItem(port)
 
-    def disconnect(self, timedout : bool):
-        #Clear graphs and lines
-
-        self.state = 0
+    def disconnect(self, timedout: bool):
+        # Clear graphs and lines
+        self.state = constants.STOPPED
         self.progressBar.setValue(0)
         if timedout:
             self.resultsLabel.setText('Connection with QCM timed out')
         else:
             self.resultsLabel.setText('')
+        self.enable_main_elements()
 
+        self.data.reset()
 
+    def get_connection_parameters(self):
+        port = self.portComboBox.currentText()
+        gate_time = 1000
+        scale_factor = 200
+        output_folder = self.outputField.text()
+        if output_folder:
+            if output_folder[-1] != '/':
+                output_folder += '/'
+        return port, gate_time, scale_factor, output_folder
+
+    def check_if_valid()
+
+    def connect(self):
+        # Connect
+        port, gate_time, scale_factor, output_folder = self.get_connection_parameters()
+        self.rs.set_output_file(output_folder, self.fileName.text())
+        result = self.rs.establish_connection(
+            port_name=port,
+            gate_time=gate_time,
+            scale_factor=scale_factor,
+            is_simulated=self.is_simulated,
+            simulation_data_path=self.dataFileField.text()
+        )
+        if result == 0:
+            self.state = constants.STABILIZING
+            # Connected - Waiting Stabilization
+            # Stabilised - Training Model
+            # Ready
+            self.handle_start_connection()
+
+            self.disable_main_elements()
+            self.timer.start()
+
+    def clear_graph_elements(self):
+        self.plotLine.clear()
+        self.movingAverageLine.clear()
+        self.twinLine.clear()
+        self.freqMovingAverageLine.clear()
+        self.clear_vlines()
+        self.textBrowser.clear()
+
+    def disable_main_elements(self):
+        # Disable all buttons
+        self.portComboBox.setEnabled(False)
+        self.checkBox.setEnabled(False)
+        self.emailField.setEnabled(False)
+        self.emailTestButton.setEnabled(False)
+        self.refreshButton.setEnabled(False)
+        self.fileName.setEnabled(False)
+        self.dataFileField.setEnabled(False)
+        self.outputField.setEnabled(False)
+        self.searchButton.setEnabled(False)
+
+    def enable_main_elements(self):
         self.portComboBox.setEnabled(True)
         self.checkBox.setEnabled(True)
         self.emailField.setEnabled(self.checkBox.isChecked())
@@ -294,58 +374,9 @@ class MainApp(Ui_MainWindow):
         self.searchButton.setEnabled(True)
         self.outputField.setEnabled(True)
 
-        self.data.reset()
-
-
-    def connect(self):
-        # Connect
-        port = self.portComboBox.currentText()
-        gate_time = 1000
-        scale_factor = 200
-        output_folder = self.outputField.text()
-        if output_folder[-1] != '/':
-            output_folder += '/'
-        self.rs.set_output_file(output_folder, self.fileName.text())
-        result = self.rs.establish_connection(
-            port_name=port,
-            gate_time=gate_time,
-            scale_factor=scale_factor,
-            is_simulated=self.is_simulated,
-            simulation_data_path=self.dataFileField.text()
-        )
-        if result == 0:
-            self.plotLine.clear()
-            self.movingAverageLine.clear()
-            self.twinLine.clear()
-            self.freqMovingAverageLine.clear()
-            self.clear_vlines()
-            self.textBrowser.clear()
-
-            self.toggle_connect()
-            self.state = 1
-            self.addPastEvent(self.currentTime(), 'Connection started', self.colors['blue'])
-            # Connected - Waiting Stabilization
-            # Stabilised - Training Model
-            # Ready
-            self.progressBar.setValue(33)
-            self.resultsLabel.setText('Connected - Waiting Stabilization')
-
-            self.connectButton.setText('Cancel')
-            # Disable all buttons
-            self.portComboBox.setEnabled(False)
-            self.checkBox.setEnabled(False)
-            self.emailField.setEnabled(False)
-            self.emailTestButton.setEnabled(False)
-            self.refreshButton.setEnabled(False)
-            self.fileName.setEnabled(False)
-            self.dataFileField.setEnabled(False)
-            self.outputField.setEnabled(False)
-            self.searchButton.setEnabled(False)
-            self.timer.start()
-
     def connectButtonHandler(self):
+        self.toggle_connect()
         if self.is_connected:
-            self.toggle_connect()
             self.connectButton.setText('Connect')
             self.timer.stop()
             self.rc = RS232()
