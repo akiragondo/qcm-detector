@@ -4,9 +4,9 @@ from rtqcm.app import run_app
 
 if __name__ == "__main__":
     run_app()
-    # import sys
+    # import sysc
     # app = QtWidgets.QApplication(sys.argv)
     # mainWindow = QtWidgets.QMainWindow()
     # ui = MainApp(mainWindow)
     # mainWindow.show()
-    # sys.exit(app.exec_())
+    # sys.exit(app.exe_())

@@ -263,22 +263,27 @@ class MainApp(Ui_MainWindow):
             detection = self.detector.detectAnomaly(data=self.data)
             if detection != -1:
                 self.state = 3
-                self.addPastEvent(self.data.plotData[:,0][-1], 'Detection Ready', self.colors['blue'])
+                self.addPastEvent(
+                    self.data.plotData[:, 0][-1], 'Detection Ready', self.colors['blue'])
                 self.resultsLabel.setText('Ready')
-                self.add_vline(self.data.plotData[:,0][-1], color=self.colors['blue'])
+                self.add_vline(
+                    self.data.plotData[:, 0][-1], color=self.colors['blue'])
                 self.progressBar.setValue(100)
-        
-        
+
         if self.state == 3 and self.index % self.detectPeriod == 0:
             detection = self.detector.detectAnomaly(data=self.data)
             if detection > 0:
                 if detection == 1:
-                    self.addPastEvent(self.data.plotData[:, 0][-1], 'Mild Anomaly Detected', self.colors['orange'])
-                    self.add_vline(self.data.plotData[:,0][-1], color=self.colors['orange'])
-        
+                    self.addPastEvent(
+                        self.data.plotData[:, 0][-1], 'Mild Anomaly Detected', self.colors['orange'])
+                    self.add_vline(
+                        self.data.plotData[:, 0][-1], color=self.colors['orange'])
+
                 if detection == 2:
-                    self.addPastEvent(self.data.plotData[:, 0][-1], 'Severe Anomaly Detected', self.colors['red'])
-                    self.add_vline(self.data.plotData[:,0][-1], color=self.colors['red'])
+                    self.addPastEvent(
+                        self.data.plotData[:, 0][-1], 'Severe Anomaly Detected', self.colors['red'])
+                    self.add_vline(
+                        self.data.plotData[:, 0][-1], color=self.colors['red'])
 
         if self.index % self.savePeriod == 0:
             self.rs.append_to_csv()
