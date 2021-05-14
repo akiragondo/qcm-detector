@@ -14,7 +14,7 @@ from pyqtgraph import PlotWidget
 import ui_rc
 
 
-class Ui_MainWindow(object):
+class MainWindowTemplate(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setWindowModality(QtCore.Qt.NonModal)

@@ -139,3 +139,4 @@ cython_debug/
 
 #Simulation  data  files
 *_simulation_data*
+data/simulations/
