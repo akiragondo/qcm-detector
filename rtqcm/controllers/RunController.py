@@ -8,6 +8,7 @@ from PyQt5.QtCore import (
     QThread,
 )
 import numpy as np
+from rtqcm.api.rs232 import RS232
 
 
 class RunController(QObject):
@@ -18,6 +19,10 @@ class RunController(QObject):
         super().__init__()
         self.timer = QTimer()
         self.timer.timeout.connect(self.timer_handler)
+        self.rsApi = RS232()
+
+    def connect(self):
+        pass
 
     def start_run(self):
         self.timer.setInterval(1000)

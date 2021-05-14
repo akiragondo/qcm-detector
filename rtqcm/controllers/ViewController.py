@@ -18,6 +18,7 @@ from PyQt5.QtWidgets import (
 from rtqcm.controllers.MainWindowTemplate import MainWindowTemplate
 from rtqcm.controllers.RunController import RunController
 from rtqcm.api.ports import list_serial_ports
+import datetime
 import os
 
 
