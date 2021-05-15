@@ -1,50 +1,30 @@
-from time import sleep
-
 from PyQt5.QtCore import (
-    Qt,
     pyqtSignal,
-    QObject,
     QThread,
 )
 from PyQt5.QtWidgets import (
-    QApplication,
-    QLabel,
-    QMainWindow,
-    QPushButton,
-    QVBoxLayout,
-    QWidget,
     QFileDialog,
 )
+import pyqtgraph as pg
 from rtqcm.controllers.MainWindowTemplate import MainWindowTemplate
 from rtqcm.controllers.RunController import RunController
+from rtqcm.models.ConnectionParameters import ConnectionParameters
 from rtqcm.api.ports import list_serial_ports
 import datetime
 import os
 
 
-class Worker(QObject):
-    finished = pyqtSignal()
-    progress = pyqtSignal(int)
-    current_n = 0
-
-    def run(self):
-        """Long-running task."""
-        for i in range(10):
-            sleep(0.1)
-            Worker.current_n += 1
-            self.progress.emit(Worker.current_n)
-        self.finished.emit()
-
-    def reset(self):
-        """Reverse-long running task"""
-        while Worker.current_n > 0:
-            sleep(0.05)
-            Worker.current_n -= 1
-            self.progress.emit(Worker.current_n)
-        self.finished.emit()
-
-
 class ViewController(MainWindowTemplate):
+    """
+    Class responsible for the Graphical user interface and Graphical user interface commands
+        - Variables inputed by the user
+        - Current state of the
+            * Graph
+            * Events
+            * Buttons
+            * Progress Bar
+            * Results label
+    """
     def __init__(self, window):
         self.setupUi(window)
         self.window = window
@@ -71,16 +51,22 @@ class ViewController(MainWindowTemplate):
         self.thread.start()
 
         # update viewbox
-        self.updateViews()
-        self.plotLine.getViewBox().sigResized.connect(self.updateViews)
+        self.update_views()
+        self.plotLine.getViewBox().sigResized.connect(self.update_views)
 
     def connect(self):
         # Connect to the main run controller
         connection_successful = False
+        connectionParams = ConnectionParameters(
+            port_name= self.portComboBox.currentText(),
+            gate_time= 1000,
+            scale_factor=200,
+            simulation_data_path=self.dataFileField.text()
+        )
         if not self.is_simulated:
-            connection_successful = self.rc.start_run()
+            connection_successful = self.rc.start_run(connectionParams=connectionParams)
         else:
-            connection_successful = self.rc.start_simulated_run()
+            connection_successful = self.rc.start_simulated_run(connectionParams=connectionParams)
         if connection_successful:
             self.is_connected = True
             self.disable_main_elements()
@@ -152,7 +138,7 @@ class ViewController(MainWindowTemplate):
             self.stackedWidget.setCurrentIndex(0)
 
     def add_vline(self, x, color):
-        new_line = pg.InfiniteLine(pos=x, pen=pg.mkPen(color=color, width=2))
+        new_line =  pg.InfiniteLine(pos=x, pen=pg.mkPen(color=color, width=2))
         self.vlines.append(new_line)
         self.plotLine.getViewBox().addItem(new_line)
 
@@ -217,14 +203,11 @@ class ViewController(MainWindowTemplate):
         """
         Data: two stacked np arrays
         """
-        self.plotLine.setData(data[0], data[1])
+        self.plotLine.setData(data[0], data[2])
         self.twinLine.setData(data[0], data[1])
 
-    def updateViews(self):
+    def update_views(self):
         self.twinGraph.setGeometry(
             self.plotLine.getViewBox().sceneBoundingRect())
         self.twinGraph.linkedViewChanged(
             self.plotLine.getViewBox(), self.twinGraph.XAxis)
-
-    def __quit__(self):
-        self.thread.quit()

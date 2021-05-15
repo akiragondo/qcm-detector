@@ -5,6 +5,7 @@ import numpy as np
 import datetime
 import serial
 import signal
+import enum
 import sys
 
 
@@ -52,7 +53,6 @@ class RS232:
             ('Resistance', np.float64)
         ])
 
-        self.connectionParams = ConnectionParameters()
 
     def establish_connection(self,
                              connectionParams: ConnectionParameters,
@@ -112,6 +112,13 @@ class RS232:
         self.request_timedout = True
         print('timeout')
 
+    def datetime_to_float(self, d):
+        epoch = datetime.datetime.utcfromtimestamp(0)
+        total_seconds = (
+                d - epoch - self.tzinfo.utcoffset(None)).total_seconds()
+        # total_seconds will be in decimals (millisecond precision)
+        return total_seconds
+
     def read_data(self):
         # Input: none #Output: packet with [time, resistance, frequency]
         if not self.is_simulated:
@@ -121,18 +128,18 @@ class RS232:
             self.request_timedout = False
 
             signal.alarm(5)
-            while(query_status != Status.Finished and not self.request_timedout):
+            while query_status != Status.Finished and not self.request_timedout:
                 try:
-                    if(query_status == Status.QueryF):
+                    if query_status == Status.QueryF:
                         self.ser.write('F\r'.encode())
                         query_status = Status.WaitF
-                    elif(query_status == Status.WaitF):
-                        if(self.ser.inWaiting() > 0):
+                    elif query_status == Status.WaitF:
+                        if self.ser.inWaiting() > 0:
                             frequency = float(self.ser.readline())
                             self.ser.write('R\r'.encode())
                             query_status = Status.WaitR
-                    elif(query_status == Status.WaitR):
-                        if(self.ser.inWaiting() > 0):
+                    elif query_status == Status.WaitR:
+                        if self.ser.inWaiting() > 0:
                             resistance = float(self.ser.readline())
                             query_status = Status.Finished
                 except Exception:
@@ -157,4 +164,4 @@ class RS232:
                 self.current_index += 1
                 return np.array([d, frequency, resistance])
             else:
-                return(None)
+                return None
