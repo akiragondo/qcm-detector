@@ -22,18 +22,6 @@ class MainApp(Ui_MainWindow):
         self.window = window
         self.state = 0
         self.print = False
-        """
-            Code: 
-                red/orange -> Contaminations serious/mild
-                blue -> system operations (connection, disconnection, detection begins)
-                white -> system errors (timeouts)
-        """
-        self.colors = {
-            "red": "#B80000",
-            "blue": "#027CA1",
-            "white": "#F3F6F5",
-            "orange": "#FF8811"
-        }
 
         # Time configurations
         self.stabilizationTime = 300

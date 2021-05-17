@@ -26,3 +26,10 @@ class QCMModel:
         results = np.vstack((self.timestamps, self.resistances, self.frequencies))
         return results
 
+    def is_empty_model(self):
+        return len(self.timestamps) <= 0
+
+    def reset_model(self):
+        self.resistances = np.array([])
+        self.frequencies = np.array([])
+        self.timestamps = np.array([])

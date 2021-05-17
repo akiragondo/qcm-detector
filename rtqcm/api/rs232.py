@@ -75,14 +75,14 @@ class RS232:
             self.is_simulated = is_simulated
             self.current_index = 0
 
-            self.ser = serial.Serial(
-                baudrate=9600,
-                parity=serial.PARITY_NONE,
-                bytesize=serial.EIGHTBITS,
-                stopbits=1,
-                port=self.connection_params.port_name
-            )
             try:
+                self.ser = serial.Serial(
+                    baudrate=9600,
+                    parity=serial.PARITY_NONE,
+                    bytesize=serial.EIGHTBITS,
+                    stopbits=1,
+                    port=self.connection_params.port_name
+                )
                 self.ser.isOpen()
                 self.update_qcm_parameters()
                 signal.signal(signal.SIGALRM, self.timeout_handler)

@@ -1,5 +1,4 @@
 from PyQt5.QtCore import (
-    pyqtSignal,
     QThread,
 )
 from PyQt5.QtWidgets import (
@@ -15,7 +14,7 @@ from rtqcm.utils.file import (
     get_simulation_filename_from_name,
     get_dir_from_name
 )
-
+from rtqcm.utils.InterfaceUtils import colors
 
 class ViewController(MainWindowTemplate):
     """
@@ -68,6 +67,8 @@ class ViewController(MainWindowTemplate):
 
         self.vlines = []
         self.events = []
+        self.clear_graph_elements()
+        self.last_timestamp = None
 
     def handle_timeout(self):
         self.resultsLabel.setText(
@@ -94,11 +95,26 @@ class ViewController(MainWindowTemplate):
             self.is_connected = False
             self.resultsLabel.setText('Connection unsuccessful')
 
+    def add_initial_connection_event(self, time):
+        self.add_past_event(time, 'Connection Started', colors['system'])
+
+    def add_disconnection_event(self, time):
+        self.add_past_event(time, 'System Disconnected', colors['system'])
+
+    def add_detection_event(self, time, severity):
+        if severity > 0:
+            self.add_past_event(time, 'Possible Contamination Detected', colors['mild'])
+        else:
+            self.add_past_event(time, 'Severe Contamination Detected', colors['severe'])
+
     def disconnect(self):
         # Handle disconnecting from the main run controller
         self.rc.stop_run()
         self.is_connected = False
         self.enable_main_elements()
+        if self.last_timestamp is not None:
+            self.add_disconnection_event(self.last_timestamp)
+            self.last_timestamp = None
 
     def connect_button_handler(self):
         # placeholder
@@ -106,8 +122,10 @@ class ViewController(MainWindowTemplate):
             self.disconnect()
         else:
             self.connect()
+            self.clear_graph_elements()
 
     def clear_graph_elements(self):
+        self.update_plot([[],[],[]])
         self.plotLine.clear()
         self.twinLine.clear()
         self.clear_vlines()
@@ -177,8 +195,6 @@ class ViewController(MainWindowTemplate):
         content = content + self.textBrowser.toHtml()
         self.textBrowser.setText(content)
 
-
-
     def search_simulation_file(self):
         filename = str(QFileDialog.getOpenFileName(
             self.window, "Select Simulator File")[0])
@@ -206,10 +222,17 @@ class ViewController(MainWindowTemplate):
         for port in ports_list:
             self.portComboBox.addItem(port)
 
+    def handle_initial_data(self, data):
+        if len(data[0]) > 0:
+            if self.last_timestamp is None:
+                self.last_timestamp = data[0][-1]
+                self.add_initial_connection_event(self.last_timestamp)
+
     def update_plot(self, data):
         """
         Data: two stacked np arrays
         """
+        self.handle_initial_data(data)
         self.plotLine.setData(data[0], data[2])
         self.twinLine.setData(data[0], data[1])
 

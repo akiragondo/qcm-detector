@@ -23,6 +23,7 @@ class RunController(QObject):
     """
     finished = pyqtSignal()
     disconnect_timeout = pyqtSignal()
+    detection_status = pyqtSignal(int)
     plot_data = pyqtSignal(object)
 
     def __init__(self):
@@ -36,10 +37,9 @@ class RunController(QObject):
         self.timeout_limit = 10
         self.timeout_counter = 0
 
-    def connect(self):
-        pass
-
     def start_run(self, connection_params: ConnectionParameters):
+        if not self.data_model.is_empty_model():
+            self.data_model.reset_model()
         self.is_simulated = False
         self.timer.setInterval(1000)
         self.timer.start()
@@ -53,6 +53,8 @@ class RunController(QObject):
             return False
 
     def start_simulated_run(self, connection_params: ConnectionParameters):
+        if not self.data_model.is_empty_model():
+            self.data_model.reset_model()
         self.is_simulated = True
         self.timer.setInterval(1000 / 10)
         self.timer.start()
@@ -80,7 +82,7 @@ class RunController(QObject):
             self.timeout_counter += 1
             logging.debug(f'Connection with RS232 timed out: {self.timeout_counter} times')
             if self.timeout_counter >= self.timeout_limit:
+                self.timer.stop()
                 self.disconnect_timeout.emit()
-
 
 
