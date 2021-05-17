@@ -55,7 +55,7 @@ class MainWindowTemplate(object):
                                   "}")
         self.widget.setObjectName("widget")
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.widget)
-        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(0, 225, 321, 661))
+        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(0, 175, 321, 661))
         self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_2.setContentsMargins(20, 0, 20, 0)

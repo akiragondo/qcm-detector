@@ -72,7 +72,6 @@ class ViewController(MainWindowTemplate):
     def handle_timeout(self):
         self.resultsLabel.setText(
             f'Connection timed out')
-        self.add_past_event()
         self.disconnect()
 
     def connect(self):
