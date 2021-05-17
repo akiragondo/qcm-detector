@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 
+
 class QCMModel:
     def __init__(self):
         self.resistances = np.array([])
@@ -22,5 +23,5 @@ class QCMModel:
         return results
 
     def get_full_results(self):
-        results = np.vstack((self.timestamps,self.resistances, self.frequencies))
+        results = np.vstack((self.timestamps, self.resistances, self.frequencies))
         return results

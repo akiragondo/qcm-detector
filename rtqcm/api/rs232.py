@@ -52,16 +52,16 @@ class RS232:
             ('Frequency', np.float64),
             ('Resistance', np.float64)
         ])
-
+        self.connection_params = None
 
     def establish_connection(self,
-                             connectionParams: ConnectionParameters,
+                             connection_params: ConnectionParameters,
                              is_simulated: bool):
-        self.connectionParams = connectionParams
+        self.connection_params = connection_params
         if is_simulated:
             try:
                 self.simulation_data = pd.read_csv(
-                    self.connectionParams.simulation_data_path,
+                    self.connection_params.simulation_data_path,
                     parse_dates=["Time"],
                     index_col="Time"
                 )
@@ -80,31 +80,30 @@ class RS232:
                 parity=serial.PARITY_NONE,
                 bytesize=serial.EIGHTBITS,
                 stopbits=1,
-                port=self.connectionParams.port_name
+                port=self.connection_params.port_name
             )
             try:
                 self.ser.isOpen()
-                self.set_metadata(gate_time=self.connectionParams.gate_time,
-                                  scale_factor=self.connectionParams.scale_factor)
+                self.update_qcm_parameters()
                 signal.signal(signal.SIGALRM, self.timeout_handler)
                 print(
-                    f"Connection established! port: {self.connectionParams.port_name}"
+                    f"Connection established! port: {self.connection_params.port_name}"
                 )
                 return True
             except Exception:
                 return False
 
-    def set_metadata(self):
-        assert(self.connectionParameters.correct_metadata())
+    def update_qcm_parameters(self):
+        assert(self.connection_params.correct_metadata())
         self.ser.write('P{}\r'.format(
             self.gateTimes[
-                self.connectionParams.gate_time
+                self.connection_params.gate_time
             ]
         ).encode())
         sleep(1)
         self.ser.write('D{}\r'.format(
             self.scaleFactors[
-                self.connectionParameters.scale_factor
+                self.connection_params.scale_factor
             ]
         ).encode())
 
