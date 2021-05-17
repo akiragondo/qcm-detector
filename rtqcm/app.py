@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets,QtCore
-from rtqcm.controllers.ViewController import ViewController
+from rtqcm.controllers.view_controller import ViewController
 import sys
 
 def run_app():

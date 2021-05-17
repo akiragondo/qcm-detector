@@ -9,8 +9,10 @@ from PyQt5.QtCore import (
 )
 import numpy as np
 from rtqcm.api.rs232 import RS232
-from rtqcm.models.ConnectionParameters import ConnectionParameters
-from rtqcm.models.QCMModel import QCMModel
+from rtqcm.models.connection_parameters import ConnectionParameters
+from rtqcm.models.qcm_model import QCMModel
+from rtqcm.models.detection import Detection
+from rtqcm.workers.reader import Reader
 import logging
 
 
@@ -23,15 +25,21 @@ class RunController(QObject):
     """
     finished = pyqtSignal()
     disconnect_timeout = pyqtSignal()
-    detection_status = pyqtSignal(int)
+    detection = pyqtSignal(Detection)
     plot_data = pyqtSignal(object)
 
     def __init__(self):
         super().__init__()
         self.timer = QTimer()
         self.timer.timeout.connect(self.timer_handler)
+
+        self.reader_thread = QThread()
+        self.reader = Reader()
+        self.reader.moveToThread(self.reader_thread)
+        self.reader.sample.connect(self.receive_new_sample)
+        self.reader_thread.start()
+
         self.is_simulated = False
-        self.rs_api = RS232()
         self.data_model = QCMModel()
         self.plot_update_period = 5
         self.timeout_limit = 10
@@ -43,7 +51,7 @@ class RunController(QObject):
         self.is_simulated = False
         self.timer.setInterval(1000)
         self.timer.start()
-        connection_successful = self.rs_api.establish_connection(
+        connection_successful = self.reader.establish_connection(
             connection_params=connection_params,
             is_simulated=self.is_simulated
         )
@@ -58,7 +66,7 @@ class RunController(QObject):
         self.is_simulated = True
         self.timer.setInterval(1000 / 10)
         self.timer.start()
-        connection_successful = self.rs_api.establish_connection(
+        connection_successful = self.reader.establish_connection(
             connection_params=connection_params,
             is_simulated=self.is_simulated
         )
@@ -72,7 +80,9 @@ class RunController(QObject):
         self.timer.stop()
 
     def timer_handler(self):
-        new_sample = self.rs_api.read_data()
+        new_sample = self.reader.read()
+
+    def receive_new_sample(self, new_sample):
         if new_sample is not None:
             self.timeout_counter = 0
             self.data_model.append_sample(new_sample)

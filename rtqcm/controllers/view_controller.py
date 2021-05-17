@@ -5,16 +5,17 @@ from PyQt5.QtWidgets import (
     QFileDialog,
 )
 import pyqtgraph as pg
-from rtqcm.controllers.MainWindowTemplate import MainWindowTemplate
-from rtqcm.controllers.RunController import RunController
-from rtqcm.models.ConnectionParameters import ConnectionParameters
+from rtqcm.controllers.main_window_template import MainWindowTemplate
+from rtqcm.controllers.run_controller import RunController
+from rtqcm.models.connection_parameters import ConnectionParameters
+from rtqcm.models.detection import Detection
 from rtqcm.api.ports import list_serial_ports
 import datetime
 from rtqcm.utils.file import (
     get_simulation_filename_from_name,
     get_dir_from_name
 )
-from rtqcm.utils.InterfaceUtils import colors
+from rtqcm.utils.interface_utils import colors
 
 class ViewController(MainWindowTemplate):
     """
@@ -49,6 +50,7 @@ class ViewController(MainWindowTemplate):
         self.rc = RunController()
         # Run Controller worker thread setup
         self.rc.plot_data.connect(self.update_plot)
+        self.rc.detection.connect(self.handle_detection)
         self.rc.finished.connect(self.thread.deleteLater)
         self.rc.disconnect_timeout.connect(self.handle_timeout)
         self.rc.moveToThread(self.thread)
@@ -74,6 +76,17 @@ class ViewController(MainWindowTemplate):
         self.resultsLabel.setText(
             f'Connection timed out')
         self.disconnect()
+
+    def handle_detection(self, detection : Detection):
+        self.add_detection_event(
+            time=detection.timestamp,
+            severity=detection.severity
+        )
+        self.add_vline(
+            x=detection.timestamp,
+            color=colors[detection.severity]
+        )
+        #Handle emails and vlines
 
     def connect(self):
         # Connect to the main run controller

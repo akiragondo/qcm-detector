@@ -1,4 +1,4 @@
-from rtqcm.models.ConnectionParameters import ConnectionParameters
+from rtqcm.models.connection_parameters import ConnectionParameters
 from time import sleep
 import pandas as pd
 import numpy as np
