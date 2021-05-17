@@ -25,3 +25,4 @@ class QCMModel:
     def get_full_results(self):
         results = np.vstack((self.timestamps, self.resistances, self.frequencies))
         return results
+

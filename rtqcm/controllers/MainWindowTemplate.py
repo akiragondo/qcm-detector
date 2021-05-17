@@ -64,8 +64,6 @@ class MainWindowTemplate(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-
-
         self.horizontalLayoutToggle = QtWidgets.QHBoxLayout()
         self.horizontalLayoutToggle.setObjectName("horizontalLayoutToggle")
         self.labelToggle = QtWidgets.QLabel(self.verticalLayoutWidget_2)
