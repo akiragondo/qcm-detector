@@ -1,19 +1,15 @@
-from time import sleep
-
 from PyQt5.QtCore import (
-    Qt,
     QTimer,
     pyqtSignal,
     QObject,
     QThread,
 )
-import numpy as np
-from rtqcm.api.rs232 import RS232
+import logging
 from rtqcm.models.connection_parameters import ConnectionParameters
 from rtqcm.models.qcm_model import QCMModel
 from rtqcm.models.detection import Detection
-from rtqcm.workers.reader import Reader
-import logging
+from rtqcm.controllers.read_controller import ReadController
+from rtqcm.controllers.detection_controller import DetectionController
 
 
 class RunController(QObject):
@@ -32,12 +28,23 @@ class RunController(QObject):
         super().__init__()
         self.timer = QTimer()
         self.timer.timeout.connect(self.timer_handler)
+        self.threads = []
 
+        # Instantiate reader thread
         self.reader_thread = QThread()
-        self.reader = Reader()
+        self.reader = ReadController()
         self.reader.moveToThread(self.reader_thread)
         self.reader.sample.connect(self.receive_new_sample)
         self.reader_thread.start()
+        self.threads.append(self.reader_thread)
+
+        # Instantiate detector thread
+        self.detector_thread = QThread()
+        self.detector = DetectionController(parent_run_controller= self)
+        self.detector.moveToThread(self.detector_thread)
+        #TODO: Add connections to detections
+        self.detector_thread.start()
+        self.threads.append(self.detector_thread)
 
         self.is_simulated = False
         self.data_model = QCMModel()

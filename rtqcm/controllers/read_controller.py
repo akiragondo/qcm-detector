@@ -6,7 +6,7 @@ import numpy as np
 from rtqcm.api.rs232 import RS232
 from rtqcm.models.connection_parameters import ConnectionParameters
 
-class Reader(QObject):
+class ReadController(QObject):
     sample= pyqtSignal(object)
 
     def __init__(self):

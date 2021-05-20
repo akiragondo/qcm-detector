@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import (
     QFileDialog,
 )
 import pyqtgraph as pg
-from rtqcm.controllers.main_window_template import MainWindowTemplate
+from rtqcm.utils.main_window_template import MainWindowTemplate
 from rtqcm.controllers.run_controller import RunController
 from rtqcm.models.connection_parameters import ConnectionParameters
 from rtqcm.models.detection import Detection
