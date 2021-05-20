@@ -510,7 +510,7 @@ class MainWindowTemplate(object):
                                   color='#027CA1', **{'font-size': '14pt'})
         self.graphWidget.getAxis('left').enableAutoSIPrefix(False)
         # Second axis setup
-        self.graphWidget.showAxis('right')
+        self.graphWidget .showAxis('right')
         self.graphWidget.setLabel('right', 'Frequency', units="<font>Hz</font>",
                                   color='#FF8811', **{'font-size': '14pt'})
         # self.graphWidget.getAxis('right').setPen(pg.mkPen(color='#F3F6F5', width=3))

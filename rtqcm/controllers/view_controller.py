@@ -115,7 +115,7 @@ class ViewController(MainWindowTemplate):
         self.add_past_event(time, 'System Disconnected', colors['system'])
 
     def add_detection_event(self, time, severity):
-        if severity > 0:
+        if severity == 'mild':
             self.add_past_event(time, 'Possible Contamination Detected', colors['mild'])
         else:
             self.add_past_event(time, 'Severe Contamination Detected', colors['severe'])
@@ -147,6 +147,7 @@ class ViewController(MainWindowTemplate):
     def disable_main_elements(self):
         # Disable all buttons
         self.connectButton.setText('Cancel')
+        self.simulationToggle.setEnabled(False)
         self.portComboBox.setEnabled(False)
         self.checkBox.setEnabled(False)
         self.emailField.setEnabled(False)
@@ -159,6 +160,7 @@ class ViewController(MainWindowTemplate):
 
     def enable_main_elements(self):
         self.connectButton.setText('Connect')
+        self.simulationToggle.setEnabled(True)
         self.portComboBox.setEnabled(True)
         self.checkBox.setEnabled(True)
         self.emailField.setEnabled(self.checkBox.isChecked())

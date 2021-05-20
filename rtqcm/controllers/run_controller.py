@@ -21,19 +21,24 @@ class RunController(QObject):
     """
     finished = pyqtSignal()
     disconnect_timeout = pyqtSignal()
+    detect = pyqtSignal()
     detection = pyqtSignal(Detection)
+    read = pyqtSignal()
     plot_data = pyqtSignal(object)
 
     def __init__(self):
         super().__init__()
-        self.timer = QTimer()
-        self.timer.timeout.connect(self.timer_handler)
+        self.read_timer = QTimer()
+        self.read_timer.timeout.connect(self.read_timer_handler)
+        self.detect_timer = QTimer()
+        self.detect_timer.timeout.connect(self.detection_timer_handler)
         self.threads = []
 
         # Instantiate reader thread
         self.reader_thread = QThread()
         self.reader = ReadController()
         self.reader.moveToThread(self.reader_thread)
+        self.read.connect(self.reader.read)
         self.reader.sample.connect(self.receive_new_sample)
         self.reader_thread.start()
         self.threads.append(self.reader_thread)
@@ -42,12 +47,14 @@ class RunController(QObject):
         self.detector_thread = QThread()
         self.detector = DetectionController(parent_run_controller= self)
         self.detector.moveToThread(self.detector_thread)
-        #TODO: Add connections to detections
+        self.detect.connect(self.detector.detect)
+        self.detector.detection.connect(self.receive_new_detection)
         self.detector_thread.start()
         self.threads.append(self.detector_thread)
 
         self.is_simulated = False
         self.data_model = QCMModel()
+        self.simulated_acceleration_factor = 10
         self.plot_update_period = 5
         self.timeout_limit = 10
         self.timeout_counter = 0
@@ -56,8 +63,10 @@ class RunController(QObject):
         if not self.data_model.is_empty_model():
             self.data_model.reset_model()
         self.is_simulated = False
-        self.timer.setInterval(1000)
-        self.timer.start()
+        self.start_timers(
+            read_period= 1000,
+            detect_period= 10000
+        )
         connection_successful = self.reader.establish_connection(
             connection_params=connection_params,
             is_simulated=self.is_simulated
@@ -66,13 +75,25 @@ class RunController(QObject):
             return True
         else:
             return False
+
+    def start_timers(
+            self,
+            read_period,
+            detect_period
+    ):
+        self.read_timer.setInterval(read_period)
+        self.detect_timer.setInterval(detect_period)
+        self.read_timer.start()
+        self.detect_timer.start()
 
     def start_simulated_run(self, connection_params: ConnectionParameters):
         if not self.data_model.is_empty_model():
             self.data_model.reset_model()
         self.is_simulated = True
-        self.timer.setInterval(1000 / 10)
-        self.timer.start()
+        self.start_timers(
+            read_period= 1000/self.simulated_acceleration_factor,
+            detect_period= 10000/self.simulated_acceleration_factor
+        )
         connection_successful = self.reader.establish_connection(
             connection_params=connection_params,
             is_simulated=self.is_simulated
@@ -82,12 +103,15 @@ class RunController(QObject):
         else:
             return False
 
-    def stop_run(self):
-        # Handle resetting everything
-        self.timer.stop()
+    def read_timer_handler(self):
+        self.read.emit()
 
-    def timer_handler(self):
-        new_sample = self.reader.read()
+    def detection_timer_handler(self):
+        self.detect.emit()
+
+    def stop_run(self):
+        self.read_timer.stop()
+        self.detect_timer.stop()
 
     def receive_new_sample(self, new_sample):
         if new_sample is not None:
@@ -99,7 +123,10 @@ class RunController(QObject):
             self.timeout_counter += 1
             logging.debug(f'Connection with RS232 timed out: {self.timeout_counter} times')
             if self.timeout_counter >= self.timeout_limit:
-                self.timer.stop()
+                self.stop_run()
                 self.disconnect_timeout.emit()
 
+    def receive_new_detection(self, detection: Detection):
+        if detection.severity is not None:
+            self.detection.emit(detection)
 

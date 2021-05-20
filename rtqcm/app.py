@@ -11,4 +11,7 @@ def run_app():
     main_window.setWindowFlag(QtCore.Qt.FramelessWindowHint)
     ui = ViewController(main_window)
     main_window.show()
+    display_monitor = 1
+    monitor = QtWidgets.QDesktopWidget().screenGeometry(display_monitor)
+    main_window.move(monitor.left(),monitor.top())
     sys.exit(app.exec_())

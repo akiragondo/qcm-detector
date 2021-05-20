@@ -6,7 +6,7 @@
 """
 colors = {
     "severe": "#B80000",
-    "mild": "#027CA1",
+    "warning": "#027CA1",
     "system": "#F3F6F5",
-    "warning": "#FF8811"
+    "mild": "#FF8811"
 }

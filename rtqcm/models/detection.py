@@ -7,4 +7,4 @@ from typing import List
 class Detection:
     timestamp: float
     period: List[float]
-    severity: str
+    severity: str or None

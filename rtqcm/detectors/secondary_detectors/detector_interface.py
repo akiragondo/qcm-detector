@@ -1,7 +1,7 @@
-import numpy as np
-from rtqcm.models.qcm_model import QCMModel
+import pandas as pd
+
 class DetectorInterface:
-    def detectAnomalies(self, model : QCMModel, time_frame: int) -> int:
+    def detect_anomalies(self, detection_dataframe: pd.DataFrame) -> int:
         pass
 
     def describe(self) -> str:
