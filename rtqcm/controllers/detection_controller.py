@@ -20,8 +20,8 @@ class DetectionController(QObject):
         self.parent_run_controller = parent_run_controller
         self.detection_voter = DetectionVoter(parent_run_controller)
 
-
     def detect(self):
         detection_result = self.detection_voter.detect()
-        self.detection.emit(detection_result)
+        if detection_result is not None:
+            self.detection.emit(detection_result)
 

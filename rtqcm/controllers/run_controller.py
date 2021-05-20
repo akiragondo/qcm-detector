@@ -3,6 +3,7 @@ from PyQt5.QtCore import (
     pyqtSignal,
     QObject,
     QThread,
+    QMutex
 )
 import logging
 from rtqcm.models.connection_parameters import ConnectionParameters
@@ -20,6 +21,7 @@ class RunController(QObject):
         - Managing sending an Email
     """
     finished = pyqtSignal()
+    bad_connection = pyqtSignal()
     disconnect_timeout = pyqtSignal()
     detect = pyqtSignal()
     detection = pyqtSignal(Detection)
@@ -58,6 +60,8 @@ class RunController(QObject):
         self.plot_update_period = 5
         self.timeout_limit = 10
         self.timeout_counter = 0
+
+        self.mutex = QMutex()
 
     def start_run(self, connection_params: ConnectionParameters):
         if not self.data_model.is_empty_model():
@@ -116,7 +120,9 @@ class RunController(QObject):
     def receive_new_sample(self, new_sample):
         if new_sample is not None:
             self.timeout_counter = 0
+            self.mutex.lock()
             self.data_model.append_sample(new_sample)
+            self.mutex.unlock()
             if len(self.data_model.timestamps) % self.plot_update_period == 0:
                 self.plot_data.emit(self.data_model.get_full_results())
         else:

@@ -1,5 +1,6 @@
 from PyQt5.QtCore import (
     QThread,
+    pyqtSignal
 )
 from PyQt5.QtWidgets import (
     QFileDialog,
@@ -30,6 +31,7 @@ class ViewController(MainWindowTemplate):
     """
 
     def __init__(self, window):
+        super().__init__()
         self.setupUi(window)
         self.window = window
 
@@ -57,8 +59,7 @@ class ViewController(MainWindowTemplate):
         self.thread.start()
 
         # DEBUG ONLY
-        self.dataFileField.setText('/home/kimino/soft/qcm-detector/data/output/21-01-11_long-calibration-arima'
-                                   '-overnight-CrAu_1-data.csv')
+        self.dataFileField.setText('/home/kimino/soft/qcm-detector/data/output/21-01-20_static-pani-swelling-22C-20ppm-6hours_data.csv')
         self.outputField.setText('/home/kimino/soft/qcm-detector/data/')
         self.fileName.setText('test.csv')
 
@@ -97,6 +98,7 @@ class ViewController(MainWindowTemplate):
             scale_factor=200,
             simulation_data_path=self.dataFileField.text()
         )
+        self.disable_main_elements()
         if not self.is_simulated:
             connection_successful = self.rc.start_run(connection_params=connection_params)
         else:
@@ -106,6 +108,7 @@ class ViewController(MainWindowTemplate):
             self.disable_main_elements()
         else:
             self.is_connected = False
+            self.enable_main_elements()
             self.resultsLabel.setText('Connection unsuccessful')
 
     def add_initial_connection_event(self, time):
