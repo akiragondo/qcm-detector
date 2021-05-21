@@ -20,14 +20,20 @@ class DetectionVoter:
             run_controller
         ):
         self.mean_detector = MeanDetector(
-            lag_time=1,
-            moving_average_time=1,
+            lag_time=15,
+            moving_average_time=10,
             detection_threshold=1.5,
             parent_controller=run_controller
         )
         self.prediction_detector = PredictionDetector()
         self.run_controller = run_controller
         self.dataframe_model = None
+        self.past_detections = []
+
+        # Merge conditions
+        self.timestamp_diff_thresh = 60
+        self.resistance_diff_thresh = 1
+        self.frequency_diff_thresh = 1
 
     def make_dataframe_from_model(self, qcm_model: QCMModel):
         index = pd.to_datetime(qcm_model.timestamps, unit='s') - pd.Timedelta('03:00:00')
@@ -35,8 +41,32 @@ class DetectionVoter:
             data=zip(qcm_model.resistances, qcm_model.frequencies, qcm_model.timestamps),
             index=index,
             columns= ['Frequency', 'Resistance', 'Timestamp']
-        ).resample('5S').mean()
+        ).resample('10S').mean()
         return dataframe
+
+    def aggregate_past_detections(self, detections_list: List[Detection]):
+        new_detections = []
+        for detection in detections_list:
+            already_detected = False
+            for past_detection in self.past_detections:
+                if self.is_same_detection(past_detection, detection):
+                    already_detected = True
+                    self.convert_to_severe(past_detection)
+            if not already_detected:
+                new_detections.append(detection)
+        self.past_detections = self.past_detections + new_detections
+
+    def convert_to_severe(self, detection):
+        detection.severity = 'severe'
+
+    def is_same_detection(self, detection_1 : Detection, detection_2: Detection):
+        if np.abs(detection_1.timestamp - detection_2.timestamp) < self.timestamp_diff_thresh:
+            return True
+        if np.abs(detection_1.resistance - detection_2.resistance)*100/detection_1.resistance < self.resistance_diff_thresh:
+            if np.abs(detection_1.frequency - detection_2.frequency)*100/detection_1.frequency < self.frequency_diff_thresh:
+                return True
+            return False
+        return False
 
     def merge_similar_detections(self, detections_list: List[Detection]):
         if len(detections_list) > 0:
@@ -56,14 +86,11 @@ class DetectionVoter:
         else:
             return None
 
-    def detect(self) -> Detection:
+    def detect(self) -> List[Detection]:
         self.run_controller.mutex.lock()
         dataframe_model = self.make_dataframe_from_model(self.run_controller.data_model)
         self.run_controller.mutex.unlock()
         mean_detections = self.mean_detector.detect_anomalies(dataframe_model)
-        merged_mean_detection = self.merge_similar_detections(mean_detections)
-        if merged_mean_detection is not None:
-            print("Detected something")
-        else:
-            print("Skipped detection")
-        return merged_mean_detection
+        # merged_mean_detection = self.merge_similar_detections(mean_detections)
+        self.aggregate_past_detections(mean_detections)
+        return self.past_detections

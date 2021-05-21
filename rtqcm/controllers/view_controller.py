@@ -16,7 +16,8 @@ from rtqcm.utils.file import (
     get_simulation_filename_from_name,
     get_dir_from_name
 )
-from rtqcm.utils.interface_utils import colors
+from rtqcm.utils.interface_helper import colors
+from typing import List
 
 class ViewController(MainWindowTemplate):
     """
@@ -73,21 +74,33 @@ class ViewController(MainWindowTemplate):
         self.clear_graph_elements()
         self.last_timestamp = None
 
+        self.previous_detections = []
+
     def handle_timeout(self):
         self.resultsLabel.setText(
             f'Connection timed out')
         self.disconnect()
 
-    def handle_detection(self, detection : Detection):
-        self.add_detection_event(
-            time=detection.timestamp,
-            severity=detection.severity
-        )
-        self.add_vline(
+    def update_vlines(self, detections: List[Detection]):
+        self.clear_vlines()
+        for detection in detections:
+            self.add_vline(
             x=detection.timestamp,
             color=colors[detection.severity]
-        )
-        #Handle emails and vlines
+            )
+
+    def update_detection_events(self, new_detections: List[Detection]):
+        for detection in new_detections:
+            if detection not in self.previous_detections:
+                self.add_detection_event(
+                    time=detection.timestamp,
+                    severity=detection.severity
+                )
+
+    def handle_detection(self, detections : List[Detection]):
+        self.update_vlines(detections)
+        self.update_detection_events(detections)
+        self.previous_detections = detections.copy()
 
     def connect(self):
         # Connect to the main run controller
@@ -202,6 +215,7 @@ class ViewController(MainWindowTemplate):
     def clear_vlines(self):
         for vline in self.vlines:
             self.plotLine.getViewBox().removeItem(vline)
+        self.vlines = []
 
     def add_past_event(self, time, description, color):
         time_text = datetime.datetime.fromtimestamp(time).strftime("%H:%M - %d/%m/%Y")

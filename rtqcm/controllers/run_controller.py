@@ -6,6 +6,7 @@ from PyQt5.QtCore import (
     QMutex
 )
 import logging
+from typing import List
 from rtqcm.models.connection_parameters import ConnectionParameters
 from rtqcm.models.qcm_model import QCMModel
 from rtqcm.models.detection import Detection
@@ -24,7 +25,7 @@ class RunController(QObject):
     bad_connection = pyqtSignal()
     disconnect_timeout = pyqtSignal()
     detect = pyqtSignal()
-    detection = pyqtSignal(Detection)
+    detection = pyqtSignal(object)
     read = pyqtSignal()
     plot_data = pyqtSignal(object)
     save = pyqtSignal(object, str)
@@ -92,6 +93,7 @@ class RunController(QObject):
         self.read_timer.start()
         self.detect_timer.start()
         self.save_timer.start()
+
     def start_run(self, connection_params: ConnectionParameters):
         if not self.data_model.is_empty_model():
             self.data_model.reset_model()
@@ -158,7 +160,6 @@ class RunController(QObject):
                 self.stop_run()
                 self.disconnect_timeout.emit()
 
-    def receive_new_detection(self, detection: Detection):
-        if detection.severity is not None:
-            self.detection.emit(detection)
+    def receive_new_detection(self, detection: List[Detection]):
+        self.detection.emit(detection)
 
