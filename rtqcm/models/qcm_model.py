@@ -26,6 +26,10 @@ class QCMModel:
         results = np.vstack((self.timestamps, self.resistances, self.frequencies))
         return results
 
+    def get_full_results_as_samples(self):
+        results = np.vstack((self.timestamps, self.resistances, self.frequencies)).T
+        return results
+
     def is_empty_model(self):
         return len(self.timestamps) <= 0
 
