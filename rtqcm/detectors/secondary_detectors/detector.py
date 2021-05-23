@@ -2,7 +2,7 @@ import pandas as pd
 from rtqcm.models.detection import Detection
 from typing import List
 
-class DetectorInterface:
+class Detector:
     def detect_anomalies(self, detection_dataframe: pd.DataFrame) -> int:
         pass
 

@@ -1,11 +1,11 @@
-from rtqcm.detectors.secondary_detectors.detector_interface import DetectorInterface
+from rtqcm.detectors.secondary_detectors.detector import Detector
 from rtqcm.models.detection import Detection
 from typing import List
 import numpy as np
 import pandas as pd
 
 
-class MeanDetector(DetectorInterface):
+class MeanDetector(Detector):
     def __init__(
             self,
             lag_time: float,

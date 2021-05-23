@@ -72,7 +72,7 @@ class RunController(QObject):
         self.data_model = QCMModel()
 
         self.read_period = 1*1000
-        self.detect_period = 10*1000
+        self.detect_period = 30*1000
         self.save_period = 5*1000
         self.simulated_acceleration_factor = 10
         self.plot_update_period = 5

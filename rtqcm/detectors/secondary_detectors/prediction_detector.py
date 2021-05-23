@@ -1,6 +1,6 @@
-from rtqcm.detectors.secondary_detectors.detector_interface import DetectorInterface
+from rtqcm.detectors.secondary_detectors.detector import Detector
 from rtqcm.models.qcm_model import QCMModel
-class PredictionDetector(DetectorInterface):
+class PredictionDetector(Detector):
     def __init__(self):
         pass
 
