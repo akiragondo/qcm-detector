@@ -28,19 +28,23 @@ class RunController(QObject):
     detection = pyqtSignal(object)
     read = pyqtSignal()
     plot_data = pyqtSignal(object)
-    save = pyqtSignal(object, str)
+    save_detections = pyqtSignal(object, str)
+    save_samples = pyqtSignal(object, str)
 
 
     def __init__(self):
         super().__init__()
-        self.save_timer = QTimer()
-        self.save_timer.timeout.connect(self.save_timer_handler)
+        self.save_samples_timer = QTimer()
+        self.save_samples_timer.timeout.connect(self.save_samples_timer_handler)
         self.read_timer = QTimer()
         self.read_timer.timeout.connect(self.read_timer_handler)
+        self.save_detections_timer = QTimer()
+        self.save_detections_timer.timeout.connect(self.save_detections_timer_handler)
         self.detect_timer = QTimer()
         self.detect_timer.timeout.connect(self.detection_timer_handler)
         self.threads = []
         self.mutex = QMutex()
+        self.detection_mutex = QMutex()
 
         # Instantiate reader thread
         self.reader_thread = QThread()
@@ -62,9 +66,10 @@ class RunController(QObject):
 
         # Instantiate Saver thread
         self.saver_thread = QThread()
-        self.saver = Saver(parent_mutex=self.mutex)
+        self.saver = Saver(parent_qcm_model_mutex=self.mutex, parent_detection_list_mutex=self.detection_mutex)
         self.saver.moveToThread(self.saver_thread)
-        self.save.connect(self.saver.append_save)
+        self.save_samples.connect(self.saver.append_save_samples)
+        self.save_detections.connect(self.saver.append_save_detections)
         self.saver_thread.start()
         self.threads.append(self.saver_thread)
 
@@ -74,6 +79,7 @@ class RunController(QObject):
         self.read_period = 1*1000
         self.detect_period = 30*1000
         self.save_period = 5*1000
+        self.detection_save_period = 10*1000
         self.simulated_acceleration_factor = 10
         self.plot_update_period = 5
         self.timeout_limit = 10
@@ -85,14 +91,17 @@ class RunController(QObject):
             self,
             read_period,
             detect_period,
-            save_period
+            save_period,
+            detection_save_period
     ):
         self.read_timer.setInterval(read_period)
         self.detect_timer.setInterval(detect_period)
-        self.save_timer.setInterval(save_period)
+        self.save_samples_timer.setInterval(save_period)
+        self.save_detections_timer.setInterval(detection_save_period)
         self.read_timer.start()
         self.detect_timer.start()
-        self.save_timer.start()
+        self.save_samples_timer.start()
+        self.save_detections_timer.start()
 
     def start_run(self, connection_params: ConnectionParameters):
         if not self.data_model.is_empty_model():
@@ -102,7 +111,8 @@ class RunController(QObject):
         self.start_timers(
             read_period= self.read_period,
             detect_period= self.detect_period,
-            save_period= self.save_period
+            save_period= self.save_period,
+            detection_save_period=self.detection_save_period
         )
         connection_successful = self.reader.establish_connection(
             connection_params=connection_params,
@@ -121,7 +131,8 @@ class RunController(QObject):
         self.start_timers(
             read_period= self.read_period/self.simulated_acceleration_factor,
             detect_period= self.detect_period/self.simulated_acceleration_factor,
-            save_period= self.save_period
+            save_period= self.save_period,
+            detection_save_period=self.detection_save_period
         )
         connection_successful = self.reader.establish_connection(
             connection_params=connection_params,
@@ -132,8 +143,11 @@ class RunController(QObject):
         else:
             return False
 
-    def save_timer_handler(self):
-        self.save.emit(self.data_model, self.connection_params.output_data_file)
+    def save_samples_timer_handler(self):
+        self.save_samples.emit(self.data_model, self.connection_params.output_data_file)
+
+    def save_detections_timer_handler(self):
+        self.save_detections.emit(self.detector.detection_voter.past_detections, self.connection_params.output_data_file)
 
     def read_timer_handler(self):
         self.read.emit()
@@ -160,6 +174,8 @@ class RunController(QObject):
                 self.stop_run()
                 self.disconnect_timeout.emit()
 
-    def receive_new_detection(self, detection: List[Detection]):
-        self.detection.emit(detection)
+    def receive_new_detection(self, detections: List[Detection]):
+        self.detection.emit(detections)
+
+
 

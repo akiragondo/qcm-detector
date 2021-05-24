@@ -9,3 +9,4 @@ class Detection:
     severity: str or None
     frequency: float
     resistance: float
+    detector: str

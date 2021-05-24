@@ -71,6 +71,8 @@ class DetectionVoter:
         detection.severity = 'severe'
 
     def is_same_detection(self, detection_1 : Detection, detection_2: Detection):
+        if detection_1.detector != detection_2.detector:
+            return False
         if np.abs(detection_1.timestamp - detection_2.timestamp) < self.timestamp_diff_thresh:
             return True
         if np.abs(detection_1.timestamp - detection_2.timestamp) < self.large_timestamp_diff_thresh:
@@ -83,7 +85,13 @@ class DetectionVoter:
 
     def detect(self) -> List[Detection]:
         dataframe_model = self.make_dataframe_from_model(self.run_controller.data_model)
-        mean_detections = self.mean_detector.detect_anomalies(dataframe_model)
-        # merged_mean_detection = self.merge_similar_detections(mean_detections)
-        self.aggregate_past_detections(mean_detections)
-        return self.past_detections
+        if not dataframe_model.empty:
+            mean_detections = self.mean_detector.detect_anomalies(dataframe_model)
+            prediction_detections = self.prediction_detector.detect_anomalies(dataframe_model)
+            detections = mean_detections + prediction_detections
+            # merged_mean_detection = self.merge_similar_detections(mean_detections)
+            self.aggregate_past_detections(detections)
+            print(detections)
+            return self.past_detections
+        else:
+            return []

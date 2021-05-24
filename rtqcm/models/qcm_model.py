@@ -37,3 +37,4 @@ class QCMModel:
         self.resistances = np.array([])
         self.frequencies = np.array([])
         self.timestamps = np.array([])
+
