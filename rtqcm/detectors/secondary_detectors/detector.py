@@ -17,7 +17,8 @@ class Detector:
             resistance=dataframe_element['Resistance'],
             severity= 'mild',
             period=[0,0],
-            detector=detector
+            detector=detector,
+            time = ''
         )
         return detection
 

@@ -54,6 +54,9 @@ class RS232:
         ])
         self.connection_params = None
 
+    def connection_finished(self):
+        return self.current_index >= self.simulationLength
+
     def establish_connection(self,
                              connection_params: ConnectionParameters,
                              is_simulated: bool):

@@ -22,13 +22,16 @@ class MeanDetector(Detector):
         self.detection_threshold = detection_threshold
         self.parent_controller = parent_controller
 
+    def reset(self):
+        self.last_detection = None
+
     def describe(self) -> str:
         return 'Mean-shift'
 
     def detect_anomalies(self, detection_dataframe: pd.DataFrame) -> List[Detection]:
         rolling_average = detection_dataframe['Resistance'].rolling(self.moving_average_time_string).mean()
         shifted = rolling_average.shift(periods = self.lag_time, freq= 'min')
-        diff = (rolling_average - shifted)*100/shifted
+        diff = abs((rolling_average - shifted)*100/shifted)
         detection_indices = diff.index[diff > self.detection_threshold]
         if self.last_detection is not None:
             detection_indices = [detection_index for detection_index in detection_indices if detection_index > self.last_detection]

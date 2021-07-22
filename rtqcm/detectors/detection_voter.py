@@ -41,6 +41,11 @@ class DetectionVoter:
         self.recency_cutoff_hours = 48
         self.recency_cutoff_delta = pd.Timedelta(f"{self.recency_cutoff_hours:02d}:00:00")
 
+    def reset(self):
+        self.past_detections = []
+        self.prediction_detector.reset()
+        self.mean_detector.reset()
+
     def make_dataframe_from_model(self, qcm_model: QCMModel):
         self.run_controller.mutex.lock()
         index = pd.to_datetime(qcm_model.timestamps, unit='s') - pd.Timedelta('03:00:00')
@@ -91,7 +96,6 @@ class DetectionVoter:
             detections = mean_detections + prediction_detections
             # merged_mean_detection = self.merge_similar_detections(mean_detections)
             self.aggregate_past_detections(detections)
-            print(detections)
             return self.past_detections
         else:
             return []

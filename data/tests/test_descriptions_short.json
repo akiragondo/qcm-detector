@@ -1,0 +1,232 @@
+{
+    "Tests": [
+        {
+            "Insertion-1ppm": {
+                "Anomalies": [
+                    {
+                        "Start": 750,
+                        "End": 1674
+                    }
+                ],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Insertion-1ppm_chosen.csv"
+            }
+        },
+        {
+            "Long-Insertion-10ppm": {
+                "Anomalies": [
+                    {
+                        "Start": 6400,
+                        "End": 8929
+                    }
+                ],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Long-Insertion-10ppm_chosen.csv"
+            }
+        },
+        {
+            "Hard-Water-4": {
+                "Anomalies": [],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-Water-4_chosen.csv"
+            }
+        },
+        {
+            "Hard-0": {
+                "Anomalies": [
+                    {
+                        "Start": 1700,
+                        "End": 3491
+                    }
+                ],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-0.5ppm_chosen.csv"
+            }
+        },
+        {
+            "Long-Insertion-5ppm": {
+                "Anomalies": [
+                    {
+                        "Start": 5600,
+                        "End": 7597
+                    }
+                ],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Long-Insertion-5ppm_chosen.csv"
+            }
+        },
+        {
+            "Hard-1ppm": {
+                "Anomalies": [
+                    {
+                        "Start": 1900,
+                        "End": 3714
+                    }
+                ],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-1ppm_chosen.csv"
+            }
+        },
+        {
+            "Swell-10ppm": {
+                "Anomalies": [
+                    {
+                        "Start": 760,
+                        "End": 1772
+                    }
+                ],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Swell-10ppm_chosen.csv"
+            }
+        },
+        {
+            "Insertion-5ppm": {
+                "Anomalies": [
+                    {
+                        "Start": 640,
+                        "End": 1594
+                    }
+                ],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Insertion-5ppm_chosen.csv"
+            }
+        },
+        {
+            "Insertion-30ppm": {
+                "Anomalies": [
+                    {
+                        "Start": 850,
+                        "End": 1994
+                    }
+                ],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Insertion-30ppm_chosen.csv"
+            }
+        },
+        {
+            "Hard-H20-Tap": {
+                "Anomalies": [
+                    {
+                        "Start": 2250,
+                        "End": 3991
+                    }
+                ],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-H20-Tap_chosen.csv"
+            }
+        },
+        {
+            "Hard-5ppm": {
+                "Anomalies": [
+                    {
+                        "Start": 1250,
+                        "End": 2340
+                    }
+                ],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-5ppm_chosen.csv"
+            }
+        },
+        {
+            "Hard-Water-5": {
+                "Anomalies": [],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-Water-5_chosen.csv"
+            }
+        },
+        {
+            "Hard-5ppm-1": {
+                "Anomalies": [
+                    {
+                        "Start": 1170,
+                        "End": 3224
+                    }
+                ],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-5ppm-1_chosen.csv"
+            }
+        },
+        {
+            "Insertion-50ppm": {
+                "Anomalies": [
+                    {
+                        "Start": 980,
+                        "End": 2029
+                    }
+                ],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Insertion-50ppm_chosen.csv"
+            }
+        },
+        {
+            "Hard-Tap-H20": {
+                "Anomalies": [
+                    {
+                        "Start": 1300,
+                        "End": 3264
+                    }
+                ],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-Tap-H20_chosen.csv"
+            }
+        },
+        {
+            "Insertion-10ppm": {
+                "Anomalies": [
+                    {
+                        "Start": 550,
+                        "End": 1516
+                    }
+                ],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Insertion-10ppm_chosen.csv"
+            }
+        },
+        {
+            "Hard-0": {
+                "Anomalies": [
+                    {
+                        "Start": 1700,
+                        "End": 3491
+                    }
+                ],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-0.1ppm_chosen.csv"
+            }
+        },
+        {
+            "Hard-Water-1": {
+                "Anomalies": [],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-Water-1_chosen.csv"
+            }
+        },
+        {
+            "Hard-Water-3": {
+                "Anomalies": [],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-Water-3_chosen.csv"
+            }
+        },
+        {
+            "Hard-3ppm": {
+                "Anomalies": [
+                    {
+                        "Start": 1430,
+                        "End": 3492
+                    }
+                ],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-3ppm_chosen.csv"
+            }
+        },
+        {
+            "Insertion-3ppm": {
+                "Anomalies": [
+                    {
+                        "Start": 700,
+                        "End": 1537
+                    }
+                ],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Insertion-3ppm_chosen.csv"
+            }
+        },
+        {
+            "Insertion-100ppm": {
+                "Anomalies": [
+                    {
+                        "Start": 900,
+                        "End": 1999
+                    }
+                ],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Insertion-100ppm_chosen.csv"
+            }
+        },
+        {
+            "Hard-Water-2": {
+                "Anomalies": [],
+                "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-Water-2_chosen.csv"
+            }
+        }
+    ]
+}

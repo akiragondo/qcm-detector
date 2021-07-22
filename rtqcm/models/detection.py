@@ -5,8 +5,9 @@ from typing import List
 @dataclass
 class Detection:
     timestamp: float
-    period: List[float]
-    severity: str or None
     frequency: float
     resistance: float
+    period: List[float]
+    time: str
+    severity: str or None
     detector: str

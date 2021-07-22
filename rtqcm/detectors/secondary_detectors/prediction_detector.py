@@ -19,6 +19,11 @@ class PredictionDetector(Detector):
     def describe(self) -> str:
         return 'Expo-predict'
 
+    def reset(self):
+        self.prediction_model = None
+        self.last_forecast_start_time = None
+        self.previous_forecast = pd.DataFrame()
+
     def detect_anomalies(self, detection_dataframe: pd.DataFrame) -> List[Detection]:
         resistance_endog = detection_dataframe['Resistance']
         self.prediction_model = ExponentialSmoothing(
