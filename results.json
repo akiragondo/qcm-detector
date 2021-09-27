@@ -1,0 +1,1318 @@
+{
+    "Insertion-1ppm": {
+        "Detections": [
+            {
+                "timestamp": 1608126374.704987,
+                "frequency": 5009876.05,
+                "resistance": 391.906,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126384.702619,
+                "frequency": 5009875.159999999,
+                "resistance": 391.93299999999994,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126394.7052379,
+                "frequency": 5009874.37,
+                "resistance": 391.97400000000005,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126404.701215,
+                "frequency": 5009873.659999999,
+                "resistance": 392.00699999999995,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126414.6983533,
+                "frequency": 5009873.01,
+                "resistance": 392.033,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126424.5801063,
+                "frequency": 5009872.474999999,
+                "resistance": 392.0875,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126435.4805713,
+                "frequency": 5009872.074999999,
+                "resistance": 392.1475,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126444.696284,
+                "frequency": 5009871.810000001,
+                "resistance": 392.1739999999999,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126454.749084,
+                "frequency": 5009871.499999999,
+                "resistance": 392.17099999999994,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126464.8473191,
+                "frequency": 5009871.23,
+                "resistance": 392.18899999999996,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126474.694349,
+                "frequency": 5009871.05,
+                "resistance": 392.212,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126484.691894,
+                "frequency": 5009870.86,
+                "resistance": 392.2290000000001,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126494.6911902,
+                "frequency": 5009870.680000001,
+                "resistance": 392.23099999999994,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126504.7180133,
+                "frequency": 5009870.369999999,
+                "resistance": 392.24399999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126514.69037,
+                "frequency": 5009870.090000001,
+                "resistance": 392.255,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126524.688983,
+                "frequency": 5009869.840000001,
+                "resistance": 392.263,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126534.6886318,
+                "frequency": 5009869.529999999,
+                "resistance": 392.26899999999995,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126544.691101,
+                "frequency": 5009869.31,
+                "resistance": 392.2799999999999,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126554.6855688,
+                "frequency": 5009868.999999999,
+                "resistance": 392.28499999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126564.6865048,
+                "frequency": 5009870.1899999995,
+                "resistance": 392.294,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126574.683947,
+                "frequency": 5009868.799999999,
+                "resistance": 392.323,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126584.680714,
+                "frequency": 5009868.66,
+                "resistance": 392.34299999999996,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126594.6813457,
+                "frequency": 5009868.5600000005,
+                "resistance": 392.36599999999993,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126604.6792321,
+                "frequency": 5009868.449999999,
+                "resistance": 392.387,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126614.682806,
+                "frequency": 5009868.31,
+                "resistance": 392.41400000000004,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126624.675489,
+                "frequency": 5009868.15,
+                "resistance": 392.434,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126634.6767972,
+                "frequency": 5009867.949999999,
+                "resistance": 392.43299999999994,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126644.673166,
+                "frequency": 5009867.85,
+                "resistance": 392.4459999999999,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126654.6768281,
+                "frequency": 5009867.700000001,
+                "resistance": 392.468,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126664.672425,
+                "frequency": 5009867.5600000005,
+                "resistance": 392.495,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126674.669018,
+                "frequency": 5009867.399999999,
+                "resistance": 392.52299999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126684.670755,
+                "frequency": 5009867.339999999,
+                "resistance": 392.553,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126694.666665,
+                "frequency": 5009867.31,
+                "resistance": 392.57099999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126704.671309,
+                "frequency": 5009867.319999999,
+                "resistance": 392.592,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126714.6660419,
+                "frequency": 5009867.369999999,
+                "resistance": 392.605,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126724.664698,
+                "frequency": 5009867.43,
+                "resistance": 392.621,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126734.665653,
+                "frequency": 5009867.5200000005,
+                "resistance": 392.645,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126744.6672978,
+                "frequency": 5009867.61,
+                "resistance": 392.6429999999999,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126754.6603408,
+                "frequency": 5009867.620000001,
+                "resistance": 392.6460000000001,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126764.662623,
+                "frequency": 5009867.5600000005,
+                "resistance": 392.65400000000005,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126774.6649709,
+                "frequency": 5009867.489999999,
+                "resistance": 392.67999999999995,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126784.657292,
+                "frequency": 5009867.339999999,
+                "resistance": 392.68199999999996,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126794.6653097,
+                "frequency": 5009867.4399999995,
+                "resistance": 392.756,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126804.6573982,
+                "frequency": 5009867.319999998,
+                "resistance": 392.782,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126814.656645,
+                "frequency": 5009867.140000001,
+                "resistance": 392.82699999999994,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126824.655526,
+                "frequency": 5009866.909999999,
+                "resistance": 392.831,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126834.655724,
+                "frequency": 5009866.720000001,
+                "resistance": 392.895,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126844.8043227,
+                "frequency": 5009866.66,
+                "resistance": 392.99500000000006,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126855.5190582,
+                "frequency": 5009866.15,
+                "resistance": 393.02750000000003,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126864.653376,
+                "frequency": 5009865.93,
+                "resistance": 393.074,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126874.657622,
+                "frequency": 5009865.350000001,
+                "resistance": 393.0470000000001,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126884.8098745,
+                "frequency": 5009864.733333333,
+                "resistance": 393.0588888888889,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126894.7475653,
+                "frequency": 5009864.009999999,
+                "resistance": 393.081,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126902.1546397,
+                "frequency": 5009863.48,
+                "resistance": 393.08799999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            }
+        ],
+        "Anomalies": [
+            {
+                "Start": 1608125974.41765,
+                "End": 1608126904.1467898
+            }
+        ],
+        "Number of detections": 54,
+        "True Positives": [
+            {
+                "timestamp": 1608126374.704987,
+                "frequency": 5009876.05,
+                "resistance": 391.906,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126384.702619,
+                "frequency": 5009875.159999999,
+                "resistance": 391.93299999999994,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126394.7052379,
+                "frequency": 5009874.37,
+                "resistance": 391.97400000000005,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126404.701215,
+                "frequency": 5009873.659999999,
+                "resistance": 392.00699999999995,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126414.6983533,
+                "frequency": 5009873.01,
+                "resistance": 392.033,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126424.5801063,
+                "frequency": 5009872.474999999,
+                "resistance": 392.0875,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126435.4805713,
+                "frequency": 5009872.074999999,
+                "resistance": 392.1475,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126444.696284,
+                "frequency": 5009871.810000001,
+                "resistance": 392.1739999999999,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126454.749084,
+                "frequency": 5009871.499999999,
+                "resistance": 392.17099999999994,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126464.8473191,
+                "frequency": 5009871.23,
+                "resistance": 392.18899999999996,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126474.694349,
+                "frequency": 5009871.05,
+                "resistance": 392.212,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126484.691894,
+                "frequency": 5009870.86,
+                "resistance": 392.2290000000001,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126494.6911902,
+                "frequency": 5009870.680000001,
+                "resistance": 392.23099999999994,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126504.7180133,
+                "frequency": 5009870.369999999,
+                "resistance": 392.24399999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126514.69037,
+                "frequency": 5009870.090000001,
+                "resistance": 392.255,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126524.688983,
+                "frequency": 5009869.840000001,
+                "resistance": 392.263,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126534.6886318,
+                "frequency": 5009869.529999999,
+                "resistance": 392.26899999999995,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126544.691101,
+                "frequency": 5009869.31,
+                "resistance": 392.2799999999999,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126554.6855688,
+                "frequency": 5009868.999999999,
+                "resistance": 392.28499999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126564.6865048,
+                "frequency": 5009870.1899999995,
+                "resistance": 392.294,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126574.683947,
+                "frequency": 5009868.799999999,
+                "resistance": 392.323,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126584.680714,
+                "frequency": 5009868.66,
+                "resistance": 392.34299999999996,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126594.6813457,
+                "frequency": 5009868.5600000005,
+                "resistance": 392.36599999999993,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126604.6792321,
+                "frequency": 5009868.449999999,
+                "resistance": 392.387,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126614.682806,
+                "frequency": 5009868.31,
+                "resistance": 392.41400000000004,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126624.675489,
+                "frequency": 5009868.15,
+                "resistance": 392.434,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126634.6767972,
+                "frequency": 5009867.949999999,
+                "resistance": 392.43299999999994,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126644.673166,
+                "frequency": 5009867.85,
+                "resistance": 392.4459999999999,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126654.6768281,
+                "frequency": 5009867.700000001,
+                "resistance": 392.468,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126664.672425,
+                "frequency": 5009867.5600000005,
+                "resistance": 392.495,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126674.669018,
+                "frequency": 5009867.399999999,
+                "resistance": 392.52299999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126684.670755,
+                "frequency": 5009867.339999999,
+                "resistance": 392.553,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126694.666665,
+                "frequency": 5009867.31,
+                "resistance": 392.57099999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126704.671309,
+                "frequency": 5009867.319999999,
+                "resistance": 392.592,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126714.6660419,
+                "frequency": 5009867.369999999,
+                "resistance": 392.605,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126724.664698,
+                "frequency": 5009867.43,
+                "resistance": 392.621,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126734.665653,
+                "frequency": 5009867.5200000005,
+                "resistance": 392.645,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126744.6672978,
+                "frequency": 5009867.61,
+                "resistance": 392.6429999999999,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126754.6603408,
+                "frequency": 5009867.620000001,
+                "resistance": 392.6460000000001,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126764.662623,
+                "frequency": 5009867.5600000005,
+                "resistance": 392.65400000000005,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126774.6649709,
+                "frequency": 5009867.489999999,
+                "resistance": 392.67999999999995,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126784.657292,
+                "frequency": 5009867.339999999,
+                "resistance": 392.68199999999996,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126794.6653097,
+                "frequency": 5009867.4399999995,
+                "resistance": 392.756,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126804.6573982,
+                "frequency": 5009867.319999998,
+                "resistance": 392.782,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126814.656645,
+                "frequency": 5009867.140000001,
+                "resistance": 392.82699999999994,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126824.655526,
+                "frequency": 5009866.909999999,
+                "resistance": 392.831,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126834.655724,
+                "frequency": 5009866.720000001,
+                "resistance": 392.895,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126844.8043227,
+                "frequency": 5009866.66,
+                "resistance": 392.99500000000006,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126855.5190582,
+                "frequency": 5009866.15,
+                "resistance": 393.02750000000003,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126864.653376,
+                "frequency": 5009865.93,
+                "resistance": 393.074,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126874.657622,
+                "frequency": 5009865.350000001,
+                "resistance": 393.0470000000001,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126884.8098745,
+                "frequency": 5009864.733333333,
+                "resistance": 393.0588888888889,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126894.7475653,
+                "frequency": 5009864.009999999,
+                "resistance": 393.081,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            },
+            {
+                "timestamp": 1608126902.1546397,
+                "frequency": 5009863.48,
+                "resistance": 393.08799999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "Mean-shift"
+            }
+        ],
+        "False Negatives": [],
+        "Number of True Positives": 54,
+        "Number of False Positives": 0,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 1,
+        "Recall": 1.0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Insertion-1ppm_chosen.csv"
+    }
+}

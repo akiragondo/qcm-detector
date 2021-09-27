@@ -1,8 +1,15 @@
 from time import sleep
-from rtqcm.detectors.secondary_detectors.mean_detector import MeanDetector
-from rtqcm.detectors.secondary_detectors.prediction_detector import PredictionDetector
-from rtqcm.models.detection import Detection
-from rtqcm.models.qcm_model import QCMModel
+import os
+import sys
+import inspect
+
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0, parentdir) 
+from detectors.secondary_detectors.mean_detector import MeanDetector
+from detectors.secondary_detectors.prediction_detector import PredictionDetector
+from models.detection import Detection
+from models.qcm_model import QCMModel
 from typing import List
 import numpy as np
 import pandas as pd

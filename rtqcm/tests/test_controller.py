@@ -1,10 +1,17 @@
 from PyQt5.QtCore import QMutex
-from rtqcm.models.connection_parameters import ConnectionParameters
-from rtqcm.detectors.detection_voter import DetectionVoter
-from rtqcm.models.qcm_model import QCMModel
-from rtqcm.api.rs232 import RS232
+import os
+import sys
+import inspect
+
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0, parentdir) 
+from models.connection_parameters import ConnectionParameters
+from detectors.detection_voter import DetectionVoter
+from models.qcm_model import QCMModel
+from api.rs232 import RS232
 from typing import List
-from rtqcm.models.detection import Detection
+from models.detection import Detection
 import matplotlib.pyplot as plt
 import warnings
 warnings.simplefilter("ignore")
@@ -100,14 +107,6 @@ class TestController:
             results.update(result)
             with open('results.json', 'w+') as output_file:
                 output_file.write(json.dumps(results, indent=4))
-
-            # fig, ax = plt.subplots()
-            # ax.plot(self.data_model.timestamps, self.data_model.resistances)
-            # for anomaly in test_anomalies:
-            #     ax.axvspan(anomaly['Start'], anomaly['End'], alpha=0.2, color='red')
-            # for detection in detections:
-            #     ax.axvline(detection.timestamp, alpha=0.3, color='orange')
-            # plt.show()
 
 
     def test_correct_detection(self, detection):

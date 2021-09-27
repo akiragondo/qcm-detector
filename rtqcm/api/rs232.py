@@ -1,4 +1,11 @@
-from rtqcm.models.connection_parameters import ConnectionParameters
+import os
+import sys
+import inspect
+
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0, f'{parentdir}') 
+from models.connection_parameters import ConnectionParameters
 from time import sleep
 import pandas as pd
 import numpy as np

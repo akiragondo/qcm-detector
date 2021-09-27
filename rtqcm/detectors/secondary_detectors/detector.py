@@ -1,5 +1,12 @@
 import pandas as pd
-from rtqcm.models.detection import Detection
+import os
+import sys
+import inspect
+
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0, f'{os.path.dirname(parentdir)}') 
+from models.detection import Detection
 from typing import List
 
 class Detector:
