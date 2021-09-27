@@ -24,7 +24,9 @@ if __name__ == '__main__':
         ).rename(columns=lambda x: x.strip())
         fig, ax = plt.subplots()
         time = (data_df.index.values + pd.to_timedelta('03:00:00')).astype('float64')/1e+9
-        ax.plot(time, data_df['Resistance'])
+        ax.plot(time, data_df['Resistance'], alpha = 0.8)
+        ax.set_title(f"Experiment: {result_key}\nRecall: {result['Recall']} TP: {result['Number of True Positives']} FP: {result['Number of False Positives']} FN: {result['Number of False Negatives']}")
+
         for detection in result['Detections']:
-            ax.axvline(detection['timestamp'], color='r', alpha=0.2)
+            ax.axvline(detection['timestamp'], color='r', alpha=0.3)
         plt.show()
