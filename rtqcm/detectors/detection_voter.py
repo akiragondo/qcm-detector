@@ -8,6 +8,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir) 
 from detectors.secondary_detectors.mean_detector import MeanDetector
 from detectors.secondary_detectors.prediction_detector import PredictionDetector
+from detectors.secondary_detectors.isolation_detector import IsolationDetector
 from models.detection import Detection
 from models.qcm_model import QCMModel
 from typing import List
@@ -35,6 +36,7 @@ class DetectionVoter:
             parent_controller=run_controller
         )
         self.prediction_detector = PredictionDetector()
+        self.isolation_detector = IsolationDetector()
         self.run_controller = run_controller
         self.dataframe_model = None
         self.past_detections = []
@@ -100,7 +102,9 @@ class DetectionVoter:
         if not dataframe_model.empty:
             mean_detections = self.mean_detector.detect_anomalies(dataframe_model)
             prediction_detections = self.prediction_detector.detect_anomalies(dataframe_model)
-            detections = mean_detections + prediction_detections
+            isolation_detections = self.isolation_detector.detect_anomalies(dataframe_model)
+            # detections = mean_detections + prediction_detections 
+            detections = isolation_detections
             # merged_mean_detection = self.merge_similar_detections(mean_detections)
             self.aggregate_past_detections(detections)
             return self.past_detections

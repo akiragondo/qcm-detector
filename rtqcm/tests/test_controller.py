@@ -127,5 +127,5 @@ class TestController:
 
 if __name__ == '__main__':
     ts = TestController()
-    print(ts.test('/home/kimino/soft/qcm-detector/data/tests/test_descriptions.json'))
+    print(ts.test('/home/kimino/soft/qcm-detector/data/tests/test_descriptions_short.json'))
 

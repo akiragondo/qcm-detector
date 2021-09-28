@@ -1,1318 +1,2083 @@
 {
     "Insertion-1ppm": {
-        "Detections": [
-            {
-                "timestamp": 1608126374.704987,
-                "frequency": 5009876.05,
-                "resistance": 391.906,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126384.702619,
-                "frequency": 5009875.159999999,
-                "resistance": 391.93299999999994,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126394.7052379,
-                "frequency": 5009874.37,
-                "resistance": 391.97400000000005,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126404.701215,
-                "frequency": 5009873.659999999,
-                "resistance": 392.00699999999995,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126414.6983533,
-                "frequency": 5009873.01,
-                "resistance": 392.033,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126424.5801063,
-                "frequency": 5009872.474999999,
-                "resistance": 392.0875,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126435.4805713,
-                "frequency": 5009872.074999999,
-                "resistance": 392.1475,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126444.696284,
-                "frequency": 5009871.810000001,
-                "resistance": 392.1739999999999,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126454.749084,
-                "frequency": 5009871.499999999,
-                "resistance": 392.17099999999994,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126464.8473191,
-                "frequency": 5009871.23,
-                "resistance": 392.18899999999996,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126474.694349,
-                "frequency": 5009871.05,
-                "resistance": 392.212,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126484.691894,
-                "frequency": 5009870.86,
-                "resistance": 392.2290000000001,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126494.6911902,
-                "frequency": 5009870.680000001,
-                "resistance": 392.23099999999994,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126504.7180133,
-                "frequency": 5009870.369999999,
-                "resistance": 392.24399999999997,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126514.69037,
-                "frequency": 5009870.090000001,
-                "resistance": 392.255,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126524.688983,
-                "frequency": 5009869.840000001,
-                "resistance": 392.263,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126534.6886318,
-                "frequency": 5009869.529999999,
-                "resistance": 392.26899999999995,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126544.691101,
-                "frequency": 5009869.31,
-                "resistance": 392.2799999999999,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126554.6855688,
-                "frequency": 5009868.999999999,
-                "resistance": 392.28499999999997,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126564.6865048,
-                "frequency": 5009870.1899999995,
-                "resistance": 392.294,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126574.683947,
-                "frequency": 5009868.799999999,
-                "resistance": 392.323,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126584.680714,
-                "frequency": 5009868.66,
-                "resistance": 392.34299999999996,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126594.6813457,
-                "frequency": 5009868.5600000005,
-                "resistance": 392.36599999999993,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126604.6792321,
-                "frequency": 5009868.449999999,
-                "resistance": 392.387,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126614.682806,
-                "frequency": 5009868.31,
-                "resistance": 392.41400000000004,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126624.675489,
-                "frequency": 5009868.15,
-                "resistance": 392.434,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126634.6767972,
-                "frequency": 5009867.949999999,
-                "resistance": 392.43299999999994,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126644.673166,
-                "frequency": 5009867.85,
-                "resistance": 392.4459999999999,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126654.6768281,
-                "frequency": 5009867.700000001,
-                "resistance": 392.468,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126664.672425,
-                "frequency": 5009867.5600000005,
-                "resistance": 392.495,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126674.669018,
-                "frequency": 5009867.399999999,
-                "resistance": 392.52299999999997,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126684.670755,
-                "frequency": 5009867.339999999,
-                "resistance": 392.553,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126694.666665,
-                "frequency": 5009867.31,
-                "resistance": 392.57099999999997,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126704.671309,
-                "frequency": 5009867.319999999,
-                "resistance": 392.592,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126714.6660419,
-                "frequency": 5009867.369999999,
-                "resistance": 392.605,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126724.664698,
-                "frequency": 5009867.43,
-                "resistance": 392.621,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126734.665653,
-                "frequency": 5009867.5200000005,
-                "resistance": 392.645,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126744.6672978,
-                "frequency": 5009867.61,
-                "resistance": 392.6429999999999,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126754.6603408,
-                "frequency": 5009867.620000001,
-                "resistance": 392.6460000000001,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126764.662623,
-                "frequency": 5009867.5600000005,
-                "resistance": 392.65400000000005,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126774.6649709,
-                "frequency": 5009867.489999999,
-                "resistance": 392.67999999999995,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126784.657292,
-                "frequency": 5009867.339999999,
-                "resistance": 392.68199999999996,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126794.6653097,
-                "frequency": 5009867.4399999995,
-                "resistance": 392.756,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126804.6573982,
-                "frequency": 5009867.319999998,
-                "resistance": 392.782,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126814.656645,
-                "frequency": 5009867.140000001,
-                "resistance": 392.82699999999994,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126824.655526,
-                "frequency": 5009866.909999999,
-                "resistance": 392.831,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126834.655724,
-                "frequency": 5009866.720000001,
-                "resistance": 392.895,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126844.8043227,
-                "frequency": 5009866.66,
-                "resistance": 392.99500000000006,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126855.5190582,
-                "frequency": 5009866.15,
-                "resistance": 393.02750000000003,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126864.653376,
-                "frequency": 5009865.93,
-                "resistance": 393.074,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126874.657622,
-                "frequency": 5009865.350000001,
-                "resistance": 393.0470000000001,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126884.8098745,
-                "frequency": 5009864.733333333,
-                "resistance": 393.0588888888889,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126894.7475653,
-                "frequency": 5009864.009999999,
-                "resistance": 393.081,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126902.1546397,
-                "frequency": 5009863.48,
-                "resistance": 393.08799999999997,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            }
-        ],
+        "Detections": [],
         "Anomalies": [
             {
                 "Start": 1608125974.41765,
                 "End": 1608126904.1467898
             }
         ],
-        "Number of detections": 54,
+        "Number of detections": 0,
+        "True Positives": [],
+        "False Negatives": [
+            {
+                "Start": 1608125974.41765,
+                "End": 1608126904.1467898
+            }
+        ],
+        "Number of True Positives": 0,
+        "Number of False Positives": 0,
+        "Number of False Negatives": 1,
+        "Number of True Negatives": 0,
+        "Recall": 0.0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Insertion-1ppm_chosen.csv"
+    },
+    "Long-Insertion-10ppm": {
+        "Detections": [
+            {
+                "timestamp": 1605633918.6052217,
+                "frequency": 5009805.533333333,
+                "resistance": 364.78999999999996,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1605640485.387969,
+                "frequency": 5009688.579999999,
+                "resistance": 374.813,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1605640495.388588,
+                "frequency": 5009678.49,
+                "resistance": 377.053,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1605640505.3889036,
+                "frequency": 5009674.48,
+                "resistance": 378.23699999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1605640515.3890839,
+                "frequency": 5009674.92,
+                "resistance": 378.78900000000004,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1605640525.3884926,
+                "frequency": 5009676.389999999,
+                "resistance": 379.134,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1605642845.4921978,
+                "frequency": 5009680.359999999,
+                "resistance": 386.043,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1605642855.4927948,
+                "frequency": 5009680.62,
+                "resistance": 386.092,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1605642862.9930735,
+                "frequency": 5009680.9,
+                "resistance": 386.13199999999995,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [
+            {
+                "Start": 1605640325.882498,
+                "End": 1605642864.993002
+            }
+        ],
+        "Number of detections": 9,
         "True Positives": [
             {
-                "timestamp": 1608126374.704987,
-                "frequency": 5009876.05,
-                "resistance": 391.906,
+                "timestamp": 1605640485.387969,
+                "frequency": 5009688.579999999,
+                "resistance": 374.813,
                 "period": [
                     0,
                     0
                 ],
                 "time": "",
                 "severity": "mild",
-                "detector": "Mean-shift"
+                "detector": "IsolationForest"
             },
             {
-                "timestamp": 1608126384.702619,
-                "frequency": 5009875.159999999,
-                "resistance": 391.93299999999994,
+                "timestamp": 1605640495.388588,
+                "frequency": 5009678.49,
+                "resistance": 377.053,
                 "period": [
                     0,
                     0
                 ],
                 "time": "",
                 "severity": "mild",
-                "detector": "Mean-shift"
+                "detector": "IsolationForest"
             },
             {
-                "timestamp": 1608126394.7052379,
-                "frequency": 5009874.37,
-                "resistance": 391.97400000000005,
+                "timestamp": 1605640505.3889036,
+                "frequency": 5009674.48,
+                "resistance": 378.23699999999997,
                 "period": [
                     0,
                     0
                 ],
                 "time": "",
                 "severity": "mild",
-                "detector": "Mean-shift"
+                "detector": "IsolationForest"
             },
             {
-                "timestamp": 1608126404.701215,
-                "frequency": 5009873.659999999,
-                "resistance": 392.00699999999995,
+                "timestamp": 1605640515.3890839,
+                "frequency": 5009674.92,
+                "resistance": 378.78900000000004,
                 "period": [
                     0,
                     0
                 ],
                 "time": "",
                 "severity": "mild",
-                "detector": "Mean-shift"
+                "detector": "IsolationForest"
             },
             {
-                "timestamp": 1608126414.6983533,
-                "frequency": 5009873.01,
-                "resistance": 392.033,
+                "timestamp": 1605640525.3884926,
+                "frequency": 5009676.389999999,
+                "resistance": 379.134,
                 "period": [
                     0,
                     0
                 ],
                 "time": "",
                 "severity": "mild",
-                "detector": "Mean-shift"
+                "detector": "IsolationForest"
             },
             {
-                "timestamp": 1608126424.5801063,
-                "frequency": 5009872.474999999,
-                "resistance": 392.0875,
+                "timestamp": 1605642845.4921978,
+                "frequency": 5009680.359999999,
+                "resistance": 386.043,
                 "period": [
                     0,
                     0
                 ],
                 "time": "",
                 "severity": "mild",
-                "detector": "Mean-shift"
+                "detector": "IsolationForest"
             },
             {
-                "timestamp": 1608126435.4805713,
-                "frequency": 5009872.074999999,
-                "resistance": 392.1475,
+                "timestamp": 1605642855.4927948,
+                "frequency": 5009680.62,
+                "resistance": 386.092,
                 "period": [
                     0,
                     0
                 ],
                 "time": "",
                 "severity": "mild",
-                "detector": "Mean-shift"
+                "detector": "IsolationForest"
             },
             {
-                "timestamp": 1608126444.696284,
-                "frequency": 5009871.810000001,
-                "resistance": 392.1739999999999,
+                "timestamp": 1605642862.9930735,
+                "frequency": 5009680.9,
+                "resistance": 386.13199999999995,
                 "period": [
                     0,
                     0
                 ],
                 "time": "",
                 "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126454.749084,
-                "frequency": 5009871.499999999,
-                "resistance": 392.17099999999994,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126464.8473191,
-                "frequency": 5009871.23,
-                "resistance": 392.18899999999996,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126474.694349,
-                "frequency": 5009871.05,
-                "resistance": 392.212,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126484.691894,
-                "frequency": 5009870.86,
-                "resistance": 392.2290000000001,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126494.6911902,
-                "frequency": 5009870.680000001,
-                "resistance": 392.23099999999994,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126504.7180133,
-                "frequency": 5009870.369999999,
-                "resistance": 392.24399999999997,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126514.69037,
-                "frequency": 5009870.090000001,
-                "resistance": 392.255,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126524.688983,
-                "frequency": 5009869.840000001,
-                "resistance": 392.263,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126534.6886318,
-                "frequency": 5009869.529999999,
-                "resistance": 392.26899999999995,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126544.691101,
-                "frequency": 5009869.31,
-                "resistance": 392.2799999999999,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126554.6855688,
-                "frequency": 5009868.999999999,
-                "resistance": 392.28499999999997,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126564.6865048,
-                "frequency": 5009870.1899999995,
-                "resistance": 392.294,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126574.683947,
-                "frequency": 5009868.799999999,
-                "resistance": 392.323,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126584.680714,
-                "frequency": 5009868.66,
-                "resistance": 392.34299999999996,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126594.6813457,
-                "frequency": 5009868.5600000005,
-                "resistance": 392.36599999999993,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126604.6792321,
-                "frequency": 5009868.449999999,
-                "resistance": 392.387,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126614.682806,
-                "frequency": 5009868.31,
-                "resistance": 392.41400000000004,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126624.675489,
-                "frequency": 5009868.15,
-                "resistance": 392.434,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126634.6767972,
-                "frequency": 5009867.949999999,
-                "resistance": 392.43299999999994,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126644.673166,
-                "frequency": 5009867.85,
-                "resistance": 392.4459999999999,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126654.6768281,
-                "frequency": 5009867.700000001,
-                "resistance": 392.468,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126664.672425,
-                "frequency": 5009867.5600000005,
-                "resistance": 392.495,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126674.669018,
-                "frequency": 5009867.399999999,
-                "resistance": 392.52299999999997,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126684.670755,
-                "frequency": 5009867.339999999,
-                "resistance": 392.553,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126694.666665,
-                "frequency": 5009867.31,
-                "resistance": 392.57099999999997,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126704.671309,
-                "frequency": 5009867.319999999,
-                "resistance": 392.592,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126714.6660419,
-                "frequency": 5009867.369999999,
-                "resistance": 392.605,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126724.664698,
-                "frequency": 5009867.43,
-                "resistance": 392.621,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126734.665653,
-                "frequency": 5009867.5200000005,
-                "resistance": 392.645,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126744.6672978,
-                "frequency": 5009867.61,
-                "resistance": 392.6429999999999,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126754.6603408,
-                "frequency": 5009867.620000001,
-                "resistance": 392.6460000000001,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126764.662623,
-                "frequency": 5009867.5600000005,
-                "resistance": 392.65400000000005,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126774.6649709,
-                "frequency": 5009867.489999999,
-                "resistance": 392.67999999999995,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126784.657292,
-                "frequency": 5009867.339999999,
-                "resistance": 392.68199999999996,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126794.6653097,
-                "frequency": 5009867.4399999995,
-                "resistance": 392.756,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126804.6573982,
-                "frequency": 5009867.319999998,
-                "resistance": 392.782,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126814.656645,
-                "frequency": 5009867.140000001,
-                "resistance": 392.82699999999994,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126824.655526,
-                "frequency": 5009866.909999999,
-                "resistance": 392.831,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126834.655724,
-                "frequency": 5009866.720000001,
-                "resistance": 392.895,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126844.8043227,
-                "frequency": 5009866.66,
-                "resistance": 392.99500000000006,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126855.5190582,
-                "frequency": 5009866.15,
-                "resistance": 393.02750000000003,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126864.653376,
-                "frequency": 5009865.93,
-                "resistance": 393.074,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126874.657622,
-                "frequency": 5009865.350000001,
-                "resistance": 393.0470000000001,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126884.8098745,
-                "frequency": 5009864.733333333,
-                "resistance": 393.0588888888889,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126894.7475653,
-                "frequency": 5009864.009999999,
-                "resistance": 393.081,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
-            },
-            {
-                "timestamp": 1608126902.1546397,
-                "frequency": 5009863.48,
-                "resistance": 393.08799999999997,
-                "period": [
-                    0,
-                    0
-                ],
-                "time": "",
-                "severity": "mild",
-                "detector": "Mean-shift"
+                "detector": "IsolationForest"
             }
         ],
         "False Negatives": [],
-        "Number of True Positives": 54,
+        "Number of True Positives": 8,
+        "Number of False Positives": 1,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 1,
+        "Recall": 1.0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Long-Insertion-10ppm_chosen.csv"
+    },
+    "Hard-Water-4": {
+        "Detections": [
+            {
+                "timestamp": 1611867955.2027104,
+                "frequency": 5009799.96,
+                "resistance": 422.334,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611867965.20283,
+                "frequency": 5009875.72,
+                "resistance": 402.865,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611867975.20223,
+                "frequency": 5009921.369999999,
+                "resistance": 417.62,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611869725.1708202,
+                "frequency": 5009916.819999999,
+                "resistance": 421.88599999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611869735.1712298,
+                "frequency": 5009916.889999999,
+                "resistance": 421.9309999999999,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611869742.17025,
+                "frequency": 5009916.9,
+                "resistance": 421.935,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [],
+        "Number of detections": 6,
+        "True Positives": [],
+        "False Negatives": [],
+        "Number of True Positives": 0,
+        "Number of False Positives": 6,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 0,
+        "Recall": 0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-Water-4_chosen.csv"
+    },
+    "Hard-0": {
+        "Detections": [
+            {
+                "timestamp": 1611592487.5030782,
+                "frequency": 5009833.3,
+                "resistance": 433.48999999999995,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611592495.0031698,
+                "frequency": 5009833.31,
+                "resistance": 433.4909999999999,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611592505.0033748,
+                "frequency": 5009833.299999999,
+                "resistance": 433.49799999999993,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611594225.0069828,
+                "frequency": 5009837.95,
+                "resistance": 434.305,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [
+            {
+                "Start": 1611594185.5070772,
+                "End": 1611595975.166763
+            }
+        ],
+        "Number of detections": 4,
+        "True Positives": [
+            {
+                "timestamp": 1611594225.0069828,
+                "frequency": 5009837.95,
+                "resistance": 434.305,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "False Negatives": [],
+        "Number of True Positives": 1,
+        "Number of False Positives": 3,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 1,
+        "Recall": 1.0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-0.1ppm_chosen.csv"
+    },
+    "Long-Insertion-5ppm": {
+        "Detections": [
+            {
+                "timestamp": 1605714276.655331,
+                "frequency": 5009715.600000001,
+                "resistance": 375.7285714285714,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1605714285.1543498,
+                "frequency": 5009715.2,
+                "resistance": 375.80100000000004,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1605714295.1535184,
+                "frequency": 5009714.61,
+                "resistance": 375.86499999999995,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1605722054.78006,
+                "frequency": 5009599.609999999,
+                "resistance": 385.29699999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1605722064.7760699,
+                "frequency": 5009597.42,
+                "resistance": 385.42999999999995,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1605722074.87691,
+                "frequency": 5009596.529999999,
+                "resistance": 385.574,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1605722084.89511,
+                "frequency": 5009597.2700000005,
+                "resistance": 385.486,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1605722094.9815698,
+                "frequency": 5009598.5600000005,
+                "resistance": 385.41400000000004,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [
+            {
+                "Start": 1605720216.904716,
+                "End": 1605722213.19387
+            }
+        ],
+        "Number of detections": 8,
+        "True Positives": [
+            {
+                "timestamp": 1605722054.78006,
+                "frequency": 5009599.609999999,
+                "resistance": 385.29699999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1605722064.7760699,
+                "frequency": 5009597.42,
+                "resistance": 385.42999999999995,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1605722074.87691,
+                "frequency": 5009596.529999999,
+                "resistance": 385.574,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1605722084.89511,
+                "frequency": 5009597.2700000005,
+                "resistance": 385.486,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1605722094.9815698,
+                "frequency": 5009598.5600000005,
+                "resistance": 385.41400000000004,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "False Negatives": [],
+        "Number of True Positives": 5,
+        "Number of False Positives": 3,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 1,
+        "Recall": 1.0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Long-Insertion-5ppm_chosen.csv"
+    },
+    "Hard-1ppm": {
+        "Detections": [
+            {
+                "timestamp": 1611600858.840031,
+                "frequency": 5009846.8,
+                "resistance": 434.36,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611602794.8422253,
+                "frequency": 5009780.09,
+                "resistance": 422.23,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611602804.8422713,
+                "frequency": 5009885.5600000005,
+                "resistance": 390.76,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611602814.8417892,
+                "frequency": 5009888.92,
+                "resistance": 427.0690000000001,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [
+            {
+                "Start": 1611602758.341238,
+                "End": 1611604571.272348
+            }
+        ],
+        "Number of detections": 4,
+        "True Positives": [
+            {
+                "timestamp": 1611602794.8422253,
+                "frequency": 5009780.09,
+                "resistance": 422.23,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611602804.8422713,
+                "frequency": 5009885.5600000005,
+                "resistance": 390.76,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611602814.8417892,
+                "frequency": 5009888.92,
+                "resistance": 427.0690000000001,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "False Negatives": [],
+        "Number of True Positives": 3,
+        "Number of False Positives": 1,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 1,
+        "Recall": 1.0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-1ppm_chosen.csv"
+    },
+    "Swell-10ppm": {
+        "Detections": [
+            {
+                "timestamp": 1611150024.845291,
+                "frequency": 5009969.92,
+                "resistance": 432.58299999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611150034.8457458,
+                "frequency": 5009957.209999999,
+                "resistance": 448.021,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [
+            {
+                "Start": 1611149997.343408,
+                "End": 1611151008.38065
+            }
+        ],
+        "Number of detections": 2,
+        "True Positives": [
+            {
+                "timestamp": 1611150024.845291,
+                "frequency": 5009969.92,
+                "resistance": 432.58299999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611150034.8457458,
+                "frequency": 5009957.209999999,
+                "resistance": 448.021,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "False Negatives": [],
+        "Number of True Positives": 2,
         "Number of False Positives": 0,
         "Number of False Negatives": 0,
         "Number of True Negatives": 1,
         "Recall": 1.0,
-        "Path": "/home/kimino/soft/qcm-detector/data/tests/Insertion-1ppm_chosen.csv"
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Swell-10ppm_chosen.csv"
+    },
+    "Insertion-5ppm": {
+        "Detections": [
+            {
+                "timestamp": 1608128917.4376154,
+                "frequency": 5009884.350000001,
+                "resistance": 386.8,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1608129615.4274442,
+                "frequency": 5009838.22,
+                "resistance": 387.456,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [
+            {
+                "Start": 1608129581.928116,
+                "End": 1608130536.1278238
+            }
+        ],
+        "Number of detections": 2,
+        "True Positives": [
+            {
+                "timestamp": 1608129615.4274442,
+                "frequency": 5009838.22,
+                "resistance": 387.456,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "False Negatives": [],
+        "Number of True Positives": 1,
+        "Number of False Positives": 1,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 1,
+        "Recall": 1.0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Insertion-5ppm_chosen.csv"
+    },
+    "Insertion-30ppm": {
+        "Detections": [
+            {
+                "timestamp": 1608132604.7186325,
+                "frequency": 5009856.36,
+                "resistance": 388.117,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1608133544.7534912,
+                "frequency": 5009773.679999999,
+                "resistance": 396.809,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1608133554.7431512,
+                "frequency": 5009756.29,
+                "resistance": 401.95200000000006,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [
+            {
+                "Start": 1608133463.2444532,
+                "End": 1608134610.15019
+            }
+        ],
+        "Number of detections": 3,
+        "True Positives": [
+            {
+                "timestamp": 1608133544.7534912,
+                "frequency": 5009773.679999999,
+                "resistance": 396.809,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1608133554.7431512,
+                "frequency": 5009756.29,
+                "resistance": 401.95200000000006,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "False Negatives": [],
+        "Number of True Positives": 2,
+        "Number of False Positives": 1,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 1,
+        "Recall": 1.0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Insertion-30ppm_chosen.csv"
+    },
+    "Hard-H20-Tap": {
+        "Detections": [
+            {
+                "timestamp": 1611265044.654787,
+                "frequency": 5009828.51,
+                "resistance": 437.466,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611265054.661393,
+                "frequency": 5009864.29,
+                "resistance": 425.43500000000006,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611265064.661965,
+                "frequency": 5009916.970000001,
+                "resistance": 411.98499999999996,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611265074.6569679,
+                "frequency": 5009907.49,
+                "resistance": 414.158,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [
+            {
+                "Start": 1611264958.1492999,
+                "End": 1611266698.3917902
+            }
+        ],
+        "Number of detections": 4,
+        "True Positives": [
+            {
+                "timestamp": 1611265044.654787,
+                "frequency": 5009828.51,
+                "resistance": 437.466,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611265054.661393,
+                "frequency": 5009864.29,
+                "resistance": 425.43500000000006,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611265064.661965,
+                "frequency": 5009916.970000001,
+                "resistance": 411.98499999999996,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611265074.6569679,
+                "frequency": 5009907.49,
+                "resistance": 414.158,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "False Negatives": [],
+        "Number of True Positives": 4,
+        "Number of False Positives": 0,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 1,
+        "Recall": 1.0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-H20-Tap_chosen.csv"
+    },
+    "Hard-5ppm": {
+        "Detections": [
+            {
+                "timestamp": 1611260954.95538,
+                "frequency": 5009886.779999999,
+                "resistance": 439.104,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611260964.9556801,
+                "frequency": 5009850.35,
+                "resistance": 422.48600000000005,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611260984.9605699,
+                "frequency": 5009899.720000001,
+                "resistance": 449.9620000000001,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [
+            {
+                "Start": 1611260899.4550998,
+                "End": 1611261988.471
+            }
+        ],
+        "Number of detections": 3,
+        "True Positives": [
+            {
+                "timestamp": 1611260954.95538,
+                "frequency": 5009886.779999999,
+                "resistance": 439.104,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611260964.9556801,
+                "frequency": 5009850.35,
+                "resistance": 422.48600000000005,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611260984.9605699,
+                "frequency": 5009899.720000001,
+                "resistance": 449.9620000000001,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "False Negatives": [],
+        "Number of True Positives": 3,
+        "Number of False Positives": 0,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 1,
+        "Recall": 1.0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-5ppm_chosen.csv"
+    },
+    "Hard-Water-5": {
+        "Detections": [
+            {
+                "timestamp": 1611864395.21087,
+                "frequency": 5009874.26,
+                "resistance": 419.8860000000001,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611864405.21081,
+                "frequency": 5009851.869999999,
+                "resistance": 411.842,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611864415.21089,
+                "frequency": 5009938.96,
+                "resistance": 417.83900000000006,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611864425.21046,
+                "frequency": 5009932.029999999,
+                "resistance": 419.15599999999995,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611864435.2104099,
+                "frequency": 5009929.81,
+                "resistance": 419.20599999999996,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611864445.20966,
+                "frequency": 5009928.359999999,
+                "resistance": 419.23999999999995,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [],
+        "Number of detections": 6,
+        "True Positives": [],
+        "False Negatives": [],
+        "Number of True Positives": 0,
+        "Number of False Positives": 6,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 0,
+        "Recall": 0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-Water-5_chosen.csv"
+    },
+    "Hard-5ppm-1": {
+        "Detections": [
+            {
+                "timestamp": 1611610415.27864,
+                "frequency": 5009792.56,
+                "resistance": 433.101,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611610425.27862,
+                "frequency": 5009829.7299999995,
+                "resistance": 407.841,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611610435.27846,
+                "frequency": 5009846.26,
+                "resistance": 439.33899999999994,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611610445.32898,
+                "frequency": 5009837.500000001,
+                "resistance": 443.13,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [
+            {
+                "Start": 1611610396.7789,
+                "End": 1611612449.7859998
+            }
+        ],
+        "Number of detections": 4,
+        "True Positives": [
+            {
+                "timestamp": 1611610415.27864,
+                "frequency": 5009792.56,
+                "resistance": 433.101,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611610425.27862,
+                "frequency": 5009829.7299999995,
+                "resistance": 407.841,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611610435.27846,
+                "frequency": 5009846.26,
+                "resistance": 439.33899999999994,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611610445.32898,
+                "frequency": 5009837.500000001,
+                "resistance": 443.13,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "False Negatives": [],
+        "Number of True Positives": 4,
+        "Number of False Positives": 0,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 1,
+        "Recall": 1.0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-5ppm-1_chosen.csv"
+    },
+    "Insertion-50ppm": {
+        "Detections": [
+            {
+                "timestamp": 1608134806.6526368,
+                "frequency": 5009883.166666667,
+                "resistance": 388.2033333333334,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1608134814.652381,
+                "frequency": 5009882.22,
+                "resistance": 387.99100000000004,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1608135815.4867587,
+                "frequency": 5009744.6,
+                "resistance": 397.992,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [
+            {
+                "Start": 1608135785.988377,
+                "End": 1608136834.18396
+            }
+        ],
+        "Number of detections": 3,
+        "True Positives": [
+            {
+                "timestamp": 1608135815.4867587,
+                "frequency": 5009744.6,
+                "resistance": 397.992,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "False Negatives": [],
+        "Number of True Positives": 1,
+        "Number of False Positives": 2,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 1,
+        "Recall": 1.0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Insertion-50ppm_chosen.csv"
+    },
+    "Hard-Tap-H20": {
+        "Detections": [
+            {
+                "timestamp": 1611266734.9013371,
+                "frequency": 5009856.97,
+                "resistance": 420.919,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611266744.902794,
+                "frequency": 5009638.67,
+                "resistance": 445.485,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611266754.903865,
+                "frequency": 5009799.14,
+                "resistance": 438.342,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611266764.907375,
+                "frequency": 5009847.8,
+                "resistance": 438.65299999999996,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [
+            {
+                "Start": 1611266688.3847702,
+                "End": 1611268651.68291
+            }
+        ],
+        "Number of detections": 4,
+        "True Positives": [
+            {
+                "timestamp": 1611266734.9013371,
+                "frequency": 5009856.97,
+                "resistance": 420.919,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611266744.902794,
+                "frequency": 5009638.67,
+                "resistance": 445.485,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611266754.903865,
+                "frequency": 5009799.14,
+                "resistance": 438.342,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611266764.907375,
+                "frequency": 5009847.8,
+                "resistance": 438.65299999999996,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "False Negatives": [],
+        "Number of True Positives": 4,
+        "Number of False Positives": 0,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 1,
+        "Recall": 1.0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-Tap-H20_chosen.csv"
+    },
+    "Insertion-10ppm": {
+        "Detections": [
+            {
+                "timestamp": 1608131504.6392934,
+                "frequency": 5009781.32,
+                "resistance": 393.175,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1608131514.6392744,
+                "frequency": 5009776.0600000005,
+                "resistance": 397.73699999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [
+            {
+                "Start": 1608131414.136884,
+                "End": 1608132391.462955
+            }
+        ],
+        "Number of detections": 2,
+        "True Positives": [
+            {
+                "timestamp": 1608131504.6392934,
+                "frequency": 5009781.32,
+                "resistance": 393.175,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1608131514.6392744,
+                "frequency": 5009776.0600000005,
+                "resistance": 397.73699999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "False Negatives": [],
+        "Number of True Positives": 2,
+        "Number of False Positives": 0,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 1,
+        "Recall": 1.0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Insertion-10ppm_chosen.csv"
+    },
+    "Hard-Water-1": {
+        "Detections": [
+            {
+                "timestamp": 1611588188.501366,
+                "frequency": 5009805.066666666,
+                "resistance": 430.83,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611588194.9930432,
+                "frequency": 5009805.6,
+                "resistance": 430.70599999999996,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611590014.9973495,
+                "frequency": 5009729.42,
+                "resistance": 429.74399999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611590024.9978561,
+                "frequency": 5009750.629999999,
+                "resistance": 426.933,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611590034.9972048,
+                "frequency": 5009768.699999999,
+                "resistance": 425.73400000000004,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [],
+        "Number of detections": 5,
+        "True Positives": [],
+        "False Negatives": [],
+        "Number of True Positives": 0,
+        "Number of False Positives": 5,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 0,
+        "Recall": 0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-Water-1_chosen.csv"
+    },
+    "Hard-Water-3": {
+        "Detections": [
+            {
+                "timestamp": 1611859427.2995665,
+                "frequency": 5009931.949999999,
+                "resistance": 417.25,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611859435.29902,
+                "frequency": 5009931.8,
+                "resistance": 417.24799999999993,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611861425.2638803,
+                "frequency": 5009707.950000001,
+                "resistance": 420.54400000000004,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611861435.26359,
+                "frequency": 5009852.309999999,
+                "resistance": 414.21999999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611861455.2632098,
+                "frequency": 5009908.88,
+                "resistance": 419.76399999999995,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [],
+        "Number of detections": 5,
+        "True Positives": [],
+        "False Negatives": [],
+        "Number of True Positives": 0,
+        "Number of False Positives": 5,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 0,
+        "Recall": 0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-Water-3_chosen.csv"
+    },
+    "Hard-3ppm": {
+        "Detections": [
+            {
+                "timestamp": 1611606645.27459,
+                "frequency": 5009785.87,
+                "resistance": 433.11400000000003,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611606655.2747397,
+                "frequency": 5009802.4399999995,
+                "resistance": 413.96400000000006,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611606665.2746797,
+                "frequency": 5009853.74,
+                "resistance": 433.003,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611608655.2768898,
+                "frequency": 5009835.68,
+                "resistance": 455.74699999999996,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [
+            {
+                "Start": 1611606633.7742999,
+                "End": 1611608694.7772002
+            }
+        ],
+        "Number of detections": 4,
+        "True Positives": [
+            {
+                "timestamp": 1611606645.27459,
+                "frequency": 5009785.87,
+                "resistance": 433.11400000000003,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611606655.2747397,
+                "frequency": 5009802.4399999995,
+                "resistance": 413.96400000000006,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611606665.2746797,
+                "frequency": 5009853.74,
+                "resistance": 433.003,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611608655.2768898,
+                "frequency": 5009835.68,
+                "resistance": 455.74699999999996,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "False Negatives": [],
+        "Number of True Positives": 4,
+        "Number of False Positives": 0,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 1,
+        "Recall": 1.0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-3ppm_chosen.csv"
+    },
+    "Insertion-3ppm": {
+        "Detections": [
+            {
+                "timestamp": 1608128665.3203168,
+                "frequency": 5009748.450000001,
+                "resistance": 399.869,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1608128674.8200073,
+                "frequency": 5009755.555555556,
+                "resistance": 400.0144444444445,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [
+            {
+                "Start": 1608127834.843526,
+                "End": 1608128678.820218
+            }
+        ],
+        "Number of detections": 2,
+        "True Positives": [
+            {
+                "timestamp": 1608128665.3203168,
+                "frequency": 5009748.450000001,
+                "resistance": 399.869,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1608128674.8200073,
+                "frequency": 5009755.555555556,
+                "resistance": 400.0144444444445,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "False Negatives": [],
+        "Number of True Positives": 2,
+        "Number of False Positives": 0,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 1,
+        "Recall": 1.0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Insertion-3ppm_chosen.csv"
+    },
+    "Insertion-100ppm": {
+        "Detections": [
+            {
+                "timestamp": 1608138054.6197665,
+                "frequency": 5009729.73,
+                "resistance": 393.46600000000007,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1608138064.6197107,
+                "frequency": 5009709.5,
+                "resistance": 396.21299999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1608138074.6201375,
+                "frequency": 5009697.55,
+                "resistance": 408.264,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [
+            {
+                "Start": 1608138031.120696,
+                "End": 1608139140.5116959
+            }
+        ],
+        "Number of detections": 3,
+        "True Positives": [
+            {
+                "timestamp": 1608138054.6197665,
+                "frequency": 5009729.73,
+                "resistance": 393.46600000000007,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1608138064.6197107,
+                "frequency": 5009709.5,
+                "resistance": 396.21299999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1608138074.6201375,
+                "frequency": 5009697.55,
+                "resistance": 408.264,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "False Negatives": [],
+        "Number of True Positives": 3,
+        "Number of False Positives": 0,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 1,
+        "Recall": 1.0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Insertion-100ppm_chosen.csv"
+    },
+    "Hard-Water-2": {
+        "Detections": [
+            {
+                "timestamp": 1611855069.3587,
+                "frequency": 5009924.9,
+                "resistance": 414.34,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611855074.99135,
+                "frequency": 5009925.03,
+                "resistance": 414.33099999999996,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611855084.99024,
+                "frequency": 5009925.38,
+                "resistance": 414.308,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611855094.99702,
+                "frequency": 5009925.87,
+                "resistance": 414.275,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611859345.30066,
+                "frequency": 5009889.49,
+                "resistance": 422.58299999999997,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611859355.30055,
+                "frequency": 5009833.26,
+                "resistance": 417.133,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            },
+            {
+                "timestamp": 1611859365.29999,
+                "frequency": 5009906.97,
+                "resistance": 416.6010000000001,
+                "period": [
+                    0,
+                    0
+                ],
+                "time": "",
+                "severity": "mild",
+                "detector": "IsolationForest"
+            }
+        ],
+        "Anomalies": [],
+        "Number of detections": 7,
+        "True Positives": [],
+        "False Negatives": [],
+        "Number of True Positives": 0,
+        "Number of False Positives": 7,
+        "Number of False Negatives": 0,
+        "Number of True Negatives": 0,
+        "Recall": 0,
+        "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-Water-2_chosen.csv"
     }
 }
