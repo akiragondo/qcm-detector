@@ -6,6 +6,7 @@ import inspect
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir) 
+from detectors.secondary_detectors.ocsvm_detector import SVMDetector
 from detectors.secondary_detectors.mean_detector import MeanDetector
 from detectors.secondary_detectors.prediction_detector import PredictionDetector
 from detectors.secondary_detectors.isolation_detector import IsolationDetector
@@ -37,6 +38,7 @@ class DetectionVoter:
         )
         self.prediction_detector = PredictionDetector()
         self.isolation_detector = IsolationDetector()
+        self.ocsvm_detector = SVMDetector()
         self.run_controller = run_controller
         self.dataframe_model = None
         self.past_detections = []
@@ -54,6 +56,8 @@ class DetectionVoter:
         self.past_detections = []
         self.prediction_detector.reset()
         self.mean_detector.reset()
+        self.isolation_detector.reset()
+        self.ocsvm_detector.reset()
 
     def make_dataframe_from_model(self, qcm_model: QCMModel):
         self.run_controller.mutex.lock()
@@ -103,9 +107,9 @@ class DetectionVoter:
             mean_detections = self.mean_detector.detect_anomalies(dataframe_model)
             prediction_detections = self.prediction_detector.detect_anomalies(dataframe_model)
             isolation_detections = self.isolation_detector.detect_anomalies(dataframe_model)
-            # detections = mean_detections + prediction_detections 
-            detections = isolation_detections
-            # merged_mean_detection = self.merge_similar_detections(mean_detections)
+            ocsvm_detections = self.ocsvm_detector.detect_anomalies(dataframe_model)
+            detections = mean_detections + prediction_detections + isolation_detections + ocsvm_detections
+            
             self.aggregate_past_detections(detections)
             return self.past_detections
         else:

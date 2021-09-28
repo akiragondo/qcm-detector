@@ -15,8 +15,7 @@ from statsmodels.tsa.holtwinters import ExponentialSmoothing
 
 class PredictionDetector(Detector):
     def __init__(self):
-        self.initial_sample_time = 15  # Minimum sample time in minutes
-        self.forecast_time_step = 12  # Forecast time in minutes
+        self.forecast_time_step = 1  # Forecast time in minutes
         self.error_threshold = 1  # Percent error threshold for each forecast
 
         self.prediction_model = None
@@ -40,11 +39,10 @@ class PredictionDetector(Detector):
             seasonal=None
         ).fit()
         detection_times = []
-        if not self.previous_forecast.empty:
-            error_df = np.abs((resistance_endog[
-                        self.last_forecast_start_time:] - self.previous_forecast) * 100 / self.previous_forecast)
-            error_df = error_df.dropna()
-            detection_times = [time for time, error in error_df.iteritems() if error > self.error_threshold]
+        error_df = np.abs((resistance_endog[
+                    self.last_forecast_start_time:] - self.previous_forecast) * 100 / self.previous_forecast)
+        error_df = error_df.dropna()
+        detection_times = [time for time, error in error_df.iteritems() if error > self.error_threshold]
         self.previous_forecast = self.prediction_model.forecast(self.forecast_time_step)
         self.last_forecast_start_time = self.previous_forecast.index[0]
         detections = [self.make_detection_from_element(

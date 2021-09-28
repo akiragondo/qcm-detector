@@ -27,7 +27,7 @@ class TestController:
         self.mutex = QMutex()
 
         self.read_time = 1
-        self.detection_period = 15
+        self.detection_period = 60
 
         self.detection_time_period = 5
 
@@ -53,7 +53,8 @@ class TestController:
         for i in tqdm.tqdm(range(self.rs_api.simulationLength)):
             current_reading = self.rs_api.read_data()
             self.data_model.append_sample(current_reading)
-        self.detector.detect()
+            if i % self.detection_time_period == 0 and i > self.detection_time_period:
+                self.detector.detect()
         detections = self.detector.past_detections
         return detections
 

@@ -10,25 +10,26 @@ import pandas as pd
 from models.detection import Detection
 from typing import List
 import numpy as np
-from sklearn.ensemble import IsolationForest
+from sklearn.svm import OneClassSVM
 
 
 class IsolationDetector(Detector):
     def __init__(self):
-        self.prediction_model = IsolationForest(contamination = 0.01)
-        self.sliding_window_time = 180 #seconds
+        clf = OneClassSVM(kernel = 'rbf', gamma='scale', nu=0.1)
+        self.sliding_window_time = 150 #seconds
 
         
     def describe(self) -> str:
-        return 'IsolationForest'
+        return 'OneClassSVM'
 
     def reset(self):
-        self.prediction_model = IsolationForest(contamination=0.01, warm_start=True)
+        clf = OneClassSVM(kernel = 'rbf', gamma='scale', nu=0.1)
 
     def detect_anomalies(self, detection_dataframe: pd.DataFrame) -> List[Detection]:
         detection_diff = (detection_dataframe - detection_dataframe.rolling(f'{self.sliding_window_time}s').mean()).dropna()
         
-        detection_indices = np.where(self.prediction_model.fit_predict(detection_diff) < 0)[0]
+        y_pred = self.clf.fit_predict(detection_diff)
+        detection_indices = np.where(y_pred < 0)[0]
         detection_times = detection_diff.iloc[detection_indices].index
 
         detections = [self.make_detection_from_element(

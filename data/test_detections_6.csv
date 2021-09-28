@@ -1,0 +1,4 @@
+Timestamp, Detector, Severity, Frequency, Resistance
+20/1/2021 10:40:34.845746, IsolationForest, severe, 5009957.210, 448.021
+20/1/2021 10:26:05.691725, IsolationForest, severe, 5009993.389, 428.781
+20/1/2021 11:03:38.962885, IsolationForest, severe, 5009952.400, 437.445
