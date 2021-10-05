@@ -1,0 +1,5 @@
+Timestamp, Detector, Severity, Frequency, Resistance
+20/1/2021 10:40:44.845786, Expo-predict, mild, 5009959.690, 450.108
+20/1/2021 10:43:34.848932, Mean-shift, severe, 5009959.840, 453.835
+20/1/2021 10:43:44.849011, Mean-shift, severe, 5009959.700, 453.923
+20/1/2021 10:43:51.848901, Mean-shift, severe, 5009959.625, 453.995

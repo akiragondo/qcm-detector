@@ -110,7 +110,8 @@ class ViewController(MainWindowTemplate):
             gate_time=1000,
             scale_factor=200,
             simulation_data_path=self.dataFileField.text(),
-            output_data_file=self.outputField.text()+self.fileName.text()
+            output_data_file=self.outputField.text()+self.fileName.text(),
+            output_email=self.emailField.text()
         )
         self.disable_main_elements()
         if not self.is_simulated:

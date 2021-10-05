@@ -7,6 +7,8 @@ from PyQt5.QtCore import (
 )
 import logging
 from typing import List
+
+from rtqcm.api.email import EmailComm
 from rtqcm.models.connection_parameters import ConnectionParameters
 from rtqcm.models.qcm_model import QCMModel
 from rtqcm.models.detection import Detection
@@ -86,6 +88,8 @@ class RunController(QObject):
         self.timeout_counter = 0
 
         self.connection_params: ConnectionParameters
+
+        self.email_comms = EmailComm()
 
     def start_timers(
             self,
@@ -175,6 +179,12 @@ class RunController(QObject):
                 self.disconnect_timeout.emit()
 
     def receive_new_detection(self, detections: List[Detection]):
+        if len(detections) > 0:
+            if not detections[-1].notified:
+                if self.connection_params.output_email!="" and self.connection_params.output_email is not None:
+                    self.email_comms.send_email(detections[-1].make_email_body(self.connection_params.output_email))
+            for detection in detections:
+                detection.notified = True
         self.detection.emit(detections)
 
 

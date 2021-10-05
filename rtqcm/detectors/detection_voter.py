@@ -49,8 +49,12 @@ class DetectionVoter:
         self.resistance_diff_thresh = 1
         self.frequency_diff_thresh = 1
 
-        self.recency_cutoff_hours = 48
+        self.recency_cutoff_hours = 24
         self.recency_cutoff_delta = pd.Timedelta(f"{self.recency_cutoff_hours:02d}:00:00")
+
+        self.initial_training_time_seconds = 300
+
+        self.start_time = None
 
     def reset(self):
         self.past_detections = []
@@ -101,15 +105,26 @@ class DetectionVoter:
             return False
         return False
 
+    def filter_early_detections(self, detections :  List[Detection]):
+        filtered_detections = [
+            detection for 
+            detection in detections 
+            if (detection.timestamp - self.start_time) > self.initial_training_time_seconds
+        ]
+        return filtered_detections
+
     def detect(self) -> List[Detection]:
         dataframe_model = self.make_dataframe_from_model(self.run_controller.data_model)
         if not dataframe_model.empty:
+            if self.start_time is None:
+                self.start_time = dataframe_model.index[0].timestamp()
             mean_detections = self.mean_detector.detect_anomalies(dataframe_model)
             prediction_detections = self.prediction_detector.detect_anomalies(dataframe_model)
-            isolation_detections = self.isolation_detector.detect_anomalies(dataframe_model)
-            ocsvm_detections = self.ocsvm_detector.detect_anomalies(dataframe_model)
-            detections = mean_detections + prediction_detections + isolation_detections + ocsvm_detections
+            # isolation_detections = self.isolation_detector.detect_anomalies(dataframe_model)
+            # ocsvm_detections = self.ocsvm_detector.detect_anomalies(dataframe_model)
+            detections = mean_detections + prediction_detections
             
+            detections = self.filter_early_detections(detections)
             self.aggregate_past_detections(detections)
             return self.past_detections
         else:

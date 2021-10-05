@@ -17,6 +17,7 @@ import warnings
 warnings.simplefilter("ignore")
 import tqdm
 import json
+import time
 
 
 class TestController:
@@ -58,7 +59,7 @@ class TestController:
         detections = self.detector.past_detections
         return detections
 
-    def get_results_from_test(self, test, detections):
+    def get_results_from_test(self, test, detections, detection_time):
         test_object = test[list(test.keys())[0]]
         test_anomalies = self.get_anomaly_timestamp_dicts(test_object['Anomalies'], self.rs_api)
         true_positives = [detection.__dict__ for detection in self.get_true_positives(detections, test_anomalies)]
@@ -75,6 +76,7 @@ class TestController:
                 "Number of False Positives": len(detections) - len(true_positives),
                 "Number of False Negatives": len(false_negatives),
                 "Number of True Negatives": len(test_anomalies) - len(false_negatives),
+                "Total Detection Time": detection_time,
                 "Recall": recall,
                 "Path": test_object['Path']
             }
@@ -103,8 +105,10 @@ class TestController:
             self.data_model.reset_model()
             test_path = test[list(test.keys())[0]]['Path']
             print(f"Testing: {test_path.split('/')[-1]}")
+            start_time = time.time()
             detections = self.get_single_file_predictions(test_path)
-            result = self.get_results_from_test(test, detections)
+            total_detection_time = time.time() - start_time
+            result = self.get_results_from_test(test, detections, total_detection_time)
             results.update(result)
             with open('results.json', 'w+') as output_file:
                 output_file.write(json.dumps(results, indent=4))
