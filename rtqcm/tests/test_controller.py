@@ -46,7 +46,7 @@ class TestController:
         connections_params = ConnectionParameters(
             port_name='',
             scale_factor=200,
-            gate_time=1000,
+            gate_time=100,
             simulation_data_path = file_name,
             output_data_file= ''
         )
@@ -132,5 +132,5 @@ class TestController:
 
 if __name__ == '__main__':
     ts = TestController()
-    print(ts.test('/home/kimino/soft/qcm-detector/data/tests/test_descriptions_short.json'))
+    print(ts.test('/home/kimino/soft/qcm-detector/data/tests/test_descriptions.json'))
 

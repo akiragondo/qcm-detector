@@ -120,9 +120,9 @@ class DetectionVoter:
                 self.start_time = dataframe_model.index[0].timestamp()
             mean_detections = self.mean_detector.detect_anomalies(dataframe_model)
             prediction_detections = self.prediction_detector.detect_anomalies(dataframe_model)
-            # isolation_detections = self.isolation_detector.detect_anomalies(dataframe_model)
-            # ocsvm_detections = self.ocsvm_detector.detect_anomalies(dataframe_model)
-            detections = mean_detections + prediction_detections
+            isolation_detections = self.isolation_detector.detect_anomalies(dataframe_model)
+            ocsvm_detections = self.ocsvm_detector.detect_anomalies(dataframe_model)
+            detections = mean_detections + prediction_detections + isolation_detections + ocsvm_detections
             
             detections = self.filter_early_detections(detections)
             self.aggregate_past_detections(detections)

@@ -12,12 +12,6 @@
             }
         },
         {
-            "Clean_long_temperature_drift": {
-                "Anomalies": [],
-                "Path": "/home/kimino/soft/qcm-detector/data/tests/Clean_long_temperature_drift_chosen.csv"
-            }
-        },
-        {
             "Long-Insertion-10ppm": {
                 "Anomalies": [
                     {
