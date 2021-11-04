@@ -9,9 +9,9 @@ class QCMModel:
         self.timestamps = np.array([])
 
     def append_sample(self, sample):
-        self.resistances = np.append(self.resistances, sample[1])
-        self.timestamps = np.append(self.timestamps, sample[0])
-        self.frequencies = np.append(self.frequencies, sample[2])
+        self.resistances = np.append(self.resistances, float(sample[1]))
+        self.timestamps = np.append(self.timestamps, float(sample[0]))
+        self.frequencies = np.append(self.frequencies, float(sample[2]))
         return True
 
     def get_frequency_results(self):

@@ -108,6 +108,7 @@ class RunController(QObject):
         self.save_detections_timer.start()
 
     def start_run(self, connection_params: ConnectionParameters):
+        self.detector.detection_voter.reset()
         if not self.data_model.is_empty_model():
             self.data_model.reset_model()
         self.is_simulated = False
@@ -128,6 +129,7 @@ class RunController(QObject):
             return False
 
     def start_simulated_run(self, connection_params: ConnectionParameters):
+        self.detector.detection_voter.reset()
         if not self.data_model.is_empty_model():
             self.data_model.reset_model()
         self.is_simulated = True

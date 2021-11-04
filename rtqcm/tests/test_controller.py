@@ -28,9 +28,9 @@ class TestController:
         self.mutex = QMutex()
 
         self.read_time = 1
-        self.detection_period = 60
+        self.detection_period = 30
 
-        self.detection_time_period = 5
+        self.detection_time_period = 15
 
     def get_anomaly_timestamp_dicts(self, anomalies_object : dict, rs_api : RS232):
         assert(len(rs_api.simulation_data > 0))
@@ -132,5 +132,5 @@ class TestController:
 
 if __name__ == '__main__':
     ts = TestController()
-    print(ts.test('/home/kimino/soft/qcm-detector/data/tests/test_descriptions.json'))
+    print(ts.test('/home/kimino/soft/qcm-detector/data/tests/test_descriptions_short.json'))
 

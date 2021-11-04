@@ -12,17 +12,6 @@
             }
         },
         {
-            "Long-Insertion-10ppm": {
-                "Anomalies": [
-                    {
-                        "Start": 6400,
-                        "End": 8929
-                    }
-                ],
-                "Path": "/home/kimino/soft/qcm-detector/data/tests/Long-Insertion-10ppm_chosen.csv"
-            }
-        },
-        {
             "Hard-Water-4": {
                 "Anomalies": [],
                 "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-Water-4_chosen.csv"
@@ -37,17 +26,6 @@
                     }
                 ],
                 "Path": "/home/kimino/soft/qcm-detector/data/tests/Hard-0.5ppm_chosen.csv"
-            }
-        },
-        {
-            "Long-Insertion-5ppm": {
-                "Anomalies": [
-                    {
-                        "Start": 5600,
-                        "End": 7597
-                    }
-                ],
-                "Path": "/home/kimino/soft/qcm-detector/data/tests/Long-Insertion-5ppm_chosen.csv"
             }
         },
         {
@@ -203,17 +181,6 @@
                     }
                 ],
                 "Path": "/home/kimino/soft/qcm-detector/data/tests/Overnight-10ppm_chosen.csv"
-            }
-        },
-        {
-            "Long-Insertion-10ppm-1": {
-                "Anomalies": [
-                    {
-                        "Start": 20313,
-                        "End": 22052
-                    }
-                ],
-                "Path": "/home/kimino/soft/qcm-detector/data/tests/Long-Insertion-10ppm-1_chosen.csv"
             }
         },
         {

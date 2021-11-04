@@ -20,9 +20,15 @@ class EmailComm:
             self.buffer.append(body)
 
     def verify_email(self, email):
-        json_data = json.dumps({'to': email})
+        json_data = json.dumps(
+            {
+                'to': email
+            }
+        )
         try:
+            print('Sending Email...')
             response = requests.post(self.verifyEndpoint, data=json_data)
+            print(f'Request sent, received: {response}')
             return response
         except requests.exceptions.HTTPError as error:
             print(error)

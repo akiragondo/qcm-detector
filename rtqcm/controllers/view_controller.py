@@ -18,6 +18,7 @@ from rtqcm.utils.file import (
 )
 from rtqcm.utils.interface_helper import colors
 from typing import List
+from rtqcm.api.email import EmailComm
 
 class ViewController(MainWindowTemplate):
     """
@@ -60,7 +61,7 @@ class ViewController(MainWindowTemplate):
         self.thread.start()
 
         # DEBUG ONLY
-        self.dataFileField.setText('/home/kimino/soft/qcm-detector/data/output/21-01-20_static-pani-swelling-22C-20ppm-6hours_data.csv')
+        self.dataFileField.setText('/home/kimino/soft/qcm-detector/data/tests/Insertion-5ppm_chosen.csv')
         self.outputField.setText('/home/kimino/soft/qcm-detector/data/')
         self.fileName.setText('test.csv')
 
@@ -85,8 +86,8 @@ class ViewController(MainWindowTemplate):
         self.clear_vlines()
         for detection in detections:
             self.add_vline(
-            x=detection.timestamp,
-            color=colors[detection.severity]
+                x=detection.timestamp,
+                color=colors[detection.severity]
             )
 
     def update_detection_events(self, new_detections: List[Detection]):
@@ -157,9 +158,9 @@ class ViewController(MainWindowTemplate):
 
     def clear_graph_elements(self):
         self.update_plot([[],[],[]])
+        self.clear_vlines()
         self.plotLine.clear()
         self.twinLine.clear()
-        self.clear_vlines()
         self.textBrowser.clear()
 
     def disable_main_elements(self):
@@ -210,8 +211,8 @@ class ViewController(MainWindowTemplate):
 
     def add_vline(self, x, color):
         new_line = pg.InfiniteLine(pos=x, pen=pg.mkPen(color=color, width=2))
-        self.vlines.append(new_line)
         self.plotLine.getViewBox().addItem(new_line)
+        self.vlines.append(new_line)
 
     def clear_vlines(self):
         for vline in self.vlines:
@@ -248,6 +249,10 @@ class ViewController(MainWindowTemplate):
         self.outputField.setText(file)
 
     def verify_email(self):
+        e_comm = EmailComm()
+        if self.checkBox.isChecked():
+            if len(self.emailField.text()) > 0:
+                e_comm.verify_email(self.emailField.text())
         pass
 
     def refresh_ports_combo(self):

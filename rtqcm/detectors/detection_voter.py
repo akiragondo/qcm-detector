@@ -46,6 +46,7 @@ class DetectionVoter:
         # Merge conditions
         self.timestamp_diff_thresh = 60
         self.large_timestamp_diff_thresh = 600
+        self.aggregation_diff_thresh = 300
         self.resistance_diff_thresh = 1
         self.frequency_diff_thresh = 1
 
@@ -55,6 +56,8 @@ class DetectionVoter:
         self.initial_training_time_seconds = 300
 
         self.start_time = None
+        self.current_detection_time = None
+        self.immediate_cutoff = 120
 
     def reset(self):
         self.past_detections = []
@@ -62,6 +65,8 @@ class DetectionVoter:
         self.mean_detector.reset()
         self.isolation_detector.reset()
         self.ocsvm_detector.reset()
+        self.start_time = None
+        self.current_detection_time = None
 
     def make_dataframe_from_model(self, qcm_model: QCMModel):
         self.run_controller.mutex.lock()
@@ -70,7 +75,7 @@ class DetectionVoter:
             data=zip(qcm_model.resistances, qcm_model.frequencies, qcm_model.timestamps),
             index=index,
             columns= ['Frequency', 'Resistance', 'Timestamp']
-        ).resample('10S').mean()
+        ).resample('30S').mean().ffill()
         self.run_controller.mutex.unlock()
         if len(dataframe) > 1:
             cutoff_time = dataframe.index.values[-1] - self.recency_cutoff_delta
@@ -82,9 +87,13 @@ class DetectionVoter:
         for detection in detections_list:
             already_detected = False
             for past_detection in self.past_detections:
-                if self.is_same_detection(past_detection, detection):
-                    already_detected = True
-                    self.convert_to_severe(past_detection)
+                if self.is_within_range(past_detection, detection):
+                    if not self.is_same_detector(past_detection, detection):
+                        self.convert_to_severe(past_detection)
+                        self.convert_to_severe(detection)
+                    else:
+                        if self.is_same_detection(past_detection, detection):
+                            already_detected = True
             if not already_detected:
                 new_detections.append(detection)
         self.past_detections = self.past_detections + new_detections
@@ -93,8 +102,6 @@ class DetectionVoter:
         detection.severity = 'severe'
 
     def is_same_detection(self, detection_1 : Detection, detection_2: Detection):
-        if detection_1.detector != detection_2.detector:
-            return False
         if np.abs(detection_1.timestamp - detection_2.timestamp) < self.timestamp_diff_thresh:
             return True
         if np.abs(detection_1.timestamp - detection_2.timestamp) < self.large_timestamp_diff_thresh:
@@ -104,6 +111,18 @@ class DetectionVoter:
                 return False
             return False
         return False
+
+    def is_within_range(self, detection_1 : Detection, detection_2: Detection):
+        if np.abs(detection_1.timestamp - detection_2.timestamp) < self.aggregation_diff_thresh:
+            return True
+        return False
+
+
+    def is_same_detector(self, detection_1 : Detection, detection_2: Detection):
+        if detection_1.detector == detection_2.detector:
+            return True
+        else:
+            return False
 
     def filter_early_detections(self, detections :  List[Detection]):
         filtered_detections = [
@@ -118,14 +137,14 @@ class DetectionVoter:
         if not dataframe_model.empty:
             if self.start_time is None:
                 self.start_time = dataframe_model.index[0].timestamp()
+            self.current_detection_time = dataframe_model.index[0].timestamp()
             mean_detections = self.mean_detector.detect_anomalies(dataframe_model)
             prediction_detections = self.prediction_detector.detect_anomalies(dataframe_model)
-            isolation_detections = self.isolation_detector.detect_anomalies(dataframe_model)
-            ocsvm_detections = self.ocsvm_detector.detect_anomalies(dataframe_model)
-            detections = mean_detections + prediction_detections + isolation_detections + ocsvm_detections
+            detections = mean_detections + prediction_detections
             
             detections = self.filter_early_detections(detections)
             self.aggregate_past_detections(detections)
+            print(self.past_detections)
             return self.past_detections
         else:
             return []
